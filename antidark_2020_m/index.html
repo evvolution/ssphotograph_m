@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>2020佛山扫黑除恶</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta name="renderer" content="webkit">
+    <meta name="referrer" content="never">
+    <style>
+        .loading {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background-color: #a50a0b;
+            z-index: 999;
+        }
+        .loading img,
+        .loading p {
+            display: block;
+            width: 30px;
+            position: relative;
+            left: 50%; 
+            top: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+        }
+        .loading p {
+            width: 100%;
+            text-align: center;
+            color: azure;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="control/css/main.css">
+    <link rel="stylesheet" type="text/css" href="control/css/m0.css">
+</head>
+<body onload="loading()">
+    <div class="loading"><img src="img/loading.gif"><p>加载中</p></div>
+    <div class="mainpart">
+        <div class="p0header"><img src="img/maintitle.png" /></div>
+        <div class="p0content">
+            <div class="p0content_line"><img src="img/timeline.png" /></div>
+            <div class="p0content_menu-out">
+                <div class="p0content_menu" onclick="m1switch()"><img src="img/m1.png" /></div>
+                <div class="p0content_menu" onclick="m2switch()"><img src="img/m2.png" /></div>
+            </div>
+            <div class="p0content_menu-out">
+                <div class="p0content_menu" onclick="m3switch()"><img src="img/m3.png" /></div>
+                <div class="p0content_menu" onclick="m4switch()"><img src="img/m4.png" /></div>
+            </div>
+        </div>
+        <div class="p0footer">
+            <img src="img/founder.png" />
+            <img src="img/film.png" />
+        </div>
+    </div>
+    <script type="text/javascript">
+        function loading() {
+            var mainpart = document.getElementsByClassName("mainpart")[0];
+            var loading = document.getElementsByClassName("loading")[0];
+            loading.style.display = "none";
+            mainpart.style.display = "flex";
+        }
+    </script>
+    <script type="text/javascript" src="control/js/main.js"></script>
+</body>
+</html>

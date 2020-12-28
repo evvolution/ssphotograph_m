@@ -1,0 +1,20 @@
+/*
+    note: 新闻动态样式
+*/
+
+.p3main {
+    position: relative;
+    margin: 5px auto;
+    /* font-size: 0.5vw; */
+    line-height: 1.5;
+}
+
+.p3item {
+    width: 62%;
+    margin: 0 auto;
+}
+
+.p3item a {
+    color: #FFD;
+    text-decoration: none;
+}

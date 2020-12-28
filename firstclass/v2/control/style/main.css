@@ -1,0 +1,744 @@
+html{
+	font-family: sans-serif;
+	font-size: 16px;
+}
+html,body {
+	/* -webkit-text-size-adjust:none; */
+	/* -webkit-tap-highlight-color:rgba(0, 0, 0, 0); */
+	width: 100%;
+}
+body {
+	color: #333;
+	background-color: white;
+
+}
+html,body,header,section,footer,div,ul,ol,li,img,a,span,em,del,legend,center,strong,var,fieldset,form,label,dl,dt,dd,cite,input,hr,time,mark,code,figcaption,figure,textarea,h1,h2,h3,h4,h5,h6,p{
+	margin:0;
+	border:0;
+	padding:0;
+	font-style:normal;
+}
+* {
+	-webkit-box-sizing: border-box;
+  box-sizing: border-box;
+
+}
+img{
+  border: 0;
+}
+
+@media only screen and (min-width: 330px) {
+	html {
+		font-size: 18px !important;
+	}
+}
+@media only screen and (min-width: 400px) {
+	html {
+		font-size: 20px !important;
+	}
+}
+@media only screen and (min-width: 480px) {
+	html {
+		font-size: 22px !important;
+	}
+}
+
+.begin-loading .bg
+{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.begin-loading .loading-container
+{
+  width: 240px;
+  height: 27.54px;
+  margin: 40vh auto 0 auto;
+  position: relative;
+}
+
+.begin-loading  p
+{
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+  color: #FF8300;
+  margin-top: 10px;
+  text-align: center;
+}
+.begin-loading .loading-bg
+{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.begin-loading .loading-progress
+{
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width:0%;
+  height:88%;
+  background:linear-gradient(180deg,rgba(255,201,94,1) 0%,rgba(255,154,49,1) 100%);
+  /* box-shadow:2px 0px 6px 0px rgba(255,241,204,0.6),0px -3px 7px 0px rgba(255,141,17,1); */
+  border-radius: 24px;
+}
+#app,.begin-loading{
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.fspsection,.clockSection,.coversection{
+  padding: 0 1.2rem;
+  width: 100%;
+  height: 100%;
+  display: block;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+}
+.fspsection {
+  animation-name:mymove;
+  animation-duration:1s;/* 5s表示执行动画的时间，0或不写则无动画效果 */
+  /* 兼容调试如果animation-name执行，那么-wekit-animation-name则不执行 */
+  -webkit-animation-name:mymove;
+  -webkit-animation-duration:0.8s;/* 5s表示执行动画的时间，0或不写则无动画效果 */
+}
+
+
+@keyframes mymove /* 对应animation-name，里面为执行的动画*/
+{
+  from {left:300px;}/*执行动画的初始位置*/
+  to {left:0px;}/*动画结束位置*/
+  0%{transform: translateX(150px);opacity: 0;}
+	100%{ transform: translateX(0px);opacity: 1;}
+}
+
+@-webkit-keyframes mymove/* 对应-webkit-animation-name，里面为执行的动画*/
+{
+  from {left:300px;}/*执行动画的初始位置*/
+  to {left:0px;}/*动画结束位置*/
+  0%{transform: translateX(150px);opacity: 0;}
+	100%{ transform: translateX(0px);opacity: 1;}
+}
+
+/* 封面 */
+.coversection .cover-bg
+{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  object-fit: cover;
+}
+.coversection .left-icon
+{
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* margin-left: -1.2rem; */
+  width: 55vw;
+}
+
+.coversection .tips-icon
+{
+  left: 16px;
+  width: 55vw;
+  top: 16vw;
+  position: absolute;
+}
+
+.coversection .left-desc
+{
+  color: #fff;
+  font-size: 0.8rem;
+  text-align: center;
+  position: relative;
+  margin-top: 10px;
+  width: 100%;
+  font-weight: 500;
+  text-shadow:0px 2px 5px #999;
+
+}
+
+
+.coversection .head-icon
+{
+  z-index: -2;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+
+.coversection .center-icon
+{
+  position: relative;
+  margin: 18vh auto 0 auto;
+  width: 55vw;
+  display: block;
+}
+
+.coversection .detail-icon
+{
+  position: absolute;
+  right: 14px;
+  top: 24px;
+  width: 68px;
+}
+.coversection .startsection
+{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 64px;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+.coversection .expect-desc
+{
+  margin: 0 auto 50px auto;
+  line-height: 25px;
+  font-size: 1.1rem;
+  color: white;
+  text-align: center;
+  text-shadow:0px 3px 7px #999;
+}
+
+.coversection .goFoshan-icon,.coversection .start-icon
+{
+  display: block;
+  width: 100%;
+}
+
+.coversection .start-icon
+{
+  margin-top: 18px;
+}
+
+.container-fluid {
+padding: 0!important;
+}
+
+.noticeforinput{
+text-align: center;
+font-size: 1rem;
+line-height: 1.2rem;
+margin-top: 18vh;
+margin-bottom: 24px;
+font-weight: 500;
+}
+
+.selectgroup{
+margin-bottom: 0;
+}
+
+.labelforfssheet{
+font-size: 16px;
+margin-bottom: 8px;
+}
+
+.selectforfs{
+border-radius: 40px;
+height: 40px;
+font-size: 16px!important;
+}
+
+
+.startbtn{
+text-align: center;
+margin: 40px 0 60px;
+}
+
+
+
+.questiondetail{
+  font-size: 18px;
+  margin: 18px auto 20px auto;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.choices{
+  border-radius: 37.5px;
+  background-color: #FFF;
+  font-size: 16px;
+  margin: 16px 0;
+  padding: 6px 0;
+  position: relative;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+.choices .icon {
+margin-left: 10px;
+}
+
+.choiceOrder{
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.choiceOrder img {
+width: 40px;
+height: 40px;
+}
+
+.choicedetailcontent{
+  padding: 13px 0;
+}
+.choicedetail {
+width: 100%;
+padding: 0px 16px 0px 50px;
+font-size: 16px;
+line-height: 22px;
+color: #333;
+}
+
+/* .questionSection .fp-tableCell,.clockSection .fp-tableCell,.pointSection .fp-tableCell,.passFinish .fp-tableCell,.jiyuSection .fp-tableCell {
+vertical-align: top!important;
+} */
+
+/* 开始答题 */
+/* #passBegin {
+} */
+#passBegin .titleImg {
+width: 90%;
+height: auto;
+display: block;
+margin: 0 auto;
+padding-top: 26vh;
+}
+
+/* 开始答题 */
+#passBegin .descImg {
+width: 45%;
+height: auto;
+display: block;
+margin: 30vh auto 0 auto;
+}
+
+
+.loader {
+position: absolute;
+z-index: 5;
+width: 100vw;
+height: 100vh;
+left: 0px;
+top: 0px;
+background: rgba(0, 0, 0, 0.3);
+}
+.loader .icon {}
+
+/* 答题 */
+#videoContainer {
+width: 100vw;
+height: 56.27vw;
+margin-left: -1.2rem;
+}
+#videoContainer .video-player 
+{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+button:focus {
+outline: none;
+}
+.choice-selected {
+background-image: linear-gradient(#AEFF68, #69E149);
+}
+
+.nodisplay {
+display: none;
+}
+
+#dis-nextBtn,#nextBtn,.nextPassBtn {
+margin-top: 5px;
+float: right;
+overflow: hidden;
+width: 45%;
+}
+.nextPassBtn 
+{
+  margin-top: 50px;
+}
+.showJiyuBtn
+{
+  width: 100%;
+}
+
+#nextBtn img,#dis-nextBtn img,.nextPassBtn img{
+width: 100%;
+height: auto;
+src: url(../../img/next_select.png);
+}
+
+/* 勋章 */
+.top-medalContainer {
+width: 100%;
+overflow-x: hidden;
+position: relative;
+margin-top: -7vh;
+}
+.top-medalContainer .lightBg {
+width: 100%;
+}
+
+.top-medalContainer .title {
+position: absolute;
+bottom: 55px;
+line-height: 25px;
+font-weight: 500;
+text-align: center;
+width: 100%;
+font-size: 18px;
+white-space:pre-line;
+}
+.top-medalContainer .icon {
+width: 26%;
+height: auto;
+position: absolute;
+left: 37%;
+top: 35%;
+}
+.bottom-medalContainer {
+position: relative;
+width: 100%;
+}
+.bottom-medalContainer .item {
+width: 33.3%;
+float: left;
+box-sizing: border-box;
+}
+.bottom-medalContainer .item img {
+display: block;
+width: 100%;
+/* height: 104px; */
+margin: 0 auto;
+background-size: 100%;
+}
+.bottom-medalContainer .item p {
+font-size: 14px;
+line-height: 20px;
+width: 100%;
+text-align: center;
+}
+.bottom-medalContainer .item .disTitle
+{
+  opacity: 0.3;
+}
+
+/* 分数页 */
+.pointSection .back-icon
+{
+  width: 53px;
+  left: 24px;
+  top: 30px;
+  position: absolute;
+  z-index: 1;
+
+}
+.pointSection .scoreBg {
+left: 0;
+top: 0;
+width: 100%;
+z-index: -1;
+position: absolute;
+}
+
+
+.pointSection .scoreTitle {
+font-size: 1.6rem;
+line-height: 2.25rem;
+font-weight: 400;
+text-align: center;
+margin-top: 30vw;
+}
+
+.pointSection .scoreDesc {
+font-size: 16px;
+line-height: 28px;
+text-align: center;
+margin-top: 18px;
+padding: 0 6px;
+}
+
+.pointSection .wrongTitle {
+font-size: 0.9rem;
+line-height: 1.4rem;
+font-weight: bolder;
+margin: 4vh 0 10px 0;
+}
+.pointSection .wrongContainer {
+margin-bottom: 10px;
+}
+.wrongContainer .wrongItem {
+float: left;
+width: 50px;
+height: 50px;
+position: relative;
+margin: 0 3px 0px 0;
+box-sizing: border-box;
+padding-top: 9px;
+text-align: center;
+line-height: 25px;
+font-size: 16px;
+color: #FF2E2E;
+}
+.wrongContainer .wrongItem img {
+position: absolute;
+width: 100%;
+height: 100%;
+left: 0;
+top: 0;
+z-index: -1;
+}
+.pointSection .downloadBtn {
+width: 100%;
+}
+.pointSection .downloadBtn img {
+width: 100%;
+height: auto;
+margin-top: 15px;
+}
+
+.checkScoreBtn,.createPosterBtn {
+width: 100%;
+display: block;
+}
+
+.checkScoreBtn img,.createPosterBtn img {
+width: 100%;
+height: auto;
+}
+
+/* 提示框 */
+.tips_container 
+{
+  position: absolute;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  left: 0px;
+  top: 0px;
+  background: rgba(0, 0, 0, 0.3);
+  animation-name:tipsmove;
+  animation-duration:1s;/* 5s表示执行动画的时间，0或不写则无动画效果 */
+  /* 兼容调试如果animation-name执行，那么-wekit-animation-name则不执行 */
+  -webkit-animation-name:tipsmove;
+  -webkit-animation-duration:1s;/* 5s表示执行动画的时间，0或不写则无动画效果 */
+}
+
+@keyframes tipsmove /* 对应animation-name，里面为执行的动画*/
+{
+  0%{transform: translateY(-100vh);opacity: 0;background: rgba(0, 0, 0, 0.0);}
+	100%{ transform: translateY(0px);opacity: 1;background: rgba(0, 0, 0, 0.3);}
+}
+
+@-webkit-keyframes tipsmove/* 对应-webkit-animation-name，里面为执行的动画*/
+{
+  0%{transform: translateY(-100vh);opacity: 0;background: rgba(0, 0, 0, 0.0);}
+	100%{ transform: translateY(0px);opacity: 1;background: rgba(0, 0, 0, 0.3);}
+}
+.tips_container p {
+  color: #333;
+  line-height: 26px;
+  font-size: 18px;
+}
+.tips_container .tipsTitle{
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+.tips_container .wrongItemTitle{
+  text-align: left;
+  font-size: 18px;
+  margin-bottom: 16px;
+  margin-top: 35px;
+}
+
+.tips_container img{
+width: 80%;
+height: auto;
+position: absolute;
+top: 20%;
+left: 10%;
+border-radius: 3px;
+}
+.tips_container .close {
+width: 15%;
+height: 10%;
+right: 10%;
+top: 20%;
+position: absolute;
+z-index: 1;
+}
+
+.tips_container .content
+{
+  width: 80%;
+  height: 95vw;
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  z-index: 1;
+  padding: 0 24px 0 24px;
+  overflow-y: scroll;
+  margin-top: 15px;
+}
+
+
+.scorePoster{
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  height: 50px;
+  width: 120px;
+  margin-top: 20px;
+}
+
+
+/* 打卡页 */
+.clockSection .clock-container {
+width: 100%;
+margin-top: 23px;
+position: relative;
+box-sizing: border-box;
+opacity: 1;
+}
+
+.clockSection .clock-container .text-container {
+position: absolute;
+width: 100%;
+left: 0px;
+top: 0px;
+padding: 40% 1.2rem 0 1.2rem;
+}
+#teach-container .text-container
+{
+  padding-top: 38%;
+}
+#teach-container .text-container p {
+  color: #333;
+}
+
+.clockSection .clockBg {
+width: 100%;
+height: auto;
+display: block;
+border-radius: 8px;
+/* position: absolute;
+top: 0;
+left: 0;
+z-index: -1; */
+}
+.clockSection .clockTitle {
+width: auto;
+height: 44px;
+margin: 0 auto 28px auto;
+display: block;
+}
+.clock-container p {
+font-size: 0.82rem;
+line-height: 1.2rem;
+color: #85470E;
+margin-bottom: 0.25rem;
+}
+.text-container p:nth-child(3) {
+float: right;
+}
+.clock-desc 
+{
+  font-size: 16px;
+  text-align: center;
+  line-height: 22px;
+  font-weight: 500;
+  margin-top: 16px;
+}
+
+.clockSection .clockBtn {
+width: 100%;
+position: relative;
+margin: 20px auto 0 auto;
+/* margin-top: 20px; */
+}
+.clockSection .clockBtn img {
+width: 100%;
+height: auto;
+margin-top: 15px;
+}
+
+.clockSection .showCourse
+{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  width: 100vw;
+}
+
+#exampleModalCenter{
+position: absolute;
+}
+
+.bgpic{
+position: fixed;
+z-index: -10;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 100%;
+vertical-align: bottom;
+background-image: linear-gradient(#FFF3DE, #FFEFD4);
+}
+.bottompic
+{
+  position: fixed;
+  z-index: inherit;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  vertical-align: bottom;
+}
+
+/* 寄语 */
+#jiyuvideoContainer
+{
+left: -1.2rem;
+width: 100vw;
+height: 56.83vw;
+}
+
+.jiyuTitle,.jiyuDesc
+{
+text-align: center;
+}
+
+.jiyuTitle
+{
+font-size: 18px;
+line-height: 28px;
+margin: 18px auto 12px auto;
+font-weight: 600;
+}
+
+.jiyuDesc
+{
+font-size: 14px;
+line-height: 28px;
+margin-bottom: 8px;
+}

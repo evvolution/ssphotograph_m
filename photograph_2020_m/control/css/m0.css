@@ -1,0 +1,84 @@
+
+.footer {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    right: 0;
+    max-height: 15%;
+    min-height: 10%;
+}
+
+.footer img {
+    width: 70%;
+    height: auto;
+}
+
+.content_out {
+    position: absolute;
+    left: 50%; 
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: 95%;
+    height: auto;
+    background: url(https://img.foshanplus.com/2020/pic/chan/v2/menu_bak.png) top center no-repeat;
+    background-size: 100%;
+    opacity: 0.8;
+}
+
+.content_out::before {
+    content: "";
+    padding-top: 100%;
+    display: block; 
+}
+
+.content {
+    position: absolute;
+    left: 50%; 
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: 70%;
+}
+
+.content_menu {
+    width: 100%;
+    display: flex;
+}
+
+.mainmenu {
+    margin: 1.5vw;
+    flex: 1;
+    border-radius: 5%;
+    cursor: pointer;
+}
+
+.mainmenu::before {
+    content: "";
+    padding-top: 100%;
+    display: block; 
+}
+
+.m1 {
+    background: url(https://img.foshanplus.com/2020/pic/chan/v2/n1.png) top center no-repeat;
+    background-size: 100%;
+    opacity: 1;
+}
+
+.m2 {
+    background: url(https://img.foshanplus.com/2020/pic/chan/v2/n2.png) top center no-repeat;
+    background-size: 100%;
+    opacity: 1;
+}
+
+.m3 {
+    background: url(https://img.foshanplus.com/2020/pic/chan/v2/n3.png) top center no-repeat;
+    background-size: 100%;
+    opacity: 1;
+}
+
+.m4 {
+    background: url(https://img.foshanplus.com/2020/pic/chan/v2/n4.png) top center no-repeat;
+    background-size: 100%;
+    opacity: 1;
+}

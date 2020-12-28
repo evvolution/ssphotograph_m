@@ -1,0 +1,30 @@
+@charset "UTF-8";
+* {margin:0;padding:0;font-family: '等线'}
+body {background-color: #fff;}
+/* .timecountContent{width:85%;text-align: center;position:relative;z-index:10;margin:-40px auto 0px; background: url("../img/timebak.png") no-repeat;background-size: 100% 100%;padding: 15px 5px;} */
+
+.nav-item {flex:1;text-align: center;box-shadow:3px 3px 3px #e3f6f3;border: 0;border-radius: 10px;margin: 0 5px;background-color: #fff;}
+.nav-link {color:#999999 !important;}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {font-weight:800 !important;color:#fff !important;background-color: #E11828 !important;border-radius: 10px;box-shadow:  3px 3px 3px #b60e18;}
+.nav {margin:0 auto;width:90%;} 
+.tab-content {margin:0 auto;padding:0 10px;}
+.tab-pane {position: relative;}
+.list-group-item {height:auto;display:flex;border:0;}
+.listNo {flex:1;display:flex;align-items:center;justify-content:center;}
+.listInfo {font-size:14px;flex:6;font-weight:600;}
+.listBtn {font-size:14px;color:#E11828;flex:1;display:flex;align-items:center;justify-content:center;}
+.rankNo {flex:1;display:flex;align-items:center;justify-content:center;}
+.rankNo img{width:21px;display:flex;align-items:center;justify-content:center;}
+.rankInfo {font-size:14px;flex:5;display:flex;align-items:center;justify-content:left;}
+.rankNum {font-size:14px;flex:1;display:flex;align-items:center;justify-content:center;}
+.listborder {position: absolute;bottom: 0;width:90%;left:5%;border-bottom:1px solid #E11828;}
+
+.gridContentloading {display:none;width:30px;height:30px;margin:0 auto;}
+.loadmore{font-size: 16px;text-align: center;padding: 10px 5px;background: #eee;width: 50%;margin: 0 auto;}
+.educover{display: none;position: absolute;top: 10px;background:rgba(255,255,255,.9);width: 100%;height: 100%;z-index: 999;text-align: center;}
+.educover img{display: block;width: 150px;margin: 30% auto;}
+
+.input-group{width:90%;margin:0 auto;}
+.form-control:focus{border-color:#ced4da;box-shadow: none;}
+.btn:focus{box-shadow: none;}
+#searchreturn{display: none;}

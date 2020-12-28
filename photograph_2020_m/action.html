@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>我要报名</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta name="renderer" content="webkit">
+    <meta name="referrer" content="never">
+    <link rel="stylesheet" type="text/css" href="control/css/main.css">
+    <link rel="stylesheet" type="text/css" href="control/css/m1.css">
+</head>
+<body>
+    <div class="mainpart_m">
+        <div class="fade progress" id="progress_m">
+            <div class="progress">
+                <div class="progress_title">
+                    <p>请不要关闭或刷新本页面</p><p>信息提交中</p>
+                    <img src="img/loading.gif" />
+                    <p id="percent">0%</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="fade code" id="code">
+            <div class="code">
+                <div class="code_title">
+                    <p>报名成功!</p>
+                    <p>请等待作品审核</p>
+                </div>
+                <div class="code_main" onclick="clipToborad()">
+                    <input id="successcode" value="AAAAAAAAAAAAAAA" readonly>
+                </div>
+                <div class="code_main_s">
+                    <p><small>点击作品码可复制到剪切板</small></p>
+                    <p><small>本参赛作品码仅提示一次</small></p>
+                    <p><small>请保存后关闭或刷新本页面</small></p>
+                </div>
+                <div class="code_close"><div class="close_code_btn" onclick="m_bak()">我已保存</div></div>
+            </div>
+        </div>
+        <div class="fade notice" id="notice">
+            <div class="notice">
+                <div class="notice_title">参赛须知</div>
+                <div class="notice_main">
+                    <p><strong>1.</strong>&nbsp;所有参赛作品须以“花海四季  缤纷禅城”为指导，按照大赛四个摄影主题【禅城之绿】、【四时飞花】、【寻觅古韵】以及【美好家园】，通过摄影、微视频形式进行拍摄和制作。作品的政治方向、舆论导向、价值取向必须正确，符合社会主义核心价值观，作品内容积极健康，传播社会正能量，不得含有血腥、恐怖等不良内容。</p>
+                    <br/><p><strong>2.</strong>&nbsp;作品须贴合主题，真实反映禅城区的城市美貌、历史人文、市民风貌等，可为高清图集或短视频。参赛作品必须由参赛者本人或单位原创，确认拥有作品著作权，严禁剽窃、侵权，主办方不承担包括（不限于）肖像权、名誉权、隐私权、著作权、商标权等纠纷而产生的法律责任，如出现上述，将保留取消参赛资格及追回奖项的权利。</p>
+                    <br/><p><strong>3.</strong>&nbsp;所有参赛作品须为本单位（本人）原创，不能存在任何侵犯第三方权利的内容，不能违反法律法规的规定，且提供的关于作品的信息全部真实、有效。</p>
+                    <br/><p><strong>4.</strong>&nbsp;参赛作品仅用于参加本次大赛，不得曾用于其他渠道或平台，一经发现，将取消参赛资格。</p>
+                    <br/><p><strong>5.</strong>&nbsp;如果参赛作品被选中大赛获奖作品刊登在各媒体网站，产生任何纠纷，须由参赛单位（或联系人）承担责任。如给本网站造成任何损失，须由参赛单位（或联系人）向本网站进行赔偿。</p>
+                    <br/><p><strong>6.</strong>&nbsp;所有参赛作品自愿授权大赛组织单位使用，并均可在佛山+及其他传播平台上发布。</p>
+                    <br/><p><strong>7.</strong>&nbsp;本人/我司在充分理解并自愿接受比赛通知和评选规则的前提下参赛。</p>
+                </div>
+                <div class="notice_close"><div class="close_btn" onclick="closenotice()">我已知晓</div></div>
+            </div>
+        </div>
+
+        <div class="header"><img src="http://img.foshanplus.com/2020/pic/chan/p1/title.png" /></div>
+        <div class="title_m">
+            <img src="img/m1title.png" style="width: 65%;"/>
+            <input onclick="clipToborad_pclink()" id="link_pc" value="https://content.foshanplus.com/photograph_2020/index.html" readonly>
+        </div>
+
+        <div class="forNofsplus" id="forNofsplus">
+            <div class="forNofsplus_notice">扫码下载佛山+立即报名!<br/>实时查询作品审核进度</div>
+            <img src="https://img.foshanplus.com/2020/pic/chan/v2/download.png" />
+        </div>
+
+        <div class="forfsplus" id="forfsplus">
+            <form method="post" enctype="multipart/form-data" id="maininformation">
+                <input name="exam_id" type="text" value="32" style="display: none;" />
+                <div class="fsplus_line">
+                    <div class="fsplus_label"><span>作品名称:</span></div>
+                    <div class="fsplus_sheet"><input id="prjname" name="title" type="text" /></div>
+                </div>
+                <div class="fsplus_line">
+                    <div class="fsplus_label"><span>报送单位:</span></div>
+                    <div class="fsplus_sheet"><input id="prjbelong" name="company_a" type="text" /></div>
+                </div>
+                <div class="fsplus_line">
+                    <div class="fsplus_label"><span>联系人:</span></div>
+                    <div class="fsplus_sheet"><input id="prjcontact" name="contact_person" type="text" /></div>
+                </div>
+                <div class="fsplus_line">
+                    <div class="fsplus_label"><span>联系方式:</span></div>
+                    <div class="fsplus_sheet"><input id="prjphone" name="phone" type="text" /></div>
+                </div>
+                <div class="fsplus_line">
+                    <div class="fsplus_label"><span>身份证号:</span></div>
+                    <div class="fsplus_sheet"><input id="prjidentify" name="identify" type="text" /></div>
+                </div>
+                <!-- <div class="fsplus_line_big">
+                    <div class="fsplus_label_big"><span>作品概要:</span></div>
+                    <div class="fsplus_sheet_big"><textarea id="shortprjmain" name="content_500" type="text" ></textarea></div>
+                </div> -->
+                <div class="fsplus_line_big">
+                    <div class="fsplus_label_big"><span>作品简介:</span></div>
+                    <div class="fsplus_sheet_big"><textarea id="shortprjverify" name="content" type="text" ></textarea></div>
+                </div>
+                <div class="fsplus_line">
+                    <div class="fsplus_label"><span>上传作品:</span></div>
+                    <div class="fsplus_sheet_file"><input style="top:4vw" id="prjcover" name="fimg" type="file" /></div>
+                </div>
+            </form>
+        </div>
+        <div class="fsplus_linex">
+            <div class="fsplus_submit" onclick="allsumbit()"><span>提交报名</span></div>
+        </div><br/><br/>
+
+        <div class="footer_m" onclick="m_bak()"><span>返回首页</span></div>
+    </div>
+    <script type="text/javascript" src="plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="plugins/md5/md5.js"></script>
+    <script type="text/javascript" src="control/js/main.js"></script>
+    <script type="text/javascript" src="control/js/m1.js"></script>
+</body>
+</html>

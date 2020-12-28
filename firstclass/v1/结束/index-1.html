@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <title>佛山复学第一课for高三初三</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta name="renderer" content="webkit">
+  <meta name="referrer" content="never">
+  <link rel="stylesheet" type="text/css" href="plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="plugins/fullpage/fullpage.min.css">
+  <link rel="stylesheet" type="text/css" href="control/style/main.css?v=1.0.1">
+  <link rel="stylesheet" href="control/style/answer.css">
+  <link rel="stylesheet" href="control/style/loaders.min.css">
+  <link href="plugins/video/video-js.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div id="fullpage">
+      <div class="fspsection section">
+        <div class="noticeforinput">请填写你的信息</div>
+        <div class="selectgroup form-group">
+          <label for="userdistrict" class="labelforfssheet">辖区</label>
+          <select class="selectforfs form-control" id="userdistrict" onchange="chg(this);" style="border-radius: 20px;">
+            <option value="-1">-请选择辖区-</option>
+          </select>
+        </div>
+        <div class="selectgroup form-group">
+          <label for="userschool" class="labelforfssheet">学校</label>
+          <select class="selectforfs form-control" id="userschool" style="border-radius: 20px;">
+            <option value="-1">-请选择学校-</option>
+          </select>
+        </div>
+        <div class="selectgroup form-group">
+          <label for="username" class="labelforfssheet">姓名</label>
+          <input type="text" class="selectforfs form-control" id="username">
+        </div>
+        <div id="infosetBtn" class="selectgroup startbtn" onclick="start()">
+          <img src="./img/begin_new.png" style="width: 100%;" alt="">
+        </div>
+        <div onclick="visitorsmode()" style="text-align: center;margin-top: -40px;">
+          <b>游客入口</b>
+        </div>
+      </div>
+      <div class="fspsection section xxx" id="passBegin">
+        <img class="titleImg" src="" alt="">
+        <img class="descImg" src="" alt="">
+        <p class="second">点击任意位置开始</p>
+      </div>
+      <div class="fspsection section questionSection">
+        <div class="questionContent">
+          <video id="videoContainer" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="none"
+            data-setup='{"example_option":true}' webkit-playsinline="true" playsinline="true" style="outline: none;"
+            poster="./img/videoPoster_1.jpg">
+            <source id="videoSource" src="https://fsnewsres.foshanplus.com/news/843ac68e424d49f983a472ef6a6be344.mp4"
+              type="video/mp4" />
+          </video>
+          <div class="questiondetail"></div>
+          <div class="choices row nodisplay" id="demo-choice">
+            <!-- <div class="icon"> -->
+            <div class="choiceOrder"><img src="**图片**"></div>
+            <!-- </div> -->
+            <!-- <div class="choicedetailcontent"> -->
+            <div class="choicedetail">**答案**</div>
+            <!-- </div> -->
+          </div>
+          <div id="choices-container">
+          </div>
+          <div id="dis-nextBtn">
+            <img src="./img/next_select.png" alt="">
+          </div>
+          <div id="nextBtn" onclick="next()" style="display: none;">
+            <img src="./img/next_selected.png" alt="">
+          </div>
+        </div>
+        <div class="loader" id="loader" style="visibility: hidden;">
+          <div class="loader-inner ball-pulse"
+            style="position: absolute;left: 0;top: 45%;width: 100%;text-align: center;">
+            <div></div>
+            <div></div>
+            <div></div>
+            <p style="color: white;">获取分数中</p>
+          </div>
+        </div>
+      </div>
+      <div class="fspsection section" id="passFinish">
+        <div class="top-medalContainer">
+          <p class="title"></p>
+          <img class="bg" src="http://img.foshanplus.com/2020/pic/04/halo.png" alt="">
+          <!-- <img class="bg" src="./img/halo.png" alt=""> -->
+          <img class="icon" src="" alt="">
+        </div>
+        <div class="bottom-medalContainer">
+          <div class="item">
+            <img src="" alt="">
+            <p>卫生防疫勋章</p>
+          </div>
+          <div class="item">
+            <img src="" alt="">
+            <p>校园防疫勋章</p>
+          </div>
+          <div class="item">
+            <img src="" alt="">
+            <p>心理防疫勋章</p>
+          </div>
+        </div>
+        <div class="nextPassBtn" onclick="nextPass(true)">
+          <img src="./img/next-pass.png" alt="">
+        </div>
+      </div>
+      <!--  寄语页 -->
+      <div class="fspsection section jiyuSection">
+        <video id="jiyuvideoContainer" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="none"
+          data-setup='{"example_option":true}' webkit-playsinline="true" playsinline="true" style="outline: none;"
+          poster="./img/jiyuPoster.jpg">
+          <source id="videoSource" src="http://fsnewsres.foshanplus.com/news/8a1aba68e4cb45eaa6ed2084c5ea9f24.mp4"
+            type="video/mp4" />
+        </video>
+        <div class="jiyuTitle">观看钟南山院士和李兰娟院士的寄语，<br>为院士点赞后方可查看成绩<br><small><b>欢迎你撰写观看感向班级和学校投稿哟！</b></small></div>
+
+        <div class="jiyuDesc" id="likeCount">已有10000人点赞</div>
+        <div id="infosetBtn" class="selectgroup likebtn" onclick="like()">
+          <img src="./img/like_new.png" style="width: 100%;" alt="">
+        </div>
+        <div class="checkScoreBtn" style="display: none;" onclick="checkScore()">
+          <img src="http://img.foshanplus.com/2020/pic/04/checkScore.png" alt="">
+          <!-- <img src="./img/checkScore.png" alt=""> -->
+        </div>
+        <div class="createPosterBtn" style="display: none;" onclick="createPoster()">
+          <img src="http://img.foshanplus.com/2020/pic/04/createPoster.png" alt="">
+          <!-- <img src="./img/createPoster.png" alt=""> -->
+        </div>
+      </div>
+      <!-- 分数页 -->
+      <div class="fspsection section pointSection">
+        <div>
+          <img class="scoreBg" src="http://img.foshanplus.com/2020/pic/04/scoreBg.png" alt="">
+          <!-- <img class="scoreBg" src="./img/scoreBg.png" alt=""> -->
+          <p class="scoreTitle" style="margin-top: 80px !important;"></p>
+          <p class="scoreDesc">满分贴士：视频里会有题目的答案哦，多选题你有没有少选了一个选项呢？不是满分没关系，快去佛山+重新答题拿满分吧！</p>
+          <p class="wrongTitle" style="margin-top: 10px !important;">错题集(点击题号查看详情)</p>
+          <div class="wrongContainer">
+          </div>
+          <div class="downloadBtn" onclick="downloadApp()">
+            <img src="http://img.foshanplus.com/2020/pic/04/scoreBtn.png" alt="">
+            <!-- <img src="./img/scoreBtn.png" alt=""> -->
+          </div>
+          <div class="scorePoster" onclick="createPoster()">生成海报</div>
+          <div class="showWrongItem" style="display: none;">
+            <div class="content">
+              <p id="wrongItemQuestion"></p>
+              <p id="wrongItemAnswer-A"></p>
+              <p id="wrongItemAnswer-B"></p>
+              <p id="wrongItemAnswer-C"></p>
+              <p id="wrongItemAnswer-D"></p>
+              <p id="yourAnswer"></p>
+            </div>
+            <div class="close" onclick="closeQuestionItem()"></div>
+            <img src="./img/showItem.jpg" alt="">
+          </div>
+        </div>
+      </div>
+
+      <!-- 打卡页 -->
+      <div class="fspsection section clockSection">
+        <div class="clock-container">
+          <div class="text-container">
+            <img class="clockTitle" src="./img/clockTitle.png" alt="">
+            <p></p>
+            <p></p>
+            <p></p>
+          </div>
+          <img class="clockBg" src="http://img.foshanplus.com/2020/pic/04/clockBg.png" alt="">
+          <!-- <img class="clockBg" src="./img/clockBg.png" alt=""> -->
+        </div>
+        <div class="clockBtn">
+          <img src="http://img.foshanplus.com/2020/pic/04/clockBtn.png" alt="">
+          <!-- <img src="./img/clockBtn.png" alt=""> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottompic"><img src="img/bottom_new.png" style="width: 100%;"></div>
+
+  <script src="./plugins/video/video.min.js"></script>
+  <script type="text/javascript" src="plugins/jquery/jquery.min.js"></script>
+  <!-- <script type="text/javascript" src="plugins/bootstrap/bootstrap.min.js"></script> -->
+  <!-- <script type="text/javascript" src="plugins/bootstrap/popper.min.js"></script> -->
+  <script type="text/javascript" src="plugins/fullpage/fullpage.min.js"></script>
+  <script type="text/javascript" src="control/func/info.js"></script>
+  <script type="text/javascript" src="control/func/pass.js"></script>
+  <script type="text/javascript" src="control/func/answer.js"></script>
+  <script type="text/javascript" src="info/school.js"></script>
+  <script type="text/javascript" src="info/question.js"></script>
+
+</body>
+<script type="text/javascript">
+  beginAnswer()
+  // initScoreView(35, [5, 12, 18])
+  function downloadApp() {
+    window.location =
+      "https://vip.foshanplus.com/app/download.html?type=7&newsId=0&newsUrl=http://file910a50777a97.aiwall.com/v3/idea/v9GbD9QU&subscription=0"
+  }
+
+  fitIos()
+
+  function fitIos() {
+    var u = navigator.userAgent;
+    var flag;
+    var myFunction;
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+
+    document.body.addEventListener('focusin', () => { //软键盘弹起事件
+      flag = true;
+      clearTimeout(myFunction);
+    })
+    document.body.addEventListener('focusout', () => { //软键盘关闭事件
+      flag = false;
+      if (!flag) {
+        myFunction = setTimeout(function () {
+
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+          }) //重点  =======当键盘收起的时候让页面回到原始位置(这里的top可以根据你们个人的需求改变，并不一定要回到页面顶部)
+
+        }, 200);
+      } else {
+        return
+      }
+    })
+  }
+</script>
+
+</html>

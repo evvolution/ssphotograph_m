@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html style="font-size: 50px;">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="format-detection" content="email=no">
+  <title>logo征集投票</title>
+  <link href="./css/vote.css?v=1.0.1" rel="stylesheet">
+</head>
+<style>
+  .categroy_container {
+    height: 0.8rem;
+    width: 100%;
+    display: -webkit-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    border-bottom: 0.5px solid #eee;
+    position: relative;
+  }
+
+  .categroy_container .category_item {
+    height: 100%;
+    padding: 0.06rem 0.84rem 0;
+    line-height: 0.8rem;
+    color: #999;
+    font-size: 0.32rem;
+    position: relative;
+  }
+
+  .categroy_container .category_item:after {
+    content: "";
+    width: 0.32rem;
+    height: 0.06rem;
+    background-color: #E02020;
+    position: absolute;
+    left: 50%;
+    margin-left: -0.16rem;
+    bottom: -0.1rem;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    border-radius: 3px;
+  }
+
+  .categroy_container .active {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .categroy_container .active:after {
+    bottom: 0.1rem;
+  }
+</style>
+
+<body rlt="1" style="height: 822px;">
+  <div id="app">
+    <div>
+      <div class="banner">
+        <img src="./img/vote_banner.png" class="banner-pic lazyloaded">
+      </div>
+      <div class="fs-desc" id="desc" style="display: block;">
+        <div class="fs-desc-con" id="descCon">
+          为加强学生的生命教育和心理疏导，近期，市教育局面向全市中小学征集疫情防控期间的在线教学生命教育微课，并精选了全学段120节生命教育微课进行集中展播（小学60节、初中30节、高中中职30节），供全市中小学生和家长一起免费观看学习。
+          <br />活动组委会将对获展播资格的120节生命教育微课进行等级认定，并且颁发荣誉证书。根据评委评审得分、网络播放量和网络点赞量等三方面进行认定，其中评委评审得分占50%，网络播放量及网络点赞量共占50%。请为您喜欢的微课点个赞吧！（网络播放量及网络点赞量统计截止时间为4月30日24:00时。）
+        </div>
+        <div class="show-desc-ctrl" id="showDescCtrl"
+          style="display: block;text-align: center;margin-top: 8px;margin-bottom: 10px;">
+          <img style="width: 10px;" src="./img/more.png" class="show-desc-icon"> <span
+            style="font-size: 12px;color: #a0a0a0;">活动详情</span>
+        </div>
+        <div class="hide-desc-ctrl" id="hideDescCtrl"
+          style="display: none;text-align: center;margin-top: 8px;margin-bottom: 10px;">
+          <img src="./img/nomore.png" class="hide-desc-icon" style="width: 10px;">
+          <span style="font-size: 12px;color: #a0a0a0;">收回</span>
+        </div>
+      </div>
+      <img :src="user.headimgurl" alt="">
+      <p>{{user.nickname}}</p>
+      <div class="categroy_container" v-if="childCategoryList&&childCategoryList.length > 0">
+        <div v-bind:class="['category_item',item.id == selectCategoryId?'active':'']"
+          v-for="(item,index) in childCategoryList" :onclick="'changeCategory('+item.id+')'">{{item.name}}</div>
+      </div>
+    </div>
+
+
+    <div class="vote-container">
+      <div class="vote-container__header">
+        <div data-v-01cb3ed9="" class="search">
+          <div data-v-01cb3ed9="" class="search-ctrl">
+            <div data-v-01cb3ed9="" class="search-icon"></div>
+            <input data-v-01cb3ed9="" type="text" placeholder="请输入教师名或课程进行查询" class="search-world" id="searchWorld">
+            <div data-v-01cb3ed9="" class="clear-icon" id="clearSearch"></div>
+          </div>
+          <div data-v-01cb3ed9="" class="search-btn" id="searchBtn">搜索</div>
+        </div>
+        <!---->
+      </div>
+      <div class="vote-container__content">
+        <div data-v-15b3317f="" class="scroll-view" id="voteList">
+        </div>
+        <div data-v-15b3317f="" class="scroll-view no-data" id="noVoteList" style="display: none;">
+          <span>暂无数据</span>
+        </div>
+
+        <script id="picDom" type="text/html">
+          <div data-v-4cca2dba="" class="pic-box" data-v-15b3317f="">
+            <div data-v-4cca2dba="" class="vote-item vote-item-pic">
+              <div data-v-4cca2dba="" class="img-wrapper">
+                <img data-v-4cca2dba="" src="**img##" alt="**name##" class="cover toDetailNews"
+                  data-url="**detailUrl##">
+                <img data-v-4cca2dba="" src="**img##" data-src="**img##" alt="**name##"
+                  class="pic vertical lazyloaded toDetailNews" data-url="**detailUrl##">
+                <span data-v-4cca2dba="" class="share"><img data-v-4cca2dba=""
+                    src="data:image/png;base64,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"></span>
+              </div>
+              <div data-v-4cca2dba="" class="info">
+                <!-- <div data-v-4cca2dba="" class="title single-line-overflow">**name##</div> -->
+                <div data-v-4cca2dba="" class="detail-info">
+                  <span data-v-4cca2dba="" class="author-name">**num##</span>
+                  <div data-v-4cca2dba="" class="praise" data-id="**id##">
+                    <img data-v-4cca2dba=""
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAhFBMVEUAAAD5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH5PEH/2Nn/1tf/0tP/ztD5Qkf6U1f+vL79oqX9mZv7eX37cXT+xcf+wcP9naD7Z2v7ZWn6XGD9rrD8lZj8gYT8l5n28SGEAAAAFnRSTlMABPnrluOzrIdYNxwTmPrT0nl4Cu3uu30OWAAAAV5JREFUOMuVlduygjAMRVNEiwURUEu5iOJdz///33GQplSCDOspnewhTZtuwIKJhEdbx9lGPBEMhvC9ueww93ygCFxHfuG4AfRYziTBbAk2zJUDuNZWNws5yGIDCEMdqTTfXMmfrLAPOULbUTAbE24/p4QNjxT3Q1xfq1OWP67v4JFnp+qGidAHAE+viiptUK+X+kRVoXMeAMP7vaQtSunogPfOQOj4nvZRd50VEOvwkBL86WwCXId7SrjXWQ5rHeaUMNfZNeBpK0qocN4Ap/VMCc84w0b4pIRPFJrSpSIql1gamyHP5yBNMxzj4tTbYYFJDrFE7pmty0qJJCCkoVbWBmtpEM1QIEfV0R27ZsBwzFBp68yYgW8ZRJ21+6sty/D7T+GWN3d8s12Aelzl/j00pW0sAflci8ulIJ/ruAFMt5Rxk0LYarAum26k49Y83ewRJmIe7cJwF/H46/fxD6sybcIgsK6FAAAAAElFTkSuQmCC"
+                      class="praise-icon"> <span data-v-4cca2dba="" data-count="148" class="praise-num">
+                      **lovecount##
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </script>
+      </div>
+    </div>
+  </div>
+  <!---->
+  <!---->
+  <div class="alert" id="voteBack" style="display: none;">
+    <div class="success-alert" id="voteSuccess" style="display: none;">
+      <div class="alert-mask"></div>
+      <div class="alert-content">
+        <div class="close-btn"></div>
+        <div class="alert-title">投票成功</div>
+        <div class="alert-desc open-app-tip">打开佛山+，为TA投票助力</div>
+        <div class="alert-btn open-app">打开佛山+再投5票</div>
+        <!---->
+      </div>
+    </div>
+    <div class="open-alert" id="voteCant" style="display: none;">
+      <div class="alert-mask"></div>
+      <div class="alert-content">
+        <div class="close-btn"></div>
+        <div class="alert-title">温馨提示</div>
+        <div class="alert-desc">今日票数已用完，明天再来吧</div>
+        <div class="alert-btn open-app">打开佛山+再投5票</div>
+        <!---->
+      </div>
+    </div>
+    <div class="open-alert" id="voteFail" style="display: none;">
+      <div class="alert-mask"></div>
+      <div class="alert-content">
+        <div class="close-btn"></div>
+        <div class="alert-title">温馨提示</div>
+        <div class="alert-desc">投票失败，请检查你的网络</div>
+        <div class="alert-btn open-app">打开佛山+再投5票</div>
+        <!---->
+      </div>
+    </div>
+  </div>
+  <!---->
+  <div data-v-e9a5d3e0="" class="vote-modal" id="voteModal">
+    <div data-v-e9a5d3e0="" class="vote-modal__mask" style="display: none;"></div>
+    <div data-v-e9a5d3e0="" class="vote-modal__content" style="display: none;">
+      <div data-v-e9a5d3e0="" class="close" id="closeVote"></div>
+      <h2 data-v-e9a5d3e0="">投票确认</h2>
+      <div data-v-e9a5d3e0="" class="vote-btns">
+        <div data-v-e9a5d3e0="" class="btn add-vote" data-num="5">5票</div>
+        <div data-v-e9a5d3e0="" class="btn add-vote" data-num="1">1票</div>
+        <!-- <div data-v-e9a5d3e0="" class="btn">自定义</div> -->
+      </div>
+      <!---->
+      <div data-v-e9a5d3e0="" class="vote-tips">
+        <!-- <p data-v-e9a5d3e0="">
+						1.当前剩余<span data-v-e9a5d3e0="">0/5</span>票；
+					</p> -->
+        <p data-v-e9a5d3e0="">
+          1.每个课最多可投<span data-v-e9a5d3e0="">5</span>票；
+        </p>
+        <p data-v-e9a5d3e0="">
+          2.<span data-v-e9a5d3e0="">客户端</span>可以投更多票。
+        </p>
+      </div>
+      <!-- <div data-v-e9a5d3e0="" class="open-app">下载客户端</div> -->
+      <!---->
+    </div>
+  </div>
+  <!---->
+  <div data-v-a4b00206="" class="share-tip" id="shareTip" style="display: none;">
+    <div data-v-a4b00206="" class="share-tip-mask"></div>
+    <div data-v-a4b00206="" class="share-tip-content"></div>
+  </div>
+  <div data-v-a4b00206="" class="share-tip" id="loadingTip" style="display: none;">
+    <div data-v-a4b00206="" class="loading-tip-mask"></div>
+    <div data-v-a4b00206="" class="loading-tip-content">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="30px"
+        viewBox="0 0 24 30" style="enable-background:new 0 0 50 50" xml:space="preserve">
+        <rect x="0" y="0" width="4" height="10" fill="#FF6700" transform="translate(0 9.4336)">
+          <animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0"
+            begin="0" dur="0.6s" repeatCount="indefinite"></animateTransform>
+        </rect>
+        <rect x="10" y="0" width="4" height="10" fill="#FF6700" transform="translate(0 17.2331)">
+          <animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0"
+            begin="0.2s" dur="0.6s" repeatCount="indefinite"></animateTransform>
+        </rect>
+        <rect x="20" y="0" width="4" height="10" fill="#FF6700" transform="translate(0 3.89973)">
+          <animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0"
+            begin="0.4s" dur="0.6s" repeatCount="indefinite"></animateTransform>
+        </rect>
+      </svg>
+      <p>加载中</p>
+    </div>
+  </div>
+  </div>
+  <div style="display:none">
+    <script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1278597280&web_id=1278597280"></script>
+  </div>
+</body>
+
+</html>
+<script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="./js/util.js"></script>
+<script type="text/javascript" src="./js/md5.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.7/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+<script type="text/javascript" src="./js/authInfo.js"></script>
+<script type="text/javascript" src="./js/vapp.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" src="./js/weixin.js"></script>
+<script type="text/javascript">
+  var basePath = 'https://api.foshanplus.com/foshan/api/v2';
+  initDom();
+  getWeixinAuthCode(res => {
+    vapp.user = res.data;
+  });
+  // getLesson();
+  var uid = initUID();
+  var token = getUrlParam("fs_token") ? getUrlParam("fs_token") : "";
+  if (token) {
+    $('.open-app').css('display', 'none')
+    $('.open-app-tip').html('恭喜你投票成功！')
+  }
+  var selectedId = null;
+  var selectedNews = null;
+  var apkurl = '';
+  var pushNews = [];
+  var newsList = [];
+
+  var faceimage = "https://content.foshanplus.com/foshanlogo.png",
+    newsdesc = "快来给你喜欢的课程投票~",
+    newstitle = "佛山市教育系统抗疫生命教育系列微课云展播";
+  // 事件绑定
+  function initDom() {
+    // 查看活动详情
+    $('#showDescCtrl').on('click', function (e) {
+      $('#showDescCtrl').hide();
+      // $('#desc').show();
+      $('#descCon').addClass('showMore')
+      $('#hideDescCtrl').show();
+    })
+    // 隐藏活动详情
+    $('#hideDescCtrl').on('click', function (e) {
+      $('#showDescCtrl').show();
+      // $('#desc').hide();
+      $('#descCon').removeClass('showMore')
+      $('#hideDescCtrl').hide();
+    })
+    // 点击分享
+    $('body').on('click', '.share', function () {
+      $('#shareTip').show();
+    })
+    // 关闭分享
+    $('#shareTip').on('click', function () {
+      $('#shareTip').hide();
+    })
+    $('#searchBtn').on('click', function () {
+      let key = $('#searchWorld')[0].value;
+      getLesson(key);
+    })
+    $('#clearSearch').on('click', function () {
+      $('#searchWorld')[0].value = '';
+    })
+    $('body').on('click', '.praise', function (e) {
+      $('#voteModal .vote-modal__mask').show();
+      $('#voteModal .vote-modal__content').show(200);
+      selectedId = $(e.currentTarget).attr('data-id');
+      for (let i in newsList) {
+        if (newsList[i].id == selectedId) {
+          selectedNews = newsList[i]
+        }
+      }
+    })
+    $('#closeVote').on('click', function () {
+      $('#voteModal .vote-modal__mask').hide();
+      $('#voteModal .vote-modal__content').hide(200);
+    })
+    $('.add-vote').on('click', function (e) {
+      let num = $(e.target).attr('data-num')
+      selectedId ? addVote(selectedId, num) : '';
+    })
+    $('#voteBack .close-btn').on('click', function () {
+      $('#voteBack').hide(200);
+    })
+    $('.open-app').on('click', function () {
+      // let newsUrl = selectedNews.newsPubExt.url
+      toDownApp(window.location.href);
+    })
+    $('body').on('click', '.toDetailNews', function (e) {
+      window.location = $(e.currentTarget).attr('data-url')
+    })
+
+    var e = document.body.clientWidth;
+    e && ($('html')[0].style.fontSize = e / 375 * 50 + 'px')
+    $(window).resize(function () {
+      var e = document.body.clientWidth;
+      e && ($('html')[0].style.fontSize = e / 375 * 50 + 'px')
+    });
+
+    // 初始化分享内容
+    var params = {
+      url: encodeURIComponent(location.href.split("#")[0])
+    }
+    requestData('/getSign', params, 'get', (res) => {
+      if (res.ret == 1) {
+        initSign(res);
+      }
+    })
+
+  }
+  // 投票
+  function addVote(newsid, loveCount) {
+    // $('#loadingTip').show();
+    var timeStamp = new Date().getTime();
+    var voteSign = hex_md5(newsid + 'Foshanplus' + uid + timeStamp);
+    $.ajax({
+      url: basePath + '/updateNewsVoteLoveCount?newsid=' + newsid + '&token=' + token + '&UID=' + uid +
+        '&loveCount=' + loveCount + '&voteSign=' + voteSign + '&timeStamp=' + timeStamp,
+      options: {
+        newsid: newsid,
+        token: token,
+        UID: uid,
+        loveCount: loveCount,
+        voteSign: voteSign,
+        timeStamp: timeStamp
+      },
+      success: function (res) {
+        // $('#loadingTip').hide();
+        $('#voteModal .vote-modal__mask').hide();
+        $('#voteModal .vote-modal__content').hide(200);
+        // 投票成功
+        if (res.ret == 1) {
+          $('#voteBack').show();
+          $('#voteSuccess').show();
+          $('#voteFail').hide();
+          $('#voteCant').hide();
+
+          let key = $('#searchWorld')[0].value;
+          getLesson(key);
+        } else {
+          $('#voteBack').show();
+          $('#voteSuccess').hide();
+          $('#voteFail').hide();
+          $('#voteCant').show();
+        }
+      },
+      error: function (data) {
+        $('#loadingTip').hide();
+        $('#voteModal .vote-modal__mask').hide();
+        $('#voteModal .vote-modal__content').hide(200);
+
+        $('#voteBack').show();
+        $('#voteSuccess').hide();
+        $('#voteFail').show();
+        $('#voteCant').hide();
+      },
+      dataType: 'json',
+      type: 'POST'
+    })
+  }
+  // 获取课程数据
+  function getLesson(opt) {
+    var cids = vapp.selectCategoryId;
+    $.ajax({
+      url: basePath + '/getNewsList?cids=' + cids + '&count=100',
+      data: {},
+      success: function (res) {
+        let searchedList = opt ? fuzzyQuery(res.news, opt) : res.news;
+        newsList = searchedList;
+        $('#voteList').html(setDataIntoDom(searchedList))
+      },
+      error: function (data) {},
+      dataType: 'json',
+      type: 'GET'
+    })
+  }
+
+  getChildCategory(335);
+  // 获取子栏目
+  function getChildCategory(cid) {
+    requestData('/getChildsCategoryListByPid', {
+      pid: cid
+    }, 'get', (res) => {
+      if (res.ret === 1) {
+        Vue.set(vapp, 'childCategoryList', res.childsCategory)
+        if (res.childsCategory.length > 0) {
+          var firstCategoryItem = res.childsCategory[0];
+          Vue.set(vapp, 'selectCategoryId', firstCategoryItem.id)
+        } else {
+          Vue.set(vapp, 'selectCategoryId', cid)
+        }
+        getLesson();
+      }
+    })
+  }
+  // 根据关键字模糊查询
+  function fuzzyQuery(list, keyWord) {
+    var reg = new RegExp(keyWord);
+    var arr = [];
+    for (var i = 0; i < list.length; i++) {
+      if (reg.test(list[i].title) | reg.test(list[i].source)) {
+        arr.push(list[i]);
+      }
+    }
+    return arr;
+  }
+
+  function setDataIntoDom(dataList) {
+    let domStr = '';
+    var dataList1 = [{
+      img: './vote/f74e6122dabc4d1a870fe4c8cf52dd75.png',
+      group: '小学组',
+      name: '曾旻琪',
+      id: 1
+    }, {
+      img: './vote/f74e6122dabc4d1a870fe4c8cf52dd75.png',
+      group: '小学组',
+      name: '曾旻琪',
+      id: 1
+    }, ]
+    if (dataList.length <= 0) {
+      $('#noVoteList').show();
+    } else {
+      $('#noVoteList').hide();
+    }
+    for (let i in dataList) {
+      var picBoxDom = $('#picDom')[0].innerHTML;
+      dataList[i].detailUrl = dataList[i].newsPubExt.url;
+      dataList[i].img = dataList[i].newsPubExt.faceimgpath;
+      dataList[i].name = dataList[i].shorttitle;
+      dataList[i].num = (parseInt(i) + 1) + '号';
+      dataList[i].lovecount = dataList[i].newsPubExt.voteLoveCount;
+      let data = dataList[i];
+      for (let key in data) {
+        let regstr = '/\\*\\*' + key + '\\#\\#/g'
+        picBoxDom = picBoxDom.replace(eval(regstr), data[key])
+      }
+      domStr = domStr + picBoxDom
+    }
+    return domStr
+  }
+  // 去下载app
+  function toDownApp(newsUrl) {
+    var toHref = '';
+    var type = 7,
+      newsId = 0,
+      newsUrl = newsUrl,
+      subscription = 0;
+    var downloadUrl = "https://vip.foshanplus.com/app/download.html";
+    if (newsUrl) {
+      newsUrl = encodeURIComponent(newsUrl);
+      toHref = downloadUrl + "?type=" + type +
+        "&newsId=" + newsId +
+        "&newsUrl=" + newsUrl +
+        "&subscription=" + subscription; // 多余的 ios app 有bug 所以暂时需要添加这句
+    } else {
+      toHref = downloadUrl;
+    }
+    window.location = toHref;
+  }
+  // 获取UID
+  function initUID() {
+    var UIDFromCookie = getCookie('UID');
+    var UID = getUrlParam('fs_device') ? getUrlParam('fs_device') : (UIDFromCookie ? UIDFromCookie : uuid(10, 16));
+    setCookie('UID', UID)
+    return UID;
+  }
+
+  // 切换
+  function changeCategory(categoryId) {
+    if (vapp.selectCategoryId === categoryId) {
+      return;
+    }
+    Vue.set(vapp, 'selectCategoryId', categoryId);
+    getLesson();
+  }
+</script>

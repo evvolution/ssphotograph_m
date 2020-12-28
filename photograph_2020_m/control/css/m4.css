@@ -1,0 +1,32 @@
+/*
+    note: 新闻动态样式
+*/
+
+.piclist {
+    padding: 0 2vw 1vw;
+    width: 100%;
+    height: 60%;
+    overflow-y: auto;
+    padding: 1vw 2vw;
+}
+
+.piclist_item {
+    text-align: center;
+    margin: 2vw 0;
+    padding: 1vw 2vw;
+    width: 100%;
+    height: auto;
+}
+
+.piclist_item img {
+    width: 100%;
+}
+
+.imgtitle {
+    margin-bottom: 1vw;
+    color: #207329;
+}
+
+.imgauthor {
+    color: #207329;
+}

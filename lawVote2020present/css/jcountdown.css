@@ -1,0 +1,158 @@
+
+/* size */
+.jCountdownContainer{
+	position:relative;
+	padding:0px;
+	margin:0px;
+    display:inline-block;
+    *zoom:1;				/* IE */
+    *display:inline;		/* IE */
+}
+
+/* scale */
+.jCountdownScale{
+	position:absolute;
+	padding:0px;
+	margin:0px;
+}
+
+/* countdown */
+.jCountdown{
+	padding:0px;
+	margin:0px;
+	white-space:nowrap;
+}
+
+/* group */
+.jCountdown .group{
+	padding:0px;
+	margin:0px;
+    display:inline-block;
+    *zoom:1;				/* IE */
+    *display:inline;		/* IE */
+}
+
+/* label */
+.jCountdown .group>.label{
+	position:relative;
+	left: 50px;
+	padding: 0px;
+	margin: 0px 0px 0px -40px;	
+	width: 80px;
+}
+
+.jCountdown.slide .group>.label{
+	height: 32px;
+}
+.jCountdown.slide.white .group>.label{
+	background-image:url(clock.png);
+} 
+.jCountdown.slide .group.day>.label{
+	background-position:-80px -150px;
+}
+.jCountdown.slide .group.hour>.label{
+	background-position:-80px -190px;
+}
+.jCountdown.slide .group.minute>.label{
+	background-position:-80px -230px;
+}
+.jCountdown.slide .group.second>.label{
+	background-position:-80px -270px;
+}
+
+
+
+/* container */
+.jCountdown .group>.container{
+	position:relative;
+	padding:0px;
+	margin:0px;
+    display:inline-block;
+    *zoom:1;				/* IE */
+    *display:inline;		/* IE */
+}
+
+.jCountdown.flip .group>.container{
+	width:50px;
+	height:64px;
+	padding:6px 2px 2px 2px;
+	margin:0px 0px 0px 1px;
+	background-position:0px -960px;
+}
+.jCountdown.flip .group>.container:first-child{
+	margin:0px;
+}
+
+.jCountdown.flip.white .group>.container{
+	background-image:url(clock.png);
+}
+
+.jCountdown.slide .group>.container{
+	width:50px;
+	height:64px;
+	padding:1px 0px 1px 0px;
+	background-position:-111px 0px;
+}
+.jCountdown.slide .group>.container:first-child{
+	padding:1px 0px 1px 1px;
+	background-position:-60px 0px;
+}
+.jCountdown.slide .group>.container.lastItem{
+	padding:1px 1px 1px 0px;
+	background-position:-161px 0px;
+}
+.jCountdown.slide.white .group>.container{
+	background-image:url(clock.png);
+}
+
+/* cover */
+.jCountdown .group>.container>.cover{
+	position:absolute;
+	z-index:1;
+	padding:0px;
+	margin:0px;
+}
+
+.jCountdown.slide .group>.container>.cover{
+	left:0px;
+	top:1px;
+	width:50px;
+	height:64px;
+	background-position:-110px -70px;
+}
+.jCountdown.slide .group>.container:first-child>.cover{
+	left:1px;
+	background-position:-60px -70px;
+}
+.jCountdown.slide .group>.container.lastItem>.cover{
+	right:1px;
+	background-position:-160px -70px;
+}
+
+.jCountdown.slide.white .group>.container>.cover{
+	background-image:url(clock.png);
+}
+
+/* text */
+.jCountdown .group>.container>.text{
+	padding:0px;
+	margin:0px;
+}
+
+.jCountdown.slide .group>.container>.text{
+	width:50px;
+	height:64px;
+}
+.jCountdown.slide.white .group>.container>.text{
+	background-image:url(clock.png);
+}
+/* reflection */
+.jCountdown.reflection{
+    transform:scaleY(-1);
+    -moz-transform:scaleY(-1);			/* Firefox */
+    -webkit-transform:scaleY(-1);		/* Webkit */
+    -o-transform:scaleY(-1);			/* Opera */
+}
+.jCountdown.reflection.displayLabel{
+	margin-top:-3px;
+}

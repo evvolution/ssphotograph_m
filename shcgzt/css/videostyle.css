@@ -1,0 +1,41 @@
+.title {
+    margin-top: 2vw;
+    text-align: center;
+}
+
+.title img {
+    width: 60%;
+    height: 100%;
+}
+
+.content {
+    margin: 1vw auto;
+    padding: 1vw 0.5vw;
+    background-color: #fff;
+    text-align: center;
+}
+
+.titleinner {
+    font-size: 1.5vw;
+}
+
+.player {
+    margin: 2vw;
+}
+
+.info {
+    width: 70%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0.2vw auto;
+    padding: 0.2vw;
+    background-color: #fff;
+    text-align: center;
+    line-height: 1.5vw;
+}
+
+video {
+    max-width: 70%;
+}

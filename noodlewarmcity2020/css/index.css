@@ -1,0 +1,407 @@
+.invite_container {
+	/* background: green; */
+	width: calc(100% - 0.64rem);
+	height: 6rem;
+	position: absolute;
+	left: 0.32rem;
+  top: 4rem;
+  border: solid 1px #666;
+  padding: 0.32rem 0.16rem 0.16rem;
+  background: white;
+}
+
+.know_img {
+	width: 4rem;
+	bottom: 2rem;
+	right: 0.8rem;
+	position: absolute;
+}
+
+.invite_container .title_img {
+	width: 6.28rem;
+	margin: 0 auto 0.48rem;
+	display: block;
+}
+
+.invite_container .invite_list {
+	height: 1.44rem;
+	width: 100%;
+	padding: 0 0.8rem;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+}
+
+.invite_container .invite_list .invite_item {
+	width: 0.88rem;
+	height: 100%;
+	position: relative;
+}
+/* .invite_container .invite_list .invite_item:last-child {
+	width: 1.12rem;
+}
+.invite_container .invite_list .invite_item:nth-child(3) {
+	width: 0.92rem;
+} */
+.invite_item .item_bg {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.invite_item .item_icon {
+	width: 0.94rem;
+	height: 0.94rem;
+	border-radius: 0.47rem;
+	position: absolute;
+	bottom: 0rem;
+	left: calc(50% - 0.47rem);
+	border: solid #f7f7f8 1px;
+	background: white;
+}
+
+.invite_item .item_user {
+	width: 0.88rem;
+	height: 0.88rem;
+	position: absolute;
+	border-radius: 0.44rem;
+	left: calc(50% - 0.44rem);
+	bottom: 0.04rem;
+}
+
+.invite_container .invite_center_container {
+	width: 6.58rem;
+	height: 0.52rem;
+	/* display: block; */
+	margin: 0.48rem auto 0.48rem;
+	display: flex;
+}
+.invite_center_container p {
+	flex: 1;
+	/* width: 1.48rem; */
+  /* padding: 0 0.16rem; */
+  margin: 0 0.16rem;
+  /* margin-right: 0.32rem; */
+	/* margin-left: 0.1rem; */
+  float: left;
+  font-size: 0.26rem;
+  border-radius: 0.26rem;
+  line-height: 0.52rem;
+  background: #efefef;
+  color: #666;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* .invite_center_container img:last-child {
+	float: right;
+} */
+
+/* 邀请列表 */
+.full_invite_container {
+	background: rgba(0, 0, 0, 0.6);
+}
+.invite_list_container {
+	width: 6rem;
+	height: 8rem;
+	background: white;
+	display: block;
+	margin: 2rem auto 0;
+	border-radius: 0.16rem;
+	padding: 1.08rem 0 0;
+	position: relative;
+	overflow: hidden;
+}
+.invite_list_container .container {
+	overflow-y: scroll;
+}
+.invite_list_container .title {
+	font-size: 0.32rem;
+	display: block;
+	text-align: center;
+	font-weight: 600;
+	position: absolute;
+	left: 0;
+	top: 0.32rem;
+	width: 100%;
+}
+
+.invite_list_container .close_btn,
+.rule_container .close_btn {
+	position: absolute;
+	right: 0.32rem;
+	top: 0.32rem;
+	width: 0.44rem;
+}
+
+.invite_list_container .item {
+	width: 100%;
+	height: 0.96rem;
+	border-bottom: solid #eceff3 1px;
+	padding: 0.16rem 0.32rem;
+}
+.prize_container,
+.invite_list_container,
+.rule_container {
+	border: solid #333 1px;
+}
+
+.tips {
+	margin: 0.5rem auto 0;
+	text-align: center;
+}
+.tips img {
+	width: 2.72rem;
+}
+
+.tips p {
+	font-size: 0.28rem;
+	color: #666;
+	margin-top: 0.2rem;
+	line-height: 0.48rem;
+}
+
+.invite_list_container .item .head {
+	width: 0.64rem;
+	height: 0.64rem;
+	background: white;
+	border-radius: 0.32rem;
+	float: left;
+	border: solid #f7f7f8 1px;
+}
+.invite_list_container .item .name {
+	font-size: 0.28rem;
+	margin-left: 0.12rem;
+	float: left;
+	line-height: 0.64rem;
+}
+
+.invite_list_container .item .success_status {
+	float: right;
+	line-height: 0.64rem;
+	font-size: 0.24rem;
+	color: #f53737;
+}
+
+.invite_list_container .item .inviting {
+	color: #999;
+	font-size: 0.24rem;
+	float: right;
+	text-align: right;
+}
+
+.invite_list_container .item .inviting span {
+	display: block;
+	font-size: 0.24rem;
+}
+
+/* 奖品 */
+.prize_container {
+	width: 6rem;
+	height: 8.1rem;
+	display: block;
+	margin: 2rem auto 0;
+	background: white;
+	padding: 1.08rem 0 0;
+	position: relative;
+	border-radius: 0.16rem;
+	overflow: hidden;
+}
+.prize_container .container {
+	overflow-y: scroll;
+	padding-bottom: 1.6rem;
+}
+.prize_container .open_btn {
+	position: absolute;
+	bottom: 0.32rem;
+	left: 0.32rem;
+	width: calc(100% - 0.64rem);
+	box-shadow: 0px 0px 0px 0px rgba(236, 239, 243, 1);
+}
+
+.prize_container .title {
+	font-size: 0.32rem;
+	display: block;
+	text-align: center;
+	font-weight: 600;
+	position: absolute;
+	left: 0;
+	top: 0.32rem;
+	width: 100%;
+}
+
+.prize_container .close_btn {
+	position: absolute;
+	right: 0.32rem;
+	top: 0.32rem;
+	width: 0.44rem;
+}
+
+.prize_container .prize_item {
+	width: 100%;
+	height: 0.96rem;
+	border-bottom: solid #eceff3 1px;
+	padding: 0.16rem 0.32rem;
+	position: relative;
+	text-align: left;
+}
+.prize_container .prize_item .prize_img {
+	width: 0.64rem;
+	height: 0.64rem;
+	float: left;
+	border-radius: 0.32rem;
+	border: solid #f7f7f8 1px;
+}
+
+.prize_container .prize_item .name {
+	font-size: 0.28rem;
+	margin-left: 0.12rem;
+	line-height: 0.64rem;
+	float: left;
+}
+
+.prize_container .prize_item .status {
+	font-size: 0.24rem;
+	float: right;
+	text-align: right;
+	color: #999;
+}
+
+.prize_container .prize_item .sendStatus {
+	color: #ffae00;
+}
+
+.prize_container .prize_item .status span {
+	font-size: 0.2rem;
+	color: #999;
+	display: block;
+}
+
+/* 展示二维码 */
+.qrcode_container {
+	width: 5.6rem;
+	height: 6.4rem;
+	margin: 2rem auto 0;
+	background: white;
+	border-radius: 0.32rem;
+	padding: 0.64rem 0 0;
+	position: relative;
+}
+
+.qrcode_container .qrcode {
+	width: 3.16rem;
+	height: 3.16rem;
+	margin: 0 auto 0.32rem;
+}
+
+.qrcode_container .qrcode canvas {
+	width: 100%;
+	height: 100%;
+}
+
+.qrcode_container .title {
+	text-align: center;
+}
+
+.qrcode_container .btn {
+	margin-top: 0.4rem;
+	width: 5rem;
+}
+.qrcode_container .btn span {
+	line-height: 0.8rem;
+}
+
+.pop_tips {
+	font-size: 0.28rem;
+	color: white;
+	font-weight: 600;
+	margin: 0.3rem auto 0;
+	text-align: center;
+	width: 7rem;
+}
+
+.location {
+	margin: 0.3rem 0;
+}
+.location_logo {
+	height: 0.44rem;
+}
+.location_btn {
+	display: inline;
+	line-height: 0.44rem;
+	vertical-align: top;
+}
+
+/* 规则说明 */
+.rule {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.shadow {
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: rgba(1, 1, 1, 0.6);
+	position: absolute;
+	z-index: 0;
+}
+
+.rule_container {
+	width: 90%;
+	left: 5%;
+	top: 2rem;
+	padding: 0.42rem;
+	padding: 0.42rem 0.28rem 0 0.28rem;
+	background: white;
+	position: absolute;
+	z-index: 1;
+	border-radius: 0.2rem;
+}
+
+.rule_container .title {
+	font-size: 0.4rem;
+	margin-bottom: 0.2rem;
+	text-align: center;
+}
+
+.rule_container .content {
+	height: 6rem;
+	font-size: 0.32rem;
+	line-height: 0.52rem;
+	overflow: scroll;
+	padding: 0.1rem;
+	border: 1px dashed #000;
+}
+.rule_container .content p {
+	line-height: 0.62rem;
+}
+
+.desc_container {
+	padding: 0.42rem 0.28rem 0.42rem 0.28rem;
+}
+.desc_container .content 
+{
+  height: 7rem;
+}
+
+
+.top_img {
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.bottom_img {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}

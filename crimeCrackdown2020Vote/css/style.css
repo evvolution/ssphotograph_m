@@ -1,0 +1,338 @@
+@charset "UTF-8";
+* {
+	margin:0;
+	padding:0;
+}
+
+body{
+    /* background-color: #fefeda; */
+    background: url('https://fsnewsres.foshanplus.com/h5/shcwswds/other/main.jpg') no-repeat top center; 
+    background-size: cover;
+}
+
+/* .card {
+	background-color: #fff3;
+	margin: 10px 0;
+} */
+
+.btn{
+	line-height: 0.8rem ! important;
+	color: #fff;
+}
+
+.btn:focus, .btn:active, .btn:hover {
+	color: #fff;
+}
+
+
+
+.btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle,.btn-success:hover {
+    color: #fff;
+    background-color: #b60e18;
+    border-color: #b60e18;
+}
+
+.timecountContent{width:85%;text-align: center;position:relative;z-index:10;margin:-40px auto 0px; background: url("../img/timebak.png") no-repeat;background-size: 100% 100%;padding: 15px 5px;}
+
+.nav-item {
+	flex: 1;
+	text-align: center;
+	box-shadow: inset 5px 5px 5px #e3f6f3;
+	border: 0;
+	border-radius: 10px;
+	margin: 0 5px;
+	background-color: #fff;
+}
+
+.nav-link {
+	color: #999999 !important;
+	font-family: '等线';
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+	font-family: '等线';
+	font-weight: 800 !important;
+	color: #fff !important;
+    background-color: #E11828 !important;
+    border-radius: 10px;
+    box-shadow: inset 5px 5px 5px #b60e18;
+}
+
+.nav {
+	margin: 0 auto;
+	width: 90%;
+} 
+
+.tab-content {
+	margin: 0 auto;
+	/* width: 90%; */
+	padding: 0 10px;
+}
+
+.mb-3 {
+    margin-bottom: 0.6rem !important;
+}
+
+.secondlevel {
+	flex: 1;
+	text-align: center;
+	margin: 0 5px;
+}
+
+.nav-pills .secondlevel>.nav-link, .nav-pills >.secondlevel>.nav-link {
+	font-family: '等线';
+	font-weight: 800 !important;
+	color: #999999 !important;
+	background-color: #ffffffb3 !important;
+	font-size: 16px;
+	height: 36px;
+	border-radius: 18px;
+}
+
+.nav-pills .secondlevel>.nav-link.active, .nav-pills .show>.secondlevel>.nav-link {
+	font-family: '等线';
+	font-weight: 800 !important;
+	color: #fff !important;
+	background-color: #ff0000 !important;
+	font-size: 16px;
+	height: 36px;
+    border-radius: 18px;
+    box-shadow: none;
+}
+
+.searchpart {
+    margin: 15px auto;
+    width: 90%;
+}
+
+.searchpartinput {
+	border-radius: 5px;
+    border: 1px solid #E11828;
+    background-color: transparent;
+	margin-right: -25px;
+}
+
+.searchpartinput:focus {
+	border: 1px solid #E11828;
+	box-shadow: none;
+	z-index: 0!important;
+}
+
+.searchpartbtn {
+	background-color: #E11828;
+	border: 0;
+	border-radius: 5px!important;
+}
+
+.list-group-item:first-child {
+	border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.list-group-item {
+    height: auto;
+	display: flex;
+	padding: 10px 5px 3px 5px;
+    border: 0;
+    
+}
+
+.listborder {
+	position: absolute;
+	bottom: 0;
+	width: 85%;
+	left: 5%;
+	border-bottom: 1px solid #fbddde;
+}
+
+.listNum {
+	flex: 1;
+    display: flex;
+    align-items: center;
+	justify-content: center;
+}
+
+.listNum img {
+	width: 28px;
+}
+
+.listDetail {
+	margin-left: 4px;
+	flex: 6;
+}
+
+.listCount {
+	flex: 2;
+	font-weight: 500;
+	color: #E11828;
+	display: flex;
+    align-items: center;
+	justify-content: center;
+}
+
+.pieceAuthor {
+    font-weight: 800;
+    font-size: 16px;
+    margin-top: 2px;
+}
+
+.pieceName {
+	font-weight: 400;
+	font-size: 14px;
+	color: #E11828;
+	margin-bottom: 2px;
+}
+
+
+.loadmore {
+	display: block;
+	width: 90%;
+	margin: 15px auto !important;
+	padding: 15px;
+	background-color: #E11828;
+}
+
+.piclistContent {
+	width: 100%;
+}
+
+.piclistContent img {
+	display: block;
+	margin: 0 auto;
+}
+
+
+
+
+.gridContentloading {
+	display: none;
+	width: 30px;
+    height: 30px;
+	margin: 0 auto;
+}
+
+/*2*/
+.col-6 {
+	margin-bottom: 25px;
+	padding-right: 5px;
+    padding-left: 5px;
+    margin-right: 1px; 
+    margin-left: 2px;
+    max-width: 48%;
+    height: 270px;
+    background: -webkit-linear-gradient(to bottom right, #F8E698 ,#ffeecd); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(to bottom right, #F8E698 ,#ffeecd); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(to bottom right, #F8E698 ,#ffeecd); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, #F8E698 ,#ffeecd); /* 标准的语法（必须放在最后） */
+}
+
+.picscard-img {
+	/* border: 1px solid #4f9a7c; */
+	/* border-top-left-radius: 10px;
+	border-top-right-radius: 10px; */
+	/* height: 250px; */
+	border-bottom: 0;
+	background-color: transparent;
+    padding: 30px 5px 5px;
+	display: flex;
+    align-items: center;
+	justify-content: center;
+}
+
+.picscard-img img {
+	width: 100%;
+	height: auto;
+}
+
+.picscard-info {
+	/* border: 1px solid #4f9a7c; */
+	/* border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px; */
+	/* height: 100px; */
+	padding: 2px 5px;
+	border-top: 0;
+    background-color: transparent;
+    color: #E11828;
+}
+
+.infono {
+    /* margin-top: 1px; */
+    border-bottom-right-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+	font-size: 14px;
+	text-align: justify;
+	padding: 1px 10px;
+	font-weight: 500;
+    color: #fff;
+    background-color: #E11828;
+}
+
+.infotitle {
+	margin-top: -5px;
+	font-size: 14px;
+	text-align: justify;
+	padding: 1px;
+	font-weight: 800;
+}
+
+.infoname {
+	font-size: 12px;
+	text-align: justify;
+	padding: 1px;
+}
+
+.infovote {
+    margin: 5px auto 10px;
+    bottom: -2px;
+    position: absolute;
+    width: 80%;
+    text-align: center;
+    left: 10%;
+}
+
+.infovotecount {
+    text-align: center;
+    font-size: 14px;
+}
+
+.infovotecountbtn {
+    font-size: 14px;
+    font-weight: 600;
+	padding: 5px;
+	text-align: center;
+	background-color: #E11828;
+	color: #fff;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#piclist,#videolist,#cartoonlist {
+	width: 100%;
+	margin: 0 auto;
+}
+
+#searchpicbtnreturn, #morepicbtnforinit {
+	display: none;
+}
+
+.toporic {
+    background: url(../img/topo.png) no-repeat top center;
+    background-size: 100% 100%;
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    top: -10px;
+    left: 0;
+}
+
+.rankss {
+    height: auto;
+    padding: 10px 15px 10px;
+    background-color: #e4121e;
+    border-radius: 10px;
+    border: 1px solid #feca7f;
+    box-shadow: inset 0px 4px 0px 4px #b60e18;
+}

@@ -1,0 +1,249 @@
+.img_top {
+	position: absolute;
+	left: 5%;
+	top: 2.5rem;
+	width: 90%;
+}
+.control_container {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 20%;
+	padding: 0.5rem;
+}
+.img_begin,
+.img_desc,
+.img_show {
+	width: 45%;
+	display: inline-block;
+}
+.img_desc {
+	float: left;
+}
+.img_begin {
+	float: right;
+}
+.img_show {
+	display: block;
+	margin: 1.5rem auto 0;
+}
+
+.bottom_btns {
+	bottom: 10%;
+	position: absolute;
+	left: 0%;
+	width: 100%;
+}
+.my_prize_btn,
+.notice_btn {
+	margin: 0.4rem auto;
+	width: 3.2rem;
+	/* height: 0.88rem; */
+	font-size: 0.42rem;
+	font-weight: 600;
+	color: white;
+	line-height: 0.7rem;
+	text-align: center;
+	text-shadow: #666 1px 1px 1px;
+	border: rgb(213, 211, 95) solid 0.08rem;
+	border-radius: 0.28rem;
+}
+
+.my_prize_btn {
+	bottom: 23%;
+}
+.notice_btn {
+	bottom: 14%;
+}
+
+/* 规则说明 */
+.rule {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.shadow {
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: rgba(1, 1, 1, 0.6);
+	position: absolute;
+	z-index: 0;
+}
+
+.rule_container {
+	width: 90%;
+	left: 5%;
+	/* height: 60vh; */
+	top: 2rem;
+	padding: 0.42rem;
+	padding: 0.42rem 0.28rem 0 0.28rem;
+	background: white;
+	position: absolute;
+	z-index: 1;
+	border-radius: 0.2rem;
+}
+
+.rule_container .title {
+	font-size: 0.4rem;
+	margin-bottom: 0.2rem;
+	text-align: center;
+}
+
+.rule_container .content {
+	height: 6rem;
+	font-size: 0.32rem;
+	line-height: 0.52rem;
+	overflow: scroll;
+	padding: 0.1rem;
+	border: 1px dashed #000;
+}
+.rule_container .content p {
+	line-height: 0.62rem;
+}
+
+.rule_container .back_btn,
+.input_container .submit_btn,
+.info_container .submit_btn,
+.success_container .lottery_btn,
+.success_container .back_btn {
+	margin: 0.2rem auto;
+	background: rgba(255, 102, 51, 1);
+	color: white;
+	font-size: 0.4rem;
+	font-weight: 500;
+	border-radius: 0.6rem;
+	width: 4rem;
+	/* height: 0.88rem; */
+	line-height: 0.88rem;
+	letter-spacing: 5px;
+	text-align: center;
+}
+
+/* 内容填入 */
+.input_container,
+.info_container,
+.success_container {
+	width: 90%;
+	margin: 0.5rem auto 1rem;
+	padding: 0.42rem;
+	background: white;
+	border-radius: 5px;
+	overflow: scroll;
+}
+.input_container .title {
+	font-size: 0.4rem;
+	text-align: center;
+}
+
+.input_container .desc {
+	font-size: 0.3rem;
+	margin-top: 0.1rem;
+	margin-bottom: 0.4rem;
+}
+
+.input_container .article_input {
+	height: 0.88rem;
+	/* width: 100%; */
+	display: block;
+	font-size: 0.3rem;
+	line-height: 0.88rem;
+	margin-bottom: 0.24rem;
+}
+.input_container .article_input input {
+	width: 100%;
+	height: 100%;
+	font-size: 0.3rem;
+	padding: 0 0.2rem;
+	border: solid #999 1px;
+	border-radius: 4px;
+}
+
+.input_container textarea {
+	font-size: 0.3rem;
+	width: 100%;
+	padding: 0.12rem;
+	border: 1px dashed #000;
+}
+.contentLength {
+	/* float: right; */
+	text-align: right;
+	color: #666;
+	font-size: 0.24rem;
+	margin-bottom: 10px;
+}
+.upload_pic {
+	width: 1rem;
+	height: 1rem;
+	margin-right: 0.18rem;
+
+	display: inline-block;
+	object-fit: cover;
+}
+
+.input_container .upload_btn {
+	width: 2.6rem;
+	margin: 0;
+	font-size: 0.3rem;
+	line-height: 0.88rem;
+	height: 0.88rem;
+	border: 1px solid #eee;
+	border-radius: 0.44rem;
+	position: relative;
+	padding-left: 0.88rem;
+}
+
+.input_container .upload_btn img {
+	width: 0.88rem;
+	height: 100%;
+	vertical-align: middle;
+	margin: 0;
+	left: 0;
+	top: 0;
+	position: absolute;
+}
+
+.input_container .disabled_btn {
+	background: #aaa;
+}
+
+.info_container {
+	font-size: 0.32rem;
+}
+.info_container label {
+	line-height: 0.88rem;
+}
+.info_container .item {
+	margin-bottom: 0.3rem;
+	height: 0.88rem;
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+}
+.info_container input {
+	height: 100%;
+	width: calc(100% - 1.5rem);
+	left: 1.5rem;
+	position: absolute;
+	border: 1px solid #efefef;
+	border-radius: 5px;
+	font-size: 0.32rem;
+	padding: 0 10px;
+}
+
+.info_container {
+	margin-top: 35%;
+}
+
+.success_container {
+	font-size: 0.36rem;
+	margin-top: 3rem;
+}
+
+.success_container .title {
+	text-align: center;
+}

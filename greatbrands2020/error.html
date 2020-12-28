@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/> 
+	<title>提示</title>
+	<link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/0.4.1/weui.css">
+	<style>
+		body{background-color: #eee;}
+		div{text-align: center;}
+	</style>
+	<script type="text/javascript">
+		//禁止后退
+		history.pushState(null, null, document.URL);
+			window.addEventListener('popstate', function () {
+			history.pushState(null, null, document.URL);
+		});
+	</script>
+</head>
+<body>
+	<br/><br/><br/><br/>
+	<div class="weui_icon_area"><i class="weui_icon_info weui_icon_msg"></i></div><br/>
+	<div>请在佛山+App或微信客户端查看活动链接</div>
+</body>
+</html>

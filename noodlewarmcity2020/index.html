@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="format-detection" content="email=no">
+  <link rel="stylesheet" href="./css/main.css?v=1.0.4">
+  <link rel="stylesheet" href="./css/index.css?v=1.0.11">
+  <link rel="stylesheet" href="./plugins/animate/animate.min.css" />
+  <title>一碗面 温暖一座城</title>
+</head>
+
+<body>
+  <div id="app" class="container" style="display: none;">
+
+    <div class="sub_container" v-show="page==0">
+      <img class="bg_img" src="./img/bg_1.gif" alt="">
+      <div class="opera_container">
+        <img :class="['title_img',isCutView?'cut_title_img':'']" src="./img/tips.png" alt="">
+
+        <div :class="['btn',isCutView?'cut_btn':'']" @click="downApp()" v-if="!isApp">
+          <img src="./img/invitation-btn.png" v-show="downBtnImg == 0" alt="">
+          <img src="./img/invitation-btn-0.png" v-show="downBtnImg == 1" alt="">
+          <!-- <span>下载佛山+为TA助力</span> -->
+        </div>
+        <div :class="['btn',isCutView?'cut_btn':'']" @click="takeCoupe()"><img src="./img/btn.png"
+            alt=""><span>我也要免费获得健康面</span></div>
+        <img :class="['bottom',isCutView?'cut_bottom':'']" src="./img/bottom.jpg" alt="" @click="showRule=1">
+      </div>
+    </div>
+    <!-- 邀请页面 -->
+    <div class="sub_container" v-if="page==1">
+      <!-- <img class="bg_img" src="./img/bg_2.jpg" alt=""> -->
+      <img class="top_img" src="./img/top_bg2.png" alt="">
+      <img class="bottom_img" src="./img/bottom_bg.png" alt="">
+
+      <div class="invite_container">
+        <img class="title_img" src="./img/invite_tips_new.png" alt="">
+        <div class="invite_list">
+          <div class="invite_item" v-for="(item,index) in icon_list">
+            <img class="item_bg" src="./img/invite_item_2_new.png" v-if="index == 2" alt="">
+            <img class="item_bg" src="./img/invite_item_2_new.png" v-else-if="index== 4" alt="">
+            <img class="item_bg" src="./img/invite_item_1.png" v-else alt="">
+            <img class="item_icon" :src="item.user" v-if="item.user&&item.user.length > 0" alt="">
+          </div>
+        </div>
+        <div class="invite_center_container">
+          <!-- <img src="./img/invite_list.png" alt="" @click="showInviteList = true">
+          <img src="./img/my_prize.png" alt="" @click="getMyPrizes()">
+          <img src="./img/desc.png" alt="" @click="showDesc = 1"> -->
+          <p @click="showInviteList = true">邀请列表</p>
+          <p @click="getMyPrizes()">我的健康面</p>
+          <p @click="showDesc = 1">活动简介</p>
+        </div>
+        <div class="btn" @click="shareTips = true"><img src="./img/btn.png" alt=""><span>邀请新用户助力赢健康面</span> </div>
+        <!-- <p class="location_btn" onclick="getLocation()">查看门店位置</p> -->
+      </div>
+      <!-- <img class="know_img" v-if="isApp" src="./img/know.png" alt="">
+      <img class="know_img" v-else src="./img/know_down.png" @click="openApp()" alt=""> -->
+    </div>
+    <div class="sub_container shadow_container" v-if="inviteTips">
+      <div class="prize_container">
+        <p class="title">我的健康面</p>
+        <img class="close_btn" src="./img/close.png" alt="" @click="inviteTips=0">
+        <div class="container">
+          <div class="prize_item" v-for="item in prize_list_0" @click="openPrizeItem(item)">
+            <img class="prize_img" :src="item.prizeImgPath" alt="">
+            <p class="name">{{item.prizeName}}</p>
+            <p :class="['status',item.sendStatus==0?'sendStatus':'']">
+              {{sendStatusRemark(item)}}<span>{{consumeEndTime(item.consumeEndTime)}}截止</span>
+            </p>
+          </div>
+          <div class="prize_item" v-for="item in prize_list_1" @click="openPrizeItem(item)">
+            <img class="prize_img" :src="item.prizeImgPath" alt="">
+            <p class="name">{{item.prizeName}}</p>
+            <p :class="['status',item.sendStatus==0?'sendStatus':'']">
+              {{sendStatusRemark(item)}}<span>{{consumeEndTime(item.consumeEndTime)}}截止</span>
+            </p>
+          </div>
+          <div class="tips" v-if="prize_list_0.length === 0&&prize_list_1.length === 1">
+            <img src="./img/empty_tips.jpg" alt="">
+            <p> 我 的 健 康 面 呢 ？</br> 好像还没邀请够好友呢··· </p>
+          </div>
+        </div>
+        <img class="open_btn" src="./img/open.png" v-if="!isApp" @click="openApp()" alt="">
+      </div>
+      <p class="pop_tips">需要在佛山+APP里才能查看兑换码</p>
+    </div>
+    <!-- 分享提示 -->
+    <div class="sub_container shadow_container" v-if="shareTips" @click="shareTips=0">
+      <img class="tips_img" src="./img/noodle_share_tips.png" alt="">
+    </div>
+    <!-- 邀请列表 -->
+    <div class="sub_container full_invite_container" v-if="showInviteList">
+      <div class="invite_list_container">
+        <p class="title">邀请列表</p>
+        <img class="close_btn" src="./img/close.png" alt="" @click="showInviteList=0">
+        <div class="container">
+          <div class="item" v-for="item in invite_list">
+            <img class="head" alt="" :src="item.photo" />
+            <p class="name">{{item.nickname}}</p>
+            <p class="success_status" v-if="item.loginStatus === 1">邀请成功</p>
+            <p class="inviting" v-if="item.loginStatus === 0">
+              邀请中
+              <span>{{getTime(item.createTime)}}</span>
+            </p>
+          </div>
+          <div class="tips" v-if="invite_list.length === 0">
+            <img src="./img/empty_tips.jpg" alt="">
+            <p>好像还没邀请到人呢 </br>快去邀请吧～</p>
+          </div>
+        </div>
+      </div>
+      <p class="pop_tips">若好友显示邀请中，快去提醒TA注册登录佛山+吧</p>
+    </div>
+    <div class="sub_container shadow_container" v-show="showQRCode">
+      <div class="qrcode_container">
+        <div class="qrcode" id="qrcode"></div>
+        <p class="title" v-if="showPrize">{{showPrize.prizeName}}</p>
+        <div class="btn" @click="showQRCode = 0"><img src="./img/btn.png" alt=""><span>关闭</span> </div>
+      </div>
+    </div>
+    <div class="sub_container shadow_container" v-show="showCoupon">
+      <div class="coupon_container">
+        <img src="./img/get_coupe2.png" alt="">
+        <div class="take_btn" @click="takeCoupon()"></div>
+      </div>
+    </div>
+    <div class="sub_container shadow_container" v-show="showDesc">
+      <div class="rule_container animate__animated animate__fadeInRight">
+        <p class="title">活动须知</p>
+        <img class="close_btn" src="./img/close.png" alt="" @click="showDesc=0">
+
+        <div class="content">
+          <p>
+            下载佛山⁺APP注册并登陆，邀请好友成功，即可获得德仲健康面系列产品；</br>
+            活动步骤：</br>
+            1、打开活动链接，点击“我也要免费获得健康面”；</br>
+            2、点击“邀请新用户助力赢面条”，选择发送给微信好友即可；</br>
+            3、3位好友接受邀请下载佛山⁺并登录后，您即可获得健康面领用券1张，该券可以兑换五彩健康面（袋装）其中任意3袋；</br>
+            ​5位好友接受邀请下载佛山⁺并登录后，您即可获得健康面领用券2张，凭两张券可以兑换淮山健康面（箱装）】一箱。</br>
+            <h4> 德仲健康面三包券  2000张券 （共6000包面）、一箱 1000张券  （共1000箱面），先到先得。</br></h4>
+            优惠券使用方法：</br>
+            1、凭电子券到指定的站点兑领，有效期至2020年12月20日，请尽快使用；</br>
+            2、活动期间，每个用户最多可邀请5个用户，多邀请的无效。</br>
+            3、兑换地点、联系方式</br>
+            禅城区秀湖路11号湖光楼首层燊康商贸（星硕舞蹈艺术中心旁） 联系人：王小姐，13415486725</br>
+            禅城区绿景三路33号帝景湾23号铺湖南特产帝景湾店   联系人：王先生，18922599306</br>
+            禅城区新明一路与港口路交界处嘉港市场“真的有米”  联系人：卢先生，13827744826</br>
+            南海区桂平西路3号怡翠花园芙蓉苑首层“佳乡味农产品”  联系人：九妹，13923151555</br>
+            南海狮山博爱中路 湖景湾生鲜肉菜  联系人：李先生 ，13760934263</br>
+            顺德区同兴路雅居乐花园3号门“臻优鲜”  联系人：:郑小姐，13727334939</br>
+            三水区碧堤路雅居乐花园“清远阳山农品生态农场”  联系人：何先生，18138944547</br>
+          </p>
+        </div>
+        <div class="location"></div>
+        <!-- <div class="location" onclick="getLocation()">
+          <img class="location_logo" src="./img/location.png" alt="">
+          <p class="location_btn">查看门店位置</p>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="sub_container shadow_container" v-show="showRule">
+      <div class="rule_container desc_container animate__animated animate__fadeInRight">
+        <p class="title">活动规则</p>
+        <img class="close_btn" src="./img/close.png" alt="" @click="showRule=0">
+        <div class="content">
+          下载佛山⁺APP注册并登陆，邀请好友成功，即可获得德仲健康面系列产品；</br>
+          活动步骤：</br>
+          1、打开活动链接，点击“我也要免费获得健康面”；</br>
+          2、点击“邀请新用户助力赢面条”，选择发送给微信好友即可；</br>
+          3、3位好友接受邀请下载佛山⁺并登录后，您即可获得健康面领用券1张，该券可以兑换五彩健康面（袋装）其中任意3袋；</br>
+          ​5位好友接受邀请下载佛山⁺并登录后，您即可获得健康面领用券2张，凭两张券可以兑换淮山健康面（箱装）】一箱。</br>
+          <h4> 德仲健康面三包券  2000张券 （共6000包面）、一箱 1000张券  （共1000箱面），先到先得。</br></h4>
+          优惠券使用方法：</br>
+          1、凭电子券到指定的站点兑领，有效期至2020年12月20日，请尽快使用；</br>
+          2、活动期间，每个用户最多可邀请5个用户，多邀请的无效。</br>
+          3、兑换地点、联系方式</br>
+          禅城区秀湖路11号湖光楼首层燊康商贸（星硕舞蹈艺术中心旁） 联系人：王小姐，13415486725</br>
+          禅城区绿景三路33号帝景湾23号铺湖南特产帝景湾店   联系人：王先生，18922599306</br>
+          禅城区新明一路与港口路交界处嘉港市场“真的有米”  联系人：卢先生，13827744826</br>
+          南海区桂平西路3号怡翠花园芙蓉苑首层“佳乡味农产品”  联系人：九妹，13923151555</br>
+          南海狮山博爱中路 湖景湾生鲜肉菜  联系人：李先生 ，13760934263</br>
+          顺德区同兴路雅居乐花园3号门“臻优鲜”  联系人：:郑小姐，13727334939</br>
+          三水区碧堤路雅居乐花园“清远阳山农品生态农场”  联系人：何先生，18138944547</br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="./js/jquery-3.3.1.min.js"></script>
+  <script src="./plugins/vue/vue-resource.js"></script>
+  <script src="./plugins/vue/vue.js"></script>
+  <script src="./js/weixin.js"></script>
+  <script src="./js/authInfo.js?v=1.0.8"></script>
+  <script src="./js/jquery.qrcode.min.js"></script>
+  <script src="./js/app.js?v=1.1.14"></script>
+  </script>
+  <!-- <script type="text/javascript" src="./js/vconsole.min.js"></script> -->
+  <script type="text/javascript">
+    // var vConsole = new VConsole();
+    vapp.$nextTick(function () {
+      $("#app").css('display', '')
+      authInfo.getUserInfo()
+    })
+
+    // 获取地址
+    function getLocation() {
+      wx.ready(function () {
+        wx.openLocation({
+          latitude: 23.016927, // 纬度，浮点数，范围为90 ~ -90
+          longitude: 113.110413, // 经度，浮点数，范围为180 ~ -180。
+          name: '壹质咖啡NatureOneCoffee', // 位置名
+          address: '广东省佛山市禅城区同华横街3-101号', // 地址详情说明
+          scale: 25, // 地图缩放级别,整形值,范围从1~28。默认为最大
+          infoUrl: '', // 在查看位置界面底部显示的超链接,可点击跳转
+        });
+      })
+    }
+  </script>
+
+</body>
+<div style="display:none">
+  <script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1278597280&web_id=1278597280"></script>
+</div>
+
+</html>

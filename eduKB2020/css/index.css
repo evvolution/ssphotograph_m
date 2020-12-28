@@ -1,0 +1,50 @@
+
+#levelOnemenu,#levelTwomenurank,#levelTwomenulist {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+}
+
+.nav-item {
+    flex: 1;
+    margin: 10px 5px 3px; 
+    background: -webkit-linear-gradient(top, #F8E698 ,#FDECBE); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(top, #F8E698 ,#FDECBE); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(top, #F8E698 ,#FDECBE); /* Firefox 3.6 - 15 */
+    background: linear-gradient(top, #F8E698 ,#FDECBE); /* 标准的语法（必须放在最后） */
+    box-shadow: inset 0 1px 2px 3px #d3bda8;
+    border-radius: 10px;
+    padding: 2px !important;
+}
+.nav-item a {
+    color: #999999
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    border-radius: 10px;
+    background-color: #E11828;
+    box-shadow: inset 0 1px 2px 3px #b60e18;
+}
+
+.levelTwo {
+    flex: 1;
+    margin: 2px 5px; 
+    border-radius: 20px;
+    background-color: #ffffffb3;
+    box-shadow: none;
+}
+
+.levelTwo a {
+    color: #999999 !important;
+    padding: 2px !important;
+}
+
+.nav-pills .levelTwo>.nav-link.active, .nav-pills .show>.levelTwo>.nav-link {
+    padding: 2px !important;
+    color: #ff0000 !important;
+    border-radius: 20px;
+    background-color: #ffffff;
+    box-shadow: none
+}

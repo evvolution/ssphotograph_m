@@ -1,0 +1,31 @@
+
+.jCountdownContainer{position:relative;padding:0px;margin:0px;display:inline-block;*zoom:1;*display:inline;}
+
+.jCountdownScale{position:absolute;padding:0px;margin:0px;}
+.jCountdown{padding:0px;margin:0px;white-space:nowrap;}
+
+.group{padding:0px;margin:0px;display:inline-block;*zoom:1;*display:inline;}
+.group>.label{position:relative;top: -8px;padding: 0px;margin: 1px;	width: 30px;}
+.group>.label{height: 35px;}
+.group>.label{background-image:url(clock.png);}
+.day>.label{background-position: -50px -640px;}
+.hour>.label{background-position:-50px -680px;}
+.minute>.label{background-position:-50px -720px;}
+.second>.label{background-position:-50px -760px;width: 150px;}
+.start{background-image:url(clock.png);height: 47px;background-position:-50px -800px;width: 160px;}
+.group>.container{position:relative;padding:0px;margin:0px;display:inline-block;*zoom:1;*display:inline;}
+
+.group>.container{width:50px;height:64px;padding:1px 0px 1px 0px;background-position:-111px 0px;}
+.group>.container:first-child{padding:1px 0px 1px 1px;background-position:-60px 0px;}
+.group>.container.lastItem{padding:1px 1px 1px 0px;background-position:-161px 0px;}
+
+.group>.container{background-image:url(clock.png);}
+.group>.container>.cover{position:absolute;z-index:1;padding:0px;margin:0px;}
+.group>.container>.cover{left:0px;top:1px;width:50px;height:64px;background-position:-110px -70px;}
+.group>.container:first-child>.cover{left:1px;background-position:-60px -70px;}
+.group>.container.lastItem>.cover{right:1px;background-position:-160px -70px;}
+.group>.container>.cover{background-image:url(clock.png);}
+
+.group>.container>.text{padding:0px;margin:0px;}
+.group>.container>.text{width:40px;height:64px;}
+.group>.container>.text{background-image:url(clock.png);}

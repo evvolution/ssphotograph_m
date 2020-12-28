@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/> 
+	<title>坚持创新发展 共塑城市榜样</title>
+	<link rel="stylesheet" type="text/css" href="css/detail.css">
+	<script type="text/javascript" src='https://res.wx.qq.com/open/js/jweixin-1.6.0.js'></script>
+	<script type="text/javascript" src="js/weixindetail.js"></script>
+	<script type="text/javascript" src="js/authInfodetail.js"></script>
+	<script type="text/javascript">
+		var initflag = 0;
+		fs_getUserinfo(()=>{
+			if (authInfo.isApp) {
+				$("#sharedevice").css('display','block')
+				$("#sharex").css('display','block')
+				if (authInfo.fs_token&&authInfo.fs_token.length>0) {
+					initflag = 1; //在app已登录
+				}else {
+					initflag = 2; //在app未登录
+					fs_login();
+				}
+			}else if(authInfo.is_weixinFun()){ //正确
+				$("#sharedevice").css('display','none')
+				$("#sharex").css('display','none')
+				initflag = 0; //在微信
+				authInfo.getUserInfo()
+				authInfo.fs_token;
+				getSign();
+			}else {
+				/*下面的才是保留的*/
+				window.location.href = 'error.html';
+			}
+		})
+		
+		var fskbVoteDetailslogan = '';
+		function getParam(paramName) {
+			paramValue = "", isFound = !1;
+			if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {
+				arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
+				while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
+			}
+			return paramValue == "" && (paramValue = null), paramValue
+		}
+		var fskbVoteDetailID = getParam('id');
+	</script>
+</head>
+<body>
+	<div class="kbmaincoverforloading"><img src="img/loading.gif"><br/>加载中</div>
+	<div><img src="img/kbtop2.png" alt="页头"/></div>
+	<div class="detailmain">
+		<div id="title">加载中...</div>
+		<div id="author">加载中...</div>
+		<div id="goods">加载中...</div>
+		<div id="brief">加载中...</div>
+		<div id="sharex" onclick="share()"></div>
+	</div><br/>
+	<div class="btn" onclick="backpage()">去主榜点赞</div><br/>
+	<div id="sharedevice" class="btn" onclick="share()" style="background-color: #f32110;color: #fff;">分享</div><br/><br/>
+
+	<div style="display:none"><script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1278597280&web_id=1278597280"></script></div>
+	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="js/detail.js"></script>
+	<script type="text/javascript">
+	    history.pushState(null, null, document.URL);
+        	window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+		});
+		getDatadetial()
+	</script>
+</body>
+</html>

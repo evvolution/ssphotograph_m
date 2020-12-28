@@ -1,0 +1,71 @@
+@charset "UTF-8";
+* {margin:0;padding:0;font-family:'等线';}
+img{width: 100%;}
+body{background-color:#ba210c;background: url('https://fsnewsres.foshanplus.com/h5/kb2020_s2/bgs.jpg') no-repeat top center;background-size: cover;}
+.kbmaincoverforloading{background-color:#b20405;width:100%;height:100%;position:fixed;z-index: 999;text-align: center;color: #fff;}
+.kbmaincoverforloading img{display: block;margin:50% auto 0; position: relative;width: 35px;}
+a{color:#800000}
+a:hover{color:#800000;text-decoration: none;}
+input.kbcheck{-webkit-appearance: none;width: 22px !important;height: 22px !important;border-radius: 0px!important;background: url(../img/unchecked.png) no-repeat;background-size: cover;outline: none !important;}
+input.kbcheck:checked {background: url(../img/checked.png) no-repeat;background-size: cover;outline: none !important;}
+input.kbcheck:disabled {background: url(../img/disabled.png) no-repeat;background-size: cover;outline: none !important;}
+input.kbcheck:focus{outline: none !important;}
+
+.timecountContent{width:85%;text-align:center;position:relative;z-index:10;border-radius:0;margin:-26px auto 0;background:transparent;}
+
+.nav{margin:2px auto 0;width:100%;box-shadow:#000 0px 0px 6px 1px;}
+.nav-link{color:#eee !important;border-bottom:2px solid #C01103;border-radius:0;height:45px;padding:.3rem;}
+.nav-item{flex:1;text-align:center;border:0;border-radius:0;background-color:#C01103;font-size:14px;font-weight: 800 !important;}
+.nav-pills .nav-link.active{font-weight: 800 !important;background-color:#C01103!important;color:#FFFDC9 !important;border-radius:0;border-bottom:2px solid #FFFDC9;}
+.nav-pills .nav-link.active .progress{background-color:#fdfccd}
+#pills-rule-tab,#pills-rank-tab{display:flex;align-items:center;justify-content:center;}
+
+.tab-content{margin:0 auto;width:96%;padding:0}
+.list-group{position:relative;background-color:#FBEDC4;padding:20px 10px;border-radius:8px;}
+.list-group-item:first-child,.list-group-item:last-child{border-radius:0;}
+.list-group-item{background-color:#F8E5AE;border:0;margin-bottom:0px;display:flex;padding:10px 10px 10px 0;color:#800000;margin-bottom:10px;}
+
+.listNotag{position:absolute;top:0;right:0;padding:0 10px;background-color:#ec241d;color:#FBEDC4;font-size:14px;visibility: hidden;}
+.listNo{flex:1;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.listMain{flex:6;margin-left:4px;}
+.listtitle{font-size:16px;font-weight:600;text-align:justify;padding:2px 0 0;}
+.listanthor{font-size:14px}
+.listcount{display:flex;align-items:center;justify-content:left;}
+.listbtn{flex:1;display:flex;align-items:center;justify-content:center;}
+
+.secondnav{margin:0px auto;width:65%;box-shadow:#000 0px 0px 3px 1px;}
+.secondlevel{flex:1;color:#eee !important;text-align: center;}
+.secondlevel a{font-size:14px;}
+.secondlevel .nav-link{height: 38px;}
+.rankNo{flex:1;display:flex;align-items:center;justify-content:center;}
+.rankNo img{width:20px;}
+.rankTitle{flex:6;margin-right: 10px;font-size:14px;font-weight:800;}
+.rankCount{flex:1;font-size: 14px;display:flex;align-items:center;justify-content:center;font-weight:800;}
+
+.leftplugin{position:absolute;width:12px;height:10px;background-color:#ce1607;top:30%;left:-5px;border-radius:40px;}
+.rightplugin{position:absolute;width:12px;height:10px;background-color:#d21206;top:30%;right:-5px;border-radius:40px;}
+
+.kbchose{margin-top:-3px;font-size: 12px;}
+.fixbutton{position:fixed;left:0;right:0;bottom:5%;width:100px;margin-left:auto;margin-right:auto;display:none;}
+.fixbutton img{width: 100%;}
+
+.kbloading {display:block;margin:0 auto;width:30px;height:auto;}
+
+.modal-content{background-color: transparent;width: auto;margin: 0 auto;border-radius: 8px;border: 0;}
+.modal-body{padding: 1rem .5rem .5rem;}
+.modal-body .input-group {margin-top: 10px;}
+.modal-body .btn:focus{box-shadow: none;}
+.modal-footer {justify-content: center;border-top: 0;padding: 0 .75rem .5rem;}
+.modal-footer .btn{padding: .1rem .75rem;}
+
+#myprizebtn{color:#C01103; text-align: center;padding: 10px 5px;background: #fff;margin: 0 auto;width: 60%;border-radius: 5px;font-weight: 800;font-size: 16px;}
+#myprizeNotice{display: none; width: 90%;margin: 0 auto;font-size: 12px;color: #fff;text-align: center;}
+.redpocket {position: relative; margin: 10px auto;width: 70%;}
+.redpocket-btn {position: absolute; width: 80%;left: 10%;bottom:20px}
+#red_get_num{position: absolute;left: 50%; top: 50%;transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);font-size: 32px;color: #fbedc4;}
+
+#prizeContent{display: flex;margin-bottom: 15px;}
+#prizeName{flex: 2;color:green}
+#prizeGet{flex: 1;display:flex;align-items:center;justify-content:center;}
+
+#reflash{text-align: center;font-size: 12px;margin-top: 5px;color: #fff;}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/> 
+	<title>2021蕞牛生肖陶艺云上展</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+	<style>
+		#order_table,#store_table {
+			width: 100%;
+		}
+		th,td{
+			text-align: center;
+			padding: 20px 2px;
+		}
+		.address {
+			text-align: justify;
+		}
+		.headimg img {
+			width: 144px;
+			height: 81px;
+		}
+		.data {
+			font-weight: 600;
+		}
+		#createExcel,#createExcel_store {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-light bg-light">
+		<a class="navbar-brand" href="#">
+			<img src="control/fslogo.png" width="30" height="30" alt="" loading="lazy">
+			2021蕞牛生肖陶艺云上展_<span id="current_GOAL">加载中</span>
+		</a>
+		<ul class="nav nav-pills" id="myTab">
+			<li class="nav-item" role="presentation">
+				<a class="nav-link active" id="o_list-tab" data-toggle="tab" href="#o_list" onclick="getData()">已售清单</a>
+			</li>
+			<li class="nav-item" role="presentation">
+				<a class="nav-link" id="p_list-tab" data-toggle="tab" href="#p_list" onclick="getStore()">当前库存</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="container-fluid">
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="o_list">
+				<div class="alert alert-success">
+					<span class="data" id="currentTime">加载中</span>&nbsp;&nbsp;
+					当前成交订单数：<span class="data" id="count">加载中</span>&nbsp;&nbsp;
+					当前成交总额：￥<span class="data" id="income">加载中</span>&nbsp;&nbsp;
+					<button class="btn btn-success" onclick="getData()" id="refresh">刷新</button>&nbsp;&nbsp;
+					<button class="btn btn-danger" onclick="createExcel()" id="createExcel">导出订单Excel</button>
+				</div>
+				<table id="order_table" border="1px">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>客户名字</th>
+							<th>客户手机</th>
+							<th>客户地址</th>
+							<th>卖家</th>
+							<th>货物名称</th>
+							<th class="headimg">缩略图(点击查看)</th>
+							<th>剩余库存</th>
+							<th>货物单价</th>
+							<th>购买数量</th>
+							<th>订单总额</th>
+							<th>下单时间</th>
+							<th>支付时间</th>
+						</tr>
+					</thead>
+					<tbody id="order_table_body"></tbody>
+				</table>
+			</div>
+			<div class="tab-pane fade" id="p_list">
+				<div class="alert alert-primary">
+					<span class="data" id="currentTime_store">加载中</span>&nbsp;&nbsp;
+					当前在售货物：<span class="data" id="p_count">加载中</span>&nbsp;&nbsp;
+					当前已售货物：<span class="data" id="p_sold">加载中</span>&nbsp;&nbsp;
+					当前详情页总浏览量：<span class="data" id="p_viewCount">加载中</span>&nbsp;&nbsp;
+					<button class="btn btn-success" onclick="getStore()" id="refresh">刷新</button>&nbsp;&nbsp;
+					<button class="btn btn-warning" onclick="createExcel_store()" id="createExcel_store">导出库存Excel</button>
+				</div>
+				<table id="store_table" border="1px">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>货物名称</th>
+							<th>货物id(开发用)</th>
+							<th class="headimg">缩略图(点击查看)</th>
+							<th>卖家</th>
+							<th>货物单价</th>
+							<th>规格/参数</th>
+							<th>剩余库存</th>
+							<th>已售数量</th>
+							<th>详情页浏览量</th>
+						</tr>
+					</thead>
+					<tbody id="store_table_body"></tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<br/>
+	<div style="display:none"><script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1278597280&web_id=1278597280"></script></div>
+	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="control/jquery.table2excel.js"></script>
+	<script type="text/javascript" src="control/init.js"></script>
+</body>
+</html>

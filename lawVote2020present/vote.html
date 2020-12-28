@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/> 
+    <title>“谁执法 谁普法”现场投票</title>
+    <link rel="stylesheet" href="css/jcountdown.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/vote.css">
+    <script type="text/javascript">
+		function isWeixinBrower() {
+            var ua = navigator.userAgent.toLowerCase();
+            var isWeixin = ua.indexOf('micromessenger') != -1;
+            var isAndroid = ua.indexOf('android') != -1;
+            var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+            if (!isWeixin) {
+				window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1ac6cb553739a3d0&redirect_uri=https://content.foshanplus.com/h5/lawVote2020present/vote.html&response_type=code&scope=snsapi_base&state=hyxt#wechat_redirect'
+			}
+		}
+		isWeixinBrower();
+	</script>
+</head>
+<body >
+    <div class="lawpresent title"><img src="img/bannar.jpg" alt="页头"/></div>
+    <div class="countdown"></div>
+    <div class="votelist">加载中...</div>
+    <div class="lawpresent bottom"><img src="img/bottom.jpg" alt="页头"/></div>
+
+	<script type="text/javascript" src="js/weixin.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/authInfo.js"></script>
+    <script type="text/javascript" src="js/jquery.jcountdown.min.js"></script>
+	<script type="text/javascript" src="js/vote.js"></script>
+    <script type="text/javascript">
+        initClock();
+		authInfo.getUserInfo()
+		authInfo.fs_token;
+        getSign();
+        getData();
+	</script>
+</body>
+</html>

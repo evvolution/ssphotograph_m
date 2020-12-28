@@ -1,0 +1,43 @@
+/*
+    note: 第五页样式
+    write: zx
+*/
+
+.pageFive {
+    text-align: center;
+    width: 100%;
+}
+
+.p5titleContent {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.p5content {
+    /* display: flex; */
+    /* border: 1px dashed #ffc14d; */
+    max-height: 500px;
+    min-height: 500px;
+    padding: 0px 0px 20px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 15px;
+    overflow-y: scroll;
+}
+
+.p5content-line {
+    padding: 0 50px;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.p5content-item {
+    flex: 1;
+    margin: 0 15px;
+
+}
+
+.p5content-item p {
+    color: #ffc14d;
+}
+

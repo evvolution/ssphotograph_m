@@ -1,0 +1,57 @@
+/*
+    note: 通用样式
+    write: zx
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    background-color: #a50a0b;
+    background: url(../../img/bg.png) top center repeat;
+    background-size: 100%;
+    overflow-y: auto;
+}
+
+img {
+    width: 100%;
+}
+
+.mainpart_m {
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+}
+
+.pnheader {
+    margin-top: 10px;
+    flex: 1;
+}
+
+.pnmain {
+    margin-top: 10px;
+    flex: 6;
+}
+
+.pnheader img,
+.pnmain img {
+    display: block;
+    margin: 0 auto;
+}
+
+.p0footer {
+    position: relative;
+    bottom: 0;
+    margin: 0 auto;
+}
+
+.pnfooter img {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+    height: auto;
+}

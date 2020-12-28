@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>“数字佛山大家谈”征文活动</title>
+  <link rel="stylesheet" href="./css/main.css?v=1.0.3">
+  <link rel="stylesheet" href="./css/index.css?v=1.0.3">
+  <link rel="stylesheet" href="./css/loaders.min.css">
+  <link rel="stylesheet" href="./plugins/animate/animate.min.css" />
+
+</head>
+
+<body>
+  <div class="container" id="app" style="display: none;">
+    <img class="img_bg" src="./img/bg.jpg" alt="">
+    <img class="img_logo" src="./img/logo.png" alt="">
+    <div class="sub_container" v-show="page === 0">
+      <img class="img_top animate__animated animate__bounceInRight" src="./img/bg_top.png" alt="">
+      <div class="control_container">
+        <img class="img_desc" src="./img/desc.png" alt="" @click="showRule = 1">
+        <img class="img_begin" src="./img/begin_btn.png" alt="" @click="begin()">
+        <img class="img_show" src="./img/show.png" alt="" @click="pushNews()">
+      </div>
+
+      <!-- <div class="bottom_btns">
+        <div class="my_prize_btn" @click="clickCheckRecord">我的奖品</div>
+        <div class="notice_btn" @click="showRule = 1">活动说明</div>
+      </div> -->
+      <div class="rule" v-show="showRule === 1">
+        <div class="shadow"></div>
+        <div class="rule_container animate__animated animate__fadeInUp">
+          <p class="title">活动主题：“数字佛山大家谈”</p>
+          <div class="content">
+            <p>
+              <h4>一、征集时间</h4>
+              2020年9月21日—2021年5月31日</br>
+              <h4>二、征集内容</h4>
+              活动主题为“数字佛山大家谈”。</br>
+              运用大数据、云计算、区块链、人工智能等前沿技术推动城市管理手段、管理模式、管理理念创新，从数字化到智能化再到智慧化，让城市更聪明一些、更智慧一些，是推动城市治理体系和治理能力现代化的必由之路。佛山在全省地级市中率先挂牌成立了数字政府建设管理部门，近年通过实施《佛山市“数字政府”建设方案（2018-2020年）》等，进行了诸多探索。2019年，佛山在中国新型智慧城市建设与发展综合影响力评估排名中位列全国地级市第三名，佛山市政府网连续九年获得全国政府网站绩效评估地级市第一名，佛山市入选中国智慧城市20强。
+              2020年是高水平全面建成小康社会和“十三五”规划收官之年。面向未来，佛山正在积极编制“数字佛山”建设总体规划。无论是规划还是建设，都需要广大市民群众、企事业单位职工、专家学者等社会各界的理解、支持、参与。
+              征文内容可以书写数字政府给自己生产生活带来的实实在在变化，也可以描绘对数字佛山的
+              憧憬；可以畅谈自己体会到的城市治理痛点与诉求，也可以为智慧城市建设出谋划策；可以
+              畅想大数据、云计算、区块链、人工智能等互联网新技术在政务服务、城市管理、社会治理
+              、教育卫生、交通安全等方方面面的应用场景，也可以为数字佛山的信息安全把脉会诊。</br>
+              <h4>三、作品要求</h4>
+              1、作品要求合法合规、观点鲜明、文字精炼。单篇字数规模原则上不超过1500字，1200字以内最佳。</br>
+              2、作品内容符合活动主题要求，重点围绕《佛山市数字政府改革建设2020年工作要点》所涉及的各方面展开，富有启迪性和前瞻性。</br>
+              <h4>四、评奖安排</h4>
+              主办方每月筛选部分优秀作品刊登在佛山+APP，并奉上稿酬。
+              主办方每个季度对优秀作品进行一次复评，评选出季度金奖作品1件，发放奖状及2000元奖金。复评主要依据专业人士意见及优秀作品在佛山+平台上的阅读量和点赞量。</br>
+            </p>
+          </div>
+          <div class="back_btn" @click="showRule = 0">返回</div>
+        </div>
+      </div>
+    </div>
+    <div class="sub_container" v-show="page === 1">
+      <div class="input_container" v-show="showRule === 0">
+        <p class="title">活动主题：“数字佛山大家谈”</p>
+        <p class="desc">1、作品要求合法合规、观点鲜明、文字精炼。单篇字数规模原则上不超过1500字，1200字以内最佳。</br>
+          2、作品内容符合活动主题要求，重点围绕《佛山市数字政府改革建设2020年工作要点》所涉及的各方面展开，富有启迪性和前瞻性。 </p>
+        <div class="article_input">
+          <input type="text" placeholder="请输入标题" v-model="article_title">
+        </div>
+        <div class="article_input">
+          <input type="text" placeholder="请输入作者" v-model="article_author">
+        </div>
+        <textarea type="text" name="" id="" cols="30" rows="10" placeholder="写出您的内容" v-model="content"></textarea>
+        <p class="contentLength">{{content.length}}字</p>
+        <div class="pic_content">
+          <img class="upload_pic" v-for="item in imgArray" :src="item" alt="">
+        </div>
+        <label for="inputId">
+          <div class="upload_btn"><img src="./img/upload.png" />
+            上传图片
+            <input style="display: none;" id="inputId" ref="input" type="file" accept="image/*" multiple="multiple"
+              @change="handleFileChange">
+          </div>
+        </label>
+        <div
+          :class="['submit_btn',(content.length>0&&article_title.length >0&&article_author.length >0)?'':'disabled_btn']"
+          @click="submit">提交
+        </div>
+
+      </div>
+    </div>
+    <div class="sub_container" v-show="page === 2">
+      <div class="success_container">
+        <p class="title">提交成功</p>
+        <div class="back_btn" @click="page = 0">返回</div>
+      </div>
+    </div>
+    <div id="loader" :class="['loader',loading?'':'disable_loader']">
+      <div class="loading_content loader-inner ball-pulse">
+        <div></div>
+        <div></div>
+        <div></div>
+        <p style="color: white;">提交中</p>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="./plugins/md5.js"></script>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./plugins/vue/vue-resource.js"></script>
+<script src="./plugins/vue/vue.js"></script>
+<script src="./js/weixin.js"></script>
+<script src="./js/authInfo.js?v=1.0.2"></script>
+<script src="./js/app.js?v=1.1.0"></script>
+<!-- <script type="text/javascript" src="./js/vconsole.min.js"></script> -->
+
+<script type="text/javascript">
+  // var vConsole = new VConsole();
+
+  vapp.$nextTick(function () {
+    $("#app").css('display', '')
+    authInfo.getUserInfo()
+  })
+
+  // 跳转
+  function pushLottery() {
+    window.location.href = "./lottery/index.html"
+  }
+
+  $('textarea').on('blur', function () {
+    window.scroll(0, 0)
+  })
+  $('input').on('blur', function () {
+    window.scroll(0, 0)
+  })
+</script>
+<div style="display:none">
+  <script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1278597280&web_id=1278597280"></script>
+</div>
+
+</html>

@@ -1,0 +1,96 @@
+/*
+    note : 自定模态框
+    author : zx
+    date : 2020-6-5
+*/
+
+.modalfade {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 999;
+    background-color: rgba(0,0,0,0.5) !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0 !important;
+    display: none;
+}
+
+.fspmodal {
+    position: relative;
+    top: 15%;
+    width: 45%;
+    /* height: 60%; */
+    background-color: #fff;
+    border: 1px solid #fff;
+    margin: 0 auto !important;
+    border-radius: 5px;
+}
+
+.smmodal {
+    width: 20% !important;
+}
+
+.fspmodal-title {
+    display: flex;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dadada;
+}
+
+.fspmodal-title-inner {
+    flex: 16;
+    text-align: justify;
+    font-size: 20px;
+    /* color: #fff; */
+}
+
+.fspmodal-title-close {
+    flex: 1;
+}
+
+.fspmodal-content {
+    width: 100%;
+}
+
+.fspmodal-content textarea {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    height: 300px !important;
+    resize: none;
+    border: 1px solid #c90f19;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+.fspmodal-content textarea:hover {
+    border: 1px solid #ffc14d;
+    background-color: #fffffd;
+}
+
+.fspmodal-content p {
+    padding: 5px 20px;
+}
+
+.fspmodal-footer {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    margin-top: 10px;
+    border-top: 1px solid #dadada;
+}
+
+.processmodal {
+    text-align: center;
+}
+
+.processmodal img {
+    width: 30px;
+    height: auto;
+}

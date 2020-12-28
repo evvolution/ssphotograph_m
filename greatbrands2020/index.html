@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/> 
+	<title>坚持创新发展 共塑城市榜样！2020佛山口碑榜火热竞榜中</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="other/countdown.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script type="text/javascript" src='https://res.wx.qq.com/open/js/jweixin-1.6.0.js'></script>
+	<script type="text/javascript" src="js/weixin.js"></script>
+	<script type="text/javascript" src="js/authInfo.js"></script>
+	<script type="text/javascript">
+		var initflag = 0;
+		fs_getUserinfo(()=>{
+			if (authInfo.isApp) {
+				if (authInfo.fs_token&&authInfo.fs_token.length>0) {
+					initflag = 1; //在app已登录
+					isMyhaveprize()
+				}else {
+					initflag = 2; //在app未登录
+					// isMyhaveprize()
+					fs_login();
+				}
+			}else if(authInfo.is_weixinFun()){ //微信限制
+				$("#notice").modal('show')
+				initflag = 0; //在微信
+				authInfo.getUserInfo()
+				authInfo.fs_token;
+				/*微信领奖*/
+				myprizes()
+				getmoney()
+
+				getSign();
+			}else {
+				// $("#notice").modal('show')
+				/*下面的才是保留的*/
+				window.location.href = 'error.html';
+			}
+		})
+	</script>
+</head>
+<body>
+	<div class="kbmaincoverforloading"><img src="img/loading.gif"><br/>加载中</div>
+	<div><img src="img/kbtop2.png" style="width: 100%;" alt="页头"/></div>
+	<div class="timecountContent"><div class="countdown"></div></div>
+	<ul class="nav nav-pills" id="mainnav">
+		<li class="mainother nav-item"><a class="nav-link active" id="pills-rule-tab" data-toggle="pill" href="#pills-rule" onclick="sethint(0)">活动介绍</a></li>
+		<li class="mainlist nav-item">
+			<a class="nav-link" id="pills-policyservice-tab" data-toggle="pill" href="#pills-policyservice" onclick="sethint(1)">行政服务榜
+				<div class="kbchose" id="list1pro">(已选0/10)</div>
+			</a>
+		</li>
+		<li class="mainlist nav-item">
+			<a class="nav-link" id="pills-servicecase-tab" data-toggle="pill" href="#pills-servicecase" onclick="sethint(2)">服务案例榜
+				<div class="kbchose" id="list2pro">(已选0/10)</div>
+			</a>
+		</li>
+		<li class="mainother nav-item"><a class="nav-link" id="pills-rank-tab" data-toggle="pill" href="#pills-rank" onclick="getrank('16')">当前排名</a></li>
+	</ul>
+	<div class="tab-content" id='kbmain'>
+		<div class="tab-pane fade show active" id="pills-rule"><br/>
+			<img src="img/content4.png" style="width:95%;display:block;margin:0 auto;"/>
+			<!-- <br/><div id="myprizebtn" onclick="myprizes()">我的奖品</div> -->
+			<div id="myprizeNotice">您还有未领取的红包<br/>请分享本活动页面至微信打开即可自动领取</div>
+		</div>
+		<div class="tab-pane fade" id="pills-policyservice"><br/>
+			<div class="list-group" id="policyserviceList"><img src="img/loading.gif" class="kbloading" id="l1loading"></div>
+		</div>
+		<div class="tab-pane fade" id="pills-servicecase"><br/>
+			<div class="list-group" id="servicecaseList"><img src="img/loading.gif" class="kbloading" id="l2loading"></div>
+		</div>
+		<div class="tab-pane fade" id="pills-rank"><br/>
+			<ul class="secondnav nav nav-pills">
+				<li class="secondlevel"><a class="nav-link active" id="pills-policyserviceRank-tab" data-toggle="pill" href="#pills-policyservice-rank">行政服务榜</a></li>
+				<li class="secondlevel"><a class="nav-link" id="pills-servicecaseRank-tab" data-toggle="pill" href="#pills-servicecase-rank" onclick="getrank('17')">服务案例榜</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade show active" id="pills-policyservice-rank"><br/>
+					<div class="list-group" id="policyserviceRank"><img src="img/loading.gif" class="kbloading" id="r1loading"></div>
+				</div>
+				<div class="tab-pane fade" id="pills-servicecase-rank"><br/>
+					<div class="list-group" id="servicecaseRank"><img src="img/loading.gif" class="kbloading" id="r2loading"></div>
+				</div>
+			</div>
+		</div>
+	</div><br/><br/>
+	<div class="fixbutton" onclick="submitvote()"><img src="img/submit.png"></div>
+
+	<div class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" id="notice">
+		<div class="modal-dialog modal-dialog-centered">
+		  	<div class="modal-content"><img src="img/notice3.jpg"></div>
+		</div>
+	</div>
+
+	<div class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" id="mypocket">
+		<div class="modal-dialog modal-dialog-centered">
+		  	<div class="modal-content">
+				<div class="redpocket" id="red_base" style="display: block;" onclick="getPocket()">
+					<img src="img/open.png">
+				</div>
+				<div class="redpocket" id="red_null" style="display: none;" >
+					<img src="img/miss.png">
+					<div class="redpocket-btn" onclick="getEnd()"><img src="img/back.png"></div>
+				</div>
+				<div class="redpocket" id="red_get" style="display: none;">
+					<img src="img/opened.png">
+					<div id="red_get_num">loading...</div>
+					<div class="redpocket-btn" onclick="getEnd()"><img src="img/get.png"></div>
+				</div>
+		 	</div>
+		</div>
+	</div>
+
+	<div class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" id="captcha">
+		<div class="modal-dialog  modal-dialog-centered">
+		  	<div class="modal-content" style="background: rgba(255,255,255,0.9);">
+				<div class="modal-body">
+					<img id="captchaimg" alt="验证码"/>
+					<div class="input-group">
+						<input id="captchacode" type="text" class="form-control" placeholder="请输入验证码" aria-label="请输入验证码" aria-describedby="button-addon2">
+						<div class="input-group-append">
+							<button class="captchareset btn btn-danger" type="button" onclick="getcaptcha()">
+								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+									<path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" class="btn btn-success" onclick="votepush()">点赞</button>
+				</div>
+		 	</div>
+		</div>
+	</div>
+
+	<div class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" id="myprizemodal">
+		<div class="modal-dialog modal-dialog-centered">
+		  	<div class="modal-content" style="background:rgba(255,255,255,0.9);width: 60%;">
+				<div class="modal-body">
+					<img src="img/index_prize.png" style="width:30%;display: block;margin: 0 auto 20px;">
+					<div id="prizeContent">
+						<div id="prizeName">加载中...</div>
+						<div id="prizeGet">加载中...</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">好的</button>
+				</div>
+		 	</div>
+		</div>
+	</div>
+
+	<div style="display:none"><script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1278597280&web_id=1278597280"></script></div>
+	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://fsnewsres.foshanplus.com/h5/greatbrands2020/other/countdown.js"></script>
+
+	<!-- <script type="text/javascript" src="js/weixin.js"></script>
+	<script type="text/javascript" src="js/authInfo.js"></script> -->
+	<script type="text/javascript" src="js/init.js"></script>
+	<script type="text/javascript">
+		//初始化倒计时
+		initClock();
+		//初始化进度条
+		initNav();
+		//初始化提交按钮
+		showSubmit();
+
+		//禁止后退
+		history.pushState(null, null, document.URL);
+        	window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+	</script>
+</body>
+</html>

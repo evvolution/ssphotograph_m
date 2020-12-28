@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/> 
+	<title>扫黑除恶治乱 共建平安佛山</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/detail.css">
+	<script type="text/javascript">
+	var ccgreenVoteDetailslogan = ''
+		function getParam(paramName) {
+			paramValue = "", isFound = !1;
+			if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {
+				arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
+				while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
+			}
+			return paramValue == "" && (paramValue = null), paramValue
+		}
+		var openvote = getParam("id")
+		function isWeixinBrower() {
+			var ua = navigator.userAgent.toLowerCase();
+			var isWeixin = ua.indexOf('micromessenger') != -1;
+			var isAndroid = ua.indexOf('android') != -1;
+			var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+			if (!isWeixin) {
+				window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1ac6cb553739a3d0&redirect_uri=https://content.foshanplus.com/h5/crimeCrackdown2020Vote/index.html&response_type=code&scope=snsapi_base&state=hyxt#wechat_redirect'
+			}
+		}
+		isWeixinBrower();
+	</script>
+</head>
+<body >
+	<div id="ccgreenVoteTitle"><img src="img/title.png" style="width: 100%;" alt="页头"/></div><br/>
+	<div class="detailCard">
+		<div class="medias" id="work"></div>
+		<div class="mainid" id="mainid">加载中...</div>
+        <div class="detailtitle" id="title">加载中...</div>
+		<div class="detailinfo" id="author">加载中...</div>
+	</div>
+	<div class="detailinfom"><img src="img/detailt.png" style="width: 70%;display: block;margin: 15px auto 0;" alt="页头"/><div id="briefx"><div id="brief"></div></div></div>
+	<!-- <div class="Vote BackorVote" onclick=vote(openvote,openvote)>点&nbsp;&nbsp;&nbsp;&nbsp;赞</div> -->
+	<div class="Back BackorVote" onclick=backpage()>首&nbsp;&nbsp;&nbsp;&nbsp;页</div><br/>
+	<script type="text/javascript" src="js/weixindetail.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/authInfodetail.js"></script>
+	<script type="text/javascript" src="js/detail.js"></script>
+	<script type="text/javascript">
+		var snopic = '';
+		var snovideo = '';
+		var ccgreenVoteDetailslogan = '';
+		var link = 'https://api.foshanplus.com/foshan/'
+		var ccpftoken = ""
+		var ccpfid = ""
+		var videoset = ' x5-video-player-type="h5" preload="metadata" playsinline="true" webkit-playsinline="true"  x-webkit-airplay="true"x5-video-orientation="portraint" x5-video-player-fullscreen="true"'
+
+		var ccgreenVoteDetailID = getParam('id');
+		if(ccgreenVoteDetailID == '') {
+			alert('链接错误，即将为您返回首页');
+            window.location.href = 'index.html';
+		}
+		authInfo.getUserInfo()
+		authInfo.fs_token;
+		// getSign();
+		getDatadetial()
+	</script>
+</body>
+</html>

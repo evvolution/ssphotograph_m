@@ -1,0 +1,77 @@
+
+@keyframes action_skew{
+	0%{transform: skew(-40deg);opacity: 0;}
+	50%{ transform: skew(40deg);opacity: 0.2;}
+	100%{ transform: skew(0deg);opacity: 1;}
+}
+ 
+@keyframes action_rotateY{
+	0%{transform: rotateY(0deg);opacity: 0;}
+	50%{ transform: rotateY(180deg);opacity: 0.2;}
+	100%{ transform: rotateY(360deg);opacity: 1;}
+}
+ 
+@keyframes action_translateY{
+	0%{transform: translateX(150px);opacity: 0;}
+	100%{ transform: translateX(0px);opacity: 1;}
+}
+ 
+@keyframes action_scale{
+	0%{transform: scale(0.2);opacity: 0;}
+	100%{ transform: scale(1);opacity: 1;}
+}
+@-webkit-keyframes action_scale{
+	0%{transform: scale(0.2);opacity: 0;}
+	100%{ transform: scale(1);opacity: 1;}
+}
+/*---淡出----*/
+ 
+@keyframes action_skewOut{
+	0%{transform: skew(40deg);opacity: 1;}
+	50%{ transform: skew(-40deg);opacity: 0.2;}
+	100%{ transform: skew(0deg);opacity: 0;}
+}
+ 
+@keyframes action_rotateYOut{
+	0%{transform: rotateY(360deg);opacity: 1;}
+	50%{ transform: rotateY(180deg);opacity: 0.2;}
+	100%{ transform: rotateY(0deg);opacity: 0;}
+}
+ 
+@keyframes action_translateYOut{
+	0%{transform: translateX(0px);opacity: 1;}
+	100%{ transform: translateX(150px);opacity: 0;}
+}
+ 
+@keyframes action_scaleOut{
+	0%{transform: scale(1);opacity: 1;}
+	100%{ transform: scale(0.2);opacity: 0;}
+}
+@-webkit-keyframes action_scaleOut{
+	0%{transform: scale(1);opacity: 1;}
+	100%{ transform: scale(0.2);opacity: 0;}
+}
+
+@keyframes fadeIn {
+  0% {
+  opacity: 0; /*初始状态 透明度为0*/
+  }
+  50% {
+  opacity: 0.5; /*中间状态 透明度为0*/
+  }
+  100% {
+  opacity: 1; /*结尾状态 透明度为1*/
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+  opacity: 1; /*初始状态 透明度为0*/
+  }
+  50% {
+  opacity: 0.5; /*中间状态 透明度为0*/
+  }
+  100% {
+  opacity: 0; /*结尾状态 透明度为1*/
+  }
+}

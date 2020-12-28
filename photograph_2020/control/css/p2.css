@@ -1,0 +1,41 @@
+/*
+    note: 第二页样式
+    write: zx
+*/
+
+.pageTwo {
+    text-align: center;
+    width: 100%;
+    background: url(http://img.foshanplus.com/2020/pic/chan/p2/p2main.png) top center no-repeat;
+    background-size: 100%;
+}
+
+.mainforp2 {
+    position: absolute; 
+    left: 50%; 
+    top: 50%;
+    width: 80%;
+    height: 85%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background-color: rgba(255,255,255,0.1);
+    padding: 50px;
+    /* border: 1px solid #000; */
+}
+
+.p2row {
+    margin-bottom: 0.5vw;
+}
+
+.moreintroforp2 {
+    padding: 10px;
+    background-color: #31a242;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 22px;
+    width: 150px;
+    bottom: 3%;
+    right: 3%;
+    cursor: pointer;
+    position: absolute;
+}

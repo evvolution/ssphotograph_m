@@ -1,0 +1,63 @@
+/*
+    note: 通用样式
+    write: zx
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fffdde;
+    background-size: 100%;
+    overflow-y: auto;
+}
+
+.mainpart_m {
+    position: absolute;
+    height: 100%;    
+    text-align: center;
+}
+
+.header {
+    position: relative;
+    /* top: 5%; */
+    margin-top: 5%;
+    max-height: 15%;
+    min-height: 10%;
+}
+
+.header img {
+    width: 80%;
+}
+
+.title_m {
+    position: relative;
+    /* top: 5%; */
+    margin-top: 2%;
+    max-height: 15%;
+    min-height: 10%;
+}
+
+.title_m img {
+    width: 90%;
+}
+
+.footer_m {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 12vw;
+    background-color: #207329;
+    text-align: center;
+}
+
+.footer_m span{
+    line-height: 12vw;
+    color: #fffdde;
+}
+

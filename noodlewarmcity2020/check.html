@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="format-detection" content="email=no">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/check.css?v=1.0.2">
+
+  <title>一碗面 温暖一座城</title>
+</head>
+
+<body>
+  <div class="container" id="app" style="display: none;">
+    <div class="prize_container" v-if="prize">
+      <img class="prize_img" :src="prize.prizeImgPath" alt="">
+      <p class="title">{{prize.prizeName}}<span>{{prizeStatus()}}</span></p>
+      <p class="end_time">有效期：{{prize.consumeEndTime}}</p>
+      <img class="check_btn" src="./img/check.png" @click="consumeCoupon()"
+        v-if="prize.sendStatus == 0&&isAdmin == 1&&!isOver" alt="">
+    </div>
+
+    <div class="list" v-if="isAdmin == 1">
+
+      <div :class="isBox?'select_btn':'selected_btn'" @click="changeType(0)">三包</div>
+      <div :class="isBox?'selected_btn':'select_btn'" @click="changeType(1)">一箱</div>
+      <p class="count_title">奖品总数：{{prizeListData.prizeSurplusCount+prizeListData.winCount}}
+        剩余：{{prizeListData.prizeSurplusCount}}已核销：{{prizeListData.consumeCount}}
+        已领取：{{prizeListData.winCount}}</p>
+      <p class="count_title"></p>
+
+      <div>
+        <div :class="isConsume?'selected_btn':'select_btn'" @click="changeList(1)">已使用</div>
+        <div :class="isConsume?'select_btn':'selected_btn'" @click="changeList(0)">未使用</div>
+      </div>
+      <div class="title_item list_item">
+        <p class="nickname">昵称</p>
+        <!-- <p class="prizename">奖品名称</p> -->
+        <p class="consumeTime">{{getTimeTitle()}}</p>
+      </div>
+      <div class="list_item" v-for="(item,index) in prizeList">
+        <p class="nickname">{{item.nickName}}</p>
+        <!-- <p class="prizename">{{item.prizeName}}</p> -->
+        <p class="consumeTime" v-if="item.consumeTime">{{getTime(item.consumeTime)}}</p>
+        <p class="consumeTime" v-else>{{getTime(item.receiveTime)}}</p>
+      </div>
+      <div class="item-more" @click="getRecordList(false)" v-if="canMore">查看更多
+        <img class="more-img" src="./img/right_arrow.png" alt="">
+      </div>
+      <div class="item-more" v-else>
+        没有更多数据
+      </div>
+    </div>
+    <div>
+    </div>
+  </div>
+  </div>
+
+  </div>
+
+  <script src="./js/jquery-3.3.1.min.js"></script>
+  <!-- <script src="./js/mescroll/mescroll.min.js"></script> -->
+  <script src="./plugins/vue/vue-resource.js"></script>
+  <script src="./plugins/vue/vue.js"></script>
+  <script src="./js/weixin.js"></script>
+  <script src="./js/authInfo.js?v=1.0.7"></script>
+  <script src="./js/check.js?v=1.0.4"></script>
+  <script type="text/javascript">
+    // 兑奖码
+
+    vapp.$nextTick(function () {
+      $("#app").css('display', '')
+      var prizeCode = getQueryString('prizeCode')
+      authInfo.getUserInfo()
+      fs_getUserinfo(() => {
+        if (authInfo.fs_token && authInfo.fs_token.length > 0) {
+          vapp.fs_token = authInfo.fs_token
+          vapp.prizeCode = prizeCode
+          vapp.getDetailPrize()
+          vapp.getRecordList(true)
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>

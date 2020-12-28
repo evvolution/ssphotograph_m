@@ -1,0 +1,100 @@
+/*
+    note: 第五页样式
+    write: zx
+*/
+
+.pagefive {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background: url(http://img.foshanplus.com/2020/pic/chan/p5/p5main.png) top center no-repeat;
+    background-size: 100%;
+}
+
+.mainforp5 {
+    position: absolute; 
+    left: 50%; 
+    top: 50%;
+    width: 80%;
+    height: 85%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    padding: 50px;
+    text-align: center;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.p5row {
+    margin-bottom: 1vw;
+}
+
+.p5rowlevel2 {
+    margin-bottom: 1vw;
+}
+
+.oldprjs {
+    width: 85% !important;
+    /* border: 1px solid #000; */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+.oldprjcover {
+    width: 288px;
+    height: 162px;
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+.oldprjcover img {
+    width: 100%;
+    height: 100%;
+    /* cursor: pointer; */
+}
+
+.oldprjitem {
+    padding: 30px 0;
+}
+
+.oldprjtitle {
+    margin: 0.5vw 0;
+    font-size: .6vw;
+    color: #31a242;
+}
+
+.p5direct {
+    display: inline;
+    padding: 10px;
+    background-color: #31a242;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 22px;
+    bottom: 5%;
+    cursor: pointer;
+    margin: 0 30px;
+}
+
+.btncontent {
+    position: absolute;
+    bottom: -36px;
+    left: 0;
+    right: 0;
+}
+
+.p5news {
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    top: 12%;
+    left: 57%;
+    width: 40%;
+    font-size: 0.9vw;
+}
+

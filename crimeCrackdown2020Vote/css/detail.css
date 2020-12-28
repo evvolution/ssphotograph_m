@@ -1,0 +1,138 @@
+
+* {
+	margin:0;
+	padding:0;
+}
+
+body{
+    /* background-color: #fffffb; */
+    background: url('https://fsnewsres.foshanplus.com/h5/shcwswds/other/main.jpg') no-repeat top center; 
+    background-size: cover;
+    /* background-color: #fefeda; */
+}
+
+.detailCard {
+	/* background: url('../img/cardbak.png') no-repeat top center; */
+    /* background-size: cover; */
+    width: 90%;
+    height: auto;
+    margin: -50px auto 0;
+    border-radius: 10px;
+    position: relative;
+    padding: 0px 0px 10px;
+    background-color: #fff;
+    box-shadow: inset 0px 3px 6px #e3e2e3;
+    border:1px solid #f9e897
+}
+
+#mainid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2px 5px;
+    background: #e4121e;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    width: 70px;
+    text-align: center;
+    border-radius: 10px 0px 10px 0px;
+}
+
+.cardtitle {
+	display: block;
+	width: 50%;
+	margin: 0 auto;
+}
+
+.detailtitle {
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: 5px;
+    /* display: inline-block; */
+    text-align: center;
+}
+
+#goods {
+    /* display: inline-block; */
+    color: #e4121e;
+    font-size: 14px;
+    font-weight: 800;
+    /* right: 30px;
+    position: absolute;
+    text-align: right; */
+}
+
+.detailinfo {
+    font-size: 14px;
+    text-align: center;
+}
+
+.detailinfom {
+    font-size: 14px;
+    text-align: justify;
+    margin: 10px auto;
+    width: 90%;
+}
+
+video {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    border: none;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.medias img {
+    display: block;
+    margin: 20px auto;
+    width: 95%;
+}
+
+.BackorVote {
+    margin: 15px auto;
+    width: 95%;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 10px;
+    border: 0;
+}
+
+.Vote {
+    margin-top: 25px;
+    background-color: #e4121e;
+    color: #fff;
+    /* font-weight: 800; */
+    border:1px solid #f9e897;
+    width: 90%;
+}
+
+.Back {
+    background-color: #fff;
+    color: #e4121e;
+    width: 90%;
+}
+
+#briefx {
+    background-color: #fff;
+    padding: 15px;
+    background-color: #e4121e;
+    border:1px solid #f9e897;
+    border-radius: 10px;
+    box-shadow: inset 0px 5px 6px #b60e18;
+}
+
+#brief {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    /* padding: 5px 10px; */
+    /* background-color: #e4121e; */
+}
+
+.specialtitle {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 800;
+}

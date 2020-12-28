@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <title>佛山复学第一课</title>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no">
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta name="renderer" content="webkit">
+  <meta name="referrer" content="never">
+  <link rel="stylesheet" type="text/css" href="plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="control/style/main.css?v=1.0.4">
+  <link rel="stylesheet" href="control/style/answer.css">
+  <link rel="stylesheet" href="control/style/loaders.min.css">
+  <link rel="stylesheet" href="plugins/video/video-js.css">
+  <!-- <link href="plugins/video/video-js.css" rel="stylesheet"> -->
+</head>
+
+<body>
+  <div class="begin-loading">
+    <div class="loading-container">
+      <div class="loading-progress"></div>
+      <img class="loading-bg"  src="http://img.foshanplus.com/2020/pic/reclass/v2/loading2.png" alt="">
+    </div>
+    <p>加载中...</p>
+    <p id="progress-label"></p>
+    <img class="bg" src="http://img.foshanplus.com/2020/pic/reclass/v2/loadingBg.jpg" alt="">
+  </div>
+  <div id="app" style="display: none;">
+    <div class="coversection section" v-show="page == -1">
+      <img class="left-icon" style="display: inline-block;" :src="getImg('Left-logo.png')" alt="">
+      <img class="tips-icon" src="./img/tips.png" alt="">
+      <img class="center-icon" :src="getImg('home-Title.png')" alt="">
+      <img class="detail-icon" :src="getImg('details.png')" alt="" @click="isShowTips =true">
+      <div class="startsection">
+        <!-- <p class="expect-desc">感谢您的关注，第二轮答题结束。</br>敬请期待第三轮答题上线！</p> -->
+        <img class="goFoshan-icon" :src="getImg('get-foshan.png')" alt="" onclick="downloadApp()" v-if="isWeixin">
+        <img class="start-icon" :src="getImg('Start-learning.png')" alt="" @click="page=0">
+        <p class="left-desc">佛山市教育局&nbsp;&nbsp;佛山日报社&nbsp;&nbsp;佛山+</p>
+      </div>
+      <img class="head-icon" :src="getImg('home-prospect.png')" alt="">
+      <img class="cover-bg" :src="getImg('home-background.jpg')" alt="">
+    </div>
+    <div class="fspsection section" v-show="page == 0">
+      <div class="noticeforinput">请填写你的信息</div>
+      <div class="selectgroup form-group">
+        <label for="userdistrict" class="labelforfssheet">身份</label>
+        <select class="selectforfs form-control" v-model="userIdentity" style="border-radius: 20px!important;">
+          <option :value="item.value" v-for="item in userIds">{{item.name}}</option>
+
+        </select>
+      </div>
+      <div v-show="userIdentity==0||userIdentity==1">
+        <div class="selectgroup form-group">
+          <label for="userdistrict" class="labelforfssheet">辖区</label>
+          <select class="selectforfs form-control" id="userdistrict" onchange="chg(this);"
+            style="border-radius: 20px!important;">
+            <option value="-1">-请选择辖区-</option>
+          </select>
+        </div>
+        <div class="selectgroup form-group">
+          <label for="userschool" class="labelforfssheet">学校</label>
+          <select class="selectforfs form-control" id="userschool" style="border-radius: 20px!important;">
+            <option value="-1">-请选择学校-</option>
+          </select>
+        </div>
+        <div class="selectgroup form-group">
+          <label for="username" class="labelforfssheet">姓名</label>
+          <input type="text" class="selectforfs form-control" id="username">
+        </div>
+      </div>
+
+      <div id="infosetBtn" class="selectgroup startbtn" onclick="start()">
+        <img :src="getImg('begin.png')" style="width: 100%;" alt="">
+      </div>
+      <!-- <div onclick="createPoster()" style="text-align: center;margin-top:20px">
+        <b>快速通关</b>
+      </div> -->
+    </div>
+    <div class="fspsection section" id="passBegin" v-show="page == 1" @click="page=2">
+      <img class="titleImg" :src="readyImg()" alt="">
+
+      <img class="descImg" :src="getImg('beginDesc.png')" alt="">
+
+    </div>
+    <div class="fspsection section questionSection" v-show="page == 2">
+      <div class="questionContent">
+        <video id="videoContainer" ref='videoContainer' class="video-js vjs-default-skin vjs-big-play-centered" controls
+          preload="none" data-setup='{"example_option":true}' webkit-playsinline="true" playsinline="true"
+          style="outline: none;" poster="http://img.foshanplus.com/2020/pic/reclass/v2/videoPoster_1.jpg">
+          <source src="https://fsnewsres.foshanplus.com/news/843ac68e424d49f983a472ef6a6be344.mp4" type="video/mp4" />
+        </video>
+        <div class="questiondetail">{{getCurrentQuestionInfo().questions}}</div>
+        <div id="choices-container">
+          <div :class="['choices','row',isSelectChoice(index)]" v-for="(item,index) in getCurrentQuestionInfo().keys"
+            @click="selectChoice(index)">
+            <div class="choiceOrder"><img :src="getChoiceImg(index)"></div>
+            <div class="choicedetail">{{item}}</div>
+          </div>
+        </div>
+        <div id="dis-nextBtn" v-show="choiceSelections.length === 0">
+          <img :src="getImg('disNext.png')" alt="">
+        </div>
+        <div id="nextBtn" @click="next()" v-show="choiceSelections.length > 0">
+          <img :src="getImg('next.png')" alt="">
+        </div>
+      </div>
+      <div class="loader" id="loader" style="visibility: hidden;">
+        <div class="loader-inner ball-pulse"
+          style="position: absolute;left: 0;top: 45%;width: 100%;text-align: center;">
+          <div></div>
+          <div></div>
+          <div></div>
+          <p style="color: white;">获取分数中</p>
+        </div>
+      </div>
+    </div>
+    <!-- 勋章页 -->
+    <div class="fspsection section" id="passFinish" v-show="page == 3">
+      <div class="top-medalContainer">
+        <img :src="getImg('light-xs.png')" class="lightBg" alt="">
+        <img class="icon" :src="getTopMedal()" alt="">
+        <p class="title">{{getTopMedalDesc()}}</p>
+      </div>
+      <div class="bottom-medalContainer">
+        <div class="item">
+          <img :src="getImg('bottomMedal-1.png')" alt="">
+          <p>卫生防疫勋章</p>
+        </div>
+        <div class="item">
+          <img :src="getImg('bottomMedal-2.png')" alt="" v-if="passIndex> 1">
+          <img :src="getImg('disMedal-2.png')" alt="" v-else>
+          <p :class="passIndex> 1?'':'disTitle'">校园防疫勋章</p>
+        </div>
+        <div class="item">
+          <img :src="getImg('bottomMedal-3.png')" alt="" v-if="passIndex> 2">
+          <img :src="getImg('disMedal-3.png')" alt="" v-else>
+          <p :class="passIndex> 2?'':'disTitle'">心理防疫勋章</p>
+        </div>
+      </div>
+      <div class="nextPassBtn" @click="nextPass()" v-if="passIndex!=3">
+        <img :src="getImg('nextPass.png')" alt="">
+      </div>
+      <div class="nextPassBtn showJiyuBtn" @click="nextPass()" v-else>
+        <img :src="getImg('watch.png')" alt="">
+      </div>
+    </div>
+    <!--  寄语页 -->
+    <div class="fspsection section jiyuSection" v-show="page == 4">
+      <video id="jiyuvideoContainer" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="none"
+        data-setup='{"example_option":true}' webkit-playsinline="true" playsinline="true" style="outline: none;"
+        poster="http://img.foshanplus.com/2020/pic/reclass/v2/jiyuPoster.jpg">
+        <source id="videoSource" src="http://fsnewsres.foshanplus.com/news/8a1aba68e4cb45eaa6ed2084c5ea9f24.mp4"
+          type="video/mp4" />
+      </video>
+      <div class="jiyuTitle">观看钟南山院士和李兰娟院士的寄语，<br>为院士点赞后方可查看成绩<br><small><b>欢迎你撰写观看感向班级和学校投稿哟！</b></small></div>
+
+      <div class="jiyuDesc" id="likeCount">*已有{{likedCount}}名师生为院士们点赞</div>
+      <div id="infosetBtn" class="selectgroup likebtn" @click="like()">
+        <img :src="getImg('like.png')" v-show="!liked" style="width: 100%;" alt="">
+        <img :src="getImg('liked.png')" v-show="liked" style="width: 100%;" alt="">
+      </div>
+      <div class="checkScoreBtn" v-show="score != 20&&liked" onclick="checkScore()">
+        <img :src="getImg('checkScore.png')" alt="">
+      </div>
+      <div class="createPosterBtn" v-show="score == 20&&liked" onclick="createPoster()">
+        <img :src="getImg('createPoster.png')" alt="">
+      </div>
+    </div>
+    <!-- 分数页 -->
+    <div class="fspsection section pointSection" v-show="page == 5">
+      <img class="back-icon" :src="getImg('back.png')" alt="" onclick="beginAgain()">
+      <img class="scoreBg" :src="getImg('scoreBg.png')" alt="">
+      <!-- <img class="scoreBg" :src="getImg('scoreBg.png')" alt=""> -->
+      <p class="scoreTitle">{{score*5}}分</p>
+      <p class="scoreDesc" v-if="isWeixin">满分贴士：视频里会有题目的答案哦，多选题你有没有少选了一个选项呢？不是满分没关系，快去佛山+重新答题拿满分吧！</p>
+      <p class="scoreDesc" v-else>满分贴士：视频里会有题目的答案哦，多选题你有没有少选了一个选项呢？不是满分没关系，快来重做一次拿满分！</p>
+      <p class="wrongTitle">错题集(点击题号查看详情)</p>
+      <div class="wrongContainer">
+        <div class="wrongItem" @click="checkQuestionItem(index)" v-for="(item,index) in answerItems"
+          v-if="item.is_correct == 0">
+          {{index+1}}
+          <img :src="getImg('wrongItem.png')" alt=""></div>
+      </div>
+      <div class="downloadBtn" onclick="downloadApp()" v-if="!isVisit&&isWeixin">
+        <img :src="getImg('rush-fs.png')" alt="">
+      </div>
+      <div class="downloadBtn" onclick="beginAgain()" v-if="!isWeixin">
+        <img :src="getImg('re.png')" alt="">
+      </div>
+      <div class="scorePoster" onclick="createPoster()" v-if="!isVisit">生成海报</div>
+      <div class="downloadBtn" onclick="createPoster()" v-show="isVisit">
+        <img :src="getImg('createPoster-1.png')" alt="">
+      </div>
+      <div class="tips_container" v-show="showWrongItem.questions">
+        <div class="content">
+          <p class="wrongItemTitle">{{showWrongItem.questions}}</p>
+          <p v-for="(item,index) in showWrongItem.keys">{{choiceItems[index]}}.{{item}}</p>
+          <p id="yourAnswer">正确答案：{{showWrongItem.answer}} 您的选择：{{showWrongItem.yourAnswer}}</p>
+        </div>
+        <div class="close" @click="showWrongItem={}"></div>
+        <img :src="getImg('showItem.jpg')" alt="">
+      </div>
+    </div>
+
+    <!-- 打卡页 -->
+    <div class="section clockSection" v-show="page == 6">
+      <div class="clock-container" id="teach-container" v-if="isVisit">
+        <div class="text-container">
+          <p v-if="userIdentity == 1">各位同学：</p>
+          <p v-else><br></p>
+          <p style="text-align: left;">
+            我在佛山市中小学"复学第一课"挑战答题里过关斩将，获得了{{score*5}}分的成绩，被授予"防疫卫士"称号，大家快来长按识别图中的二维码一起学习吧。
+          </p>
+          <p v-if="userIdentity == 1">{{user.userschool}} {{user.username}}老师</p>
+        </div>
+        <img class="clockBg" :src="getImg('teacherBg.jpg')" alt="">
+      </div>
+      <div class="clock-container" id="clock-container" v-else>
+        <div class="text-container">
+          <p>{{user.username}}同学：</p>
+          <p style="text-align: left;" v-if="score==20">在本次佛山市中小学“复学第一课”中，你表现突出，成绩优异，获得满分，特授予你"防疫小卫士"称号，以资鼓励。</p>
+          <p style="text-align: left;" v-else>在本次佛山市中小学"复学第一课"中，你并未掌握所有知识点，获得{{score*5}}分，但做题积极，特授予你"防疫小先锋"称号，以资鼓励。</p>
+          <p>{{user.userschool}}</p>
+        </div>
+        <img class="clockBg" :src="getImg('stuBg.jpg')" alt="">
+      </div>
+      <p class="clock-desc" v-if="isVisit">长按保存</p>
+      <p class="clock-desc" v-else>长按保存照片发送给班主任完成打卡</p>
+      <div class="clockBtn" @click="isShowCourse=true" v-if="!isWeixin||(score == 20&&userIdentity==0)">
+        <img :src="getImg('shareCourse.png')" alt="">
+      </div>
+      <div class="clockBtn" onclick="downloadApp()" v-else>
+        <img :src="getImg('rush-fs-again.png')" alt="">
+      </div>
+      <img class="showCourse" :src="getImg('showCourse.png')" v-show="isShowCourse" @click="isShowCourse=false" alt="">
+    </div>
+    <div class="tips_container" v-show="isShowTips">
+      <div class="content">
+        <p class="tipsTitle">活动详情与规则</p>
+        <p>1.
+          开学在即，复学防疫“知识点”你都掌握了吗？“我是防疫小卫士”——2020年佛山市中小学“复学第一课”挑战答题活动，旨在以线上答题的形式，向全市广大中小学生普及防疫知识，加强个人防护意识，提高心理素质，养成良好的个人卫生习惯，形成人人争当“我是防疫小卫士”的科普氛围，答题满分者即可获得“防疫小卫士”称号，赶紧来挑战吧！<br>2.
+          各位同学请认真答题，一次过完成任务，佛山+APP可无限次闯关。</p>
+      </div>
+      <div class="close" @click="isShowTips=false"></div>
+      <img :src="getImg('showItem.jpg')" alt="">
+    </div>
+    <!-- <img :src="getImg('normalBg.jpg')" class="bottompic" v-show="page!=-1"> -->
+    <div class="bgpic" v-show="page!=-1">
+      <img src="./img/bottompic.png" class="bottompic" v-show="page!=-1">
+    </div>
+  </div>
+
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+  <script type="text/javascript" src="control/func/weixin.js"></script>
+  <script type="text/javascript" src="info/question.js"></script>
+  <script type="text/javascript" src="plugins/jquery/jquery.min.js"></script>
+  <!-- <script type="text/javascript" src="./plugins/video/video.min.js"></script> -->
+  <script type="text/javascript" src="plugins/vue/vue.min.js"></script>
+  <script type="text/javascript" src="./control/func/app.js?v=1.0.4"></script>
+
+  <!-- <script type="text/javascript" src="plugins/bootstrap/bootstrap.min.js"></script> -->
+  <!-- <script type="text/javascript" src="plugins/bootstrap/popper.min.js"></script> -->
+  <script type="text/javascript" src="control/func/info.js?v=1.0.2"></script>
+  <script type="text/javascript" src="info/school.js"></script>
+  <script type="text/javascript" src="plugins/html2canvas/html2canvas.min.js"></script>
+  <script type="text/javascript" src="control/func/savePhoto.js"></script>
+</body>
+<script type="text/javascript">
+  // initScoreView(35, [5, 12, 18])
+  function downloadApp() {
+    window.location =
+      "https://vip.foshanplus.com/app/download.html?type=7&newsId=0&newsUrl=https://content.foshanplus.com/firstclass/v2/index.html&subscription=0&cid=1011"
+  }
+
+  vapp.$nextTick(function () {
+    // $("#app").show();
+    // vapp.page = 10
+    // vapp.page = -1;
+    getSign()
+  })
+
+  // 重新答题
+  function beginAgain() {
+    vapp.initData()
+    vapp.page = 0;
+  }
+
+
+  function createPoster() {
+    vapp.user.userschool = userschool
+    vapp.user.username = username
+    vapp.page = 6
+    setTimeout(() => {
+      if (vapp.isVisit) {
+        saveSharePic("teach-container")
+      } else {
+        saveSharePic("clock-container")
+      }
+    }, 100);
+    stopVideo()
+  }
+
+
+
+  function checkScore() {
+    stopVideo()
+    vapp.page = 5
+  }
+
+
+  // 在佛山+里答题
+  function goApp() {
+
+  }
+
+  // 预下载 第一次进来
+  function preImgLoading() {
+    var progressDom = document.getElementsByClassName('loading-progress')[0]
+    var progressLabel = document.getElementById('progress-label')
+    var loadingPage = document.getElementsByClassName('begin-loading')[0]
+    var second = 0;
+
+    // 是否加载过
+    var Launched = sessionStorage.getItem("Launched");
+    var interval = 20
+    if (Launched) {
+      console.log('第二次登陆')
+      interval = 10
+
+    }
+
+    var timer = setInterval(() => {
+      second ++;
+      if (second >=100) {
+        window.clearInterval(timer)
+        loadingPage.style.display='none'
+        $("#app").show();
+        vapp.page = -1
+        sessionStorage.setItem("Launched", 1);
+      }
+      progressDom.style.width = second + '%'
+      progressLabel.innerHTML = second + '%'
+    }, interval);
+  }
+  preImgLoading()
+
+  fitIos()
+
+  function fitIos() {
+    var u = navigator.userAgent;
+    var flag;
+    var myFunction;
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+
+    document.body.addEventListener('focusin', () => { //软键盘弹起事件
+      flag = true;
+      clearTimeout(myFunction);
+    })
+    document.body.addEventListener('focusout', () => { //软键盘关闭事件
+      flag = false;
+      if (!flag) {
+        myFunction = setTimeout(function () {
+
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+          }) //重点  =======当键盘收起的时候让页面回到原始位置(这里的top可以根据你们个人的需求改变，并不一定要回到页面顶部)
+
+        }, 200);
+      } else {
+        return
+      }
+    })
+  }
+</script>
+
+</html>

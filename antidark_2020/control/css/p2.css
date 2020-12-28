@@ -1,0 +1,33 @@
+/*
+    note: 第二页样式
+    write: zx
+*/
+
+.pageTwo {
+    text-align: center;
+    width: 100%;
+}
+
+.mainp2 {
+    display: flex;
+}
+
+.p2left {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.p2right {
+    flex: 2;
+}
+
+.p2content {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.p2right .p2content img {
+    max-width: 82%;
+    height: auto;
+}
+

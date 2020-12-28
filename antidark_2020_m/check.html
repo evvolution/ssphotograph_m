@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>我要报名</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta name="renderer" content="webkit">
+    <meta name="referrer" content="never">
+    <link rel="stylesheet" type="text/css" href="control/css/main.css">
+    <style>
+        #activesite {
+            position: absolute;
+            width: 10px;
+            height: 1px;
+            background: transparent;
+            border: 0;
+            color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <input id="activesite" value="https://content.foshanplus.com/antidark_2020/index.html" />
+    <div class="mainpart_m">
+        <div class="pnheader" onclick="m_bak()"><img src="img/p1title.png" style="width: 70%;"/></div>
+        <div class="pnmain" onclick="clipToborad()">
+            <img src="img/p2main.png" style="width: 75%;"/>
+        </div>
+        <div class="pnfooter"><img src="img/film.png" /></div>
+    </div>
+    <script type="text/javascript" src="control/js/main.js"></script>
+    <script type="text/javascript">
+        function clipToborad() {
+            var target = document.getElementById("activesite");
+            console.log(target)
+            target.select();
+            document.execCommand("Copy");
+            alert("已复制到剪切板，可粘贴。");
+        }
+    </script>
+</body>
+</html>

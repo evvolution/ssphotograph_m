@@ -1,0 +1,193 @@
+/*
+    note: 第三页样式
+    write: zx
+*/
+
+.pageThree {
+    text-align: center;
+    width: 100%;
+}
+
+.p3title {
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+}
+
+.p3title-1 {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.p3title-2 {
+    margin-left: 10px;
+    flex: 3;
+}
+
+.p3inner-6 {
+    background-color: #eee0df;
+    flex: 6;
+    /* border:1px solid; */
+    padding: 10px;
+    min-height: 500px;
+    margin-top: 10px;
+    margin-left: 10px;
+    max-width: 85%;
+}
+
+.p3inner-6 p {
+    text-align: justify;
+}
+
+.p3-sheetgroup {
+    display: -webkit-flex;
+    display: flex;
+    /* border: 1px solid; */
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+.p3label {
+    flex: 1;
+    height: 30px;
+    line-height: 30px;
+    font-weight: 600;
+}
+
+.p3label p {
+    font-size: 20px;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.p3label a {
+    cursor: pointer;
+    color: #c90f19;;
+}
+
+.p3noticelabel {
+    width: 60%;
+    margin: 0 auto;
+    color: #c90f19;;
+}
+
+.p3sheet {
+    flex: 3;
+    height: 45px;
+}
+
+.p3sheet input[type="text"] {
+    width: 100%;
+    line-height: 22px;
+    height: 35px;
+    font-size: 18px;
+    padding: 5px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.p3sheet select {
+    width: 100%;
+    height: 45px;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    font-size: 19px;
+    padding: 5px;
+}
+
+
+.bigfile_btn {
+    background-color: #c90f19;
+    border-radius: 5px;
+    color: #fff;
+    height: 45px;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    flex: 1;
+}
+
+.bigfile_btn_pic {
+    background-color: #c90f19;
+    border-radius: 5px;
+    color: #fff;
+    height: 45px;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    flex: 1;
+}
+
+.bigfile_btn_info {
+    height: 35px;
+    padding: 5px;
+    border: 0;
+    border-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    flex: 4;
+}
+
+.p3file, .btngroup-btn{
+    display: -webkit-flex;
+    display: flex;
+}
+
+.btngroup-btn {
+    justify-content: center;
+    align-items: center;
+}
+
+.p3btn {
+    margin: 0 5px;
+}
+
+.sinput {
+    cursor: pointer;
+}
+
+.final-group {
+    display: none;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.final-group p {
+    text-align: center;
+    color: #c90f19;
+}
+
+.final-group img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.p3guide {
+    position: relative;
+    top: 10%;
+    left: 0;
+    text-align: justify;
+    line-height: 24px;
+    width: 170%;
+    padding: 30px 10px;
+    background-color: #efe5e5;
+    box-shadow: 5px -5px 5px #717171;
+    z-index: 999;
+}
+
+.p3ok {
+    cursor: pointer;
+    padding: 10px;
+    width: 100px;
+    background: #dadada;
+    margin: 10px auto;
+}

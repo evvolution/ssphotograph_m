@@ -1,0 +1,24 @@
+/*
+    note: 新闻动态样式
+*/
+
+.newslist {
+    padding: 0 2vw 1vw;
+    width: 100%;
+    height: 55%;
+    overflow-y: auto;
+    padding: 1vw 4vw;
+}
+
+.list_item {
+    text-align: justify;
+    margin: 1.2vw 0;
+    font-size: 4vw;
+    padding: 1vw 4vw;
+    border-bottom: 1px solid #207329;
+}
+
+.list_item a {
+    text-decoration: none;
+    color: #207329
+}

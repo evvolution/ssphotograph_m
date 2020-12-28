@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/> 
+	<title>扫黑除恶治乱 共建平安佛山</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/jcountdown.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script>
+		function isWeixinBrower() {
+            var ua = navigator.userAgent.toLowerCase();
+            var isWeixin = ua.indexOf('micromessenger') != -1;
+            var isAndroid = ua.indexOf('android') != -1;
+            var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+            if (!isWeixin) {//紧急关闭活动将！去掉
+				window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1ac6cb553739a3d0&redirect_uri=https://content.foshanplus.com/h5/crimeCrackdown2020Vote/index.html&response_type=code&scope=snsapi_base&state=hyxt#wechat_redirect'
+			}
+		}
+		// isWeixinBrower();
+	</script>
+</head>
+<body>
+	<div><img src="https://fsnewsres.foshanplus.com/h5/shcwswds/other/title.png" style="width: 100%;" alt="页头"/></div>
+	<div class="timecountContent"><div class="countdown"></div></div><br/>
+
+	<ul class="nav nav-pills mb-3" role="tablist" id="ccgreenVoteTab">
+		<li class="nav-item" role="presentation">
+			<a class="nav-link active" id="pills-rule-tab" data-toggle="pill" href="#pills-rule">活动规则</a>
+		</li>
+		<li class="nav-item" role="presentation">
+			<a class="nav-link" id="pills-list-tab" data-toggle="pill" href="#pills-list" role="tab">入围作品</a>
+		</li>
+		<li class="nav-item" role="presentation" onclick=getpicrank()>
+			<a class="nav-link" id="pills-rank-tab" data-toggle="pill" href="#pills-rank">当前排名</a>
+		</li>
+	</ul>
+
+	<div class="tab-content">
+		<div class="tab-pane fade show active" id="pills-rule"><br/><img src="https://fsnewsres.foshanplus.com/h5/shcwswds/other/rule.png" style="width: 100%;"/></div>
+
+		<div class="tab-pane fade" id="pills-list">
+			<ul class="nav nav-pills" id="ccgreenVoteTabSecond">
+				<li class="secondlevel">
+					<a class="nav-link active" id="pills-pics-tab" data-toggle="pill" href="#pills-pics">微视频</a>
+				</li>
+				<li class="secondlevel">
+					<a class="nav-link" id="pills-videos-tab" data-toggle="pill" href="#pills-videos">微电影</a>
+				</li>
+				<li class="secondlevel">
+					<a class="nav-link" id="pills-cartoons-tab" data-toggle="pill" href="#pills-cartoons">微动漫</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade show active" id="pills-pics">
+					<div id="piclistContent">
+						<div class="searchpart input-group mb-3">
+							<input oninput="value=value.replace(/[^\d]/g,'')" id="searchkeywordspic" type="text" class="searchpartinput form-control" placeholder="请输入编号" aria-label="请输入编号" aria-describedby="button-addon2">
+							<div class="input-group-append">
+								<button class="searchpartbtn btn btn-danger" type="button" onclick=searchpic() >
+									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+										<path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+									</svg>&nbsp;搜索
+								</button>
+							</div>
+						</div><br/>
+						<div class="row" id="piclist"><img src="img/loading.gif" class="gridContentloading"></div>
+
+						<div id="morepicbtnforinit" class="loadmore btn btn-danger" onclick="getMore(snopic,'13')">加载更多&nbsp;<img id="moreloadpic" style="width:16px;display:none" src="./img/loading.gif"/></div>
+						<div id="searchpicbtnreturn" class="loadmore btn btn-danger" onclick="getlist('13','6')">返回&nbsp;</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="pills-videos"><br/>
+					<div id="videolistContent">
+						<div class="row" id="videolist"><img src="img/loading.gif" class="gridContentloading"></div>
+						<div id="morevideobtnforinit"></div>
+						<div id="searchvideobtnreturn"></div>						
+					</div>
+				</div>
+				<div class="tab-pane fade" id="pills-cartoons">
+					<div id="cartoonlistContent">
+						<div class="searchpart input-group mb-3">
+							<input oninput="value=value.replace(/[^\d]/g,'')" id="searchkeywordscartoons" type="text" class="searchpartinput form-control" placeholder="请输入编号" aria-label="请输入编号" aria-describedby="button-addon2">
+							<div class="input-group-append">
+								<button class="searchpartbtn btn btn-danger" type="button" onclick=searchcartoon() >
+									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+										<path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+									</svg>&nbsp;搜索
+								</button>
+							</div>
+						</div><br/>
+						<div class="row" id="cartoonlist"><img src="img/loading.gif" class="gridContentloading"></div>
+						
+						<div id="morecartoonbtnforinit" class="loadmore btn btn-danger" onclick="getMore(snocartoon,'15')">加载更多&nbsp;<img id="moreloadcartoon" style="width:16px;display:none" src="./img/loading.gif"/></div>
+						<div id="searchcartoonbtnreturn" class="loadmore btn btn-danger" onclick="getlist('15','6')">返回&nbsp;</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="tab-pane fade" id="pills-rank">
+			<ul class="nav nav-pills" id="ccgreenVoteTabSecond">
+				<li class="secondlevel">
+					<a class="nav-link active" id="pills-picsrank-tab" data-toggle="pill" href="#pills-picsrank">微视频</a>
+				</li>
+				<li class="secondlevel" onclick=getvideorank()>
+					<a class="nav-link" id="pills-videosrank-tab" data-toggle="pill" href="#pills-videosrank">微电影</a>
+				</li>
+				<li class="secondlevel" onclick=getcartoonrank()>
+					<a class="nav-link" id="pills-cartoonsrank-tab" data-toggle="pill" href="#pills-cartoonsrank">微动漫</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade show active" id="pills-picsrank">
+					<img src="img/rank.png" style="width: 70%;display: block;margin: 15px auto 0;">
+					<div class="rankss list-group" id="picsrankContent">
+						<img src="img/loading.gif" class="gridContentloading">
+					</div>
+				</div>
+				<div class="tab-pane fade" id="pills-videosrank">
+					<img src="img/rank.png" style="width: 70%;display: block;margin: 15px auto 0;">
+					<div class="rankss list-group" id="videosrankContent">
+						<img src="img/loading.gif" class="gridContentloading">
+					</div>
+				</div>
+				<div class="tab-pane fade" id="pills-cartoonsrank">
+					<img src="img/rank.png" style="width: 70%;display: block;margin: 15px auto 0;">
+					<div class="rankss list-group" id="cartoonsrankContent">
+						<img src="img/loading.gif" class="gridContentloading">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><br/><br/>
+
+	<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+	<script type="text/javascript" src="js/weixin.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+	<div style="display:none"><script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1278597280&web_id=1278597280"></script></div>
+	<script type="text/javascript" src="js/jquery.jcountdown.min.js"></script>
+	<script type="text/javascript" src="js/authInfo.js"></script>
+	<script type="text/javascript" src="js/init.js"></script>
+	<script type="text/javascript">
+		authInfo.getUserInfo()
+		authInfo.fs_token;
+		getSign();
+		
+	</script>
+</body>
+</html>

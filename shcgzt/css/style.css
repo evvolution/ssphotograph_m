@@ -1,0 +1,143 @@
+body {
+    min-width: 1800px;
+    background-color: #f6f3f7;
+}
+
+a {
+    text-decoration: none !important;
+    color: #000;
+}
+
+a:hover {
+    color: #c81700;
+}
+
+.striptitle {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+}
+
+.stripmore {
+    position: absolute;
+    right: 20px;
+    z-index: 1;
+    color: #fff;
+}
+
+.strip0 {
+    position: absolute;
+    border-right: 21px solid transparent;
+    border-top: 58px solid #8e1304;
+    top: 0;
+    left: 0px;
+    z-index: 0;
+    width: 146px;
+}
+
+.strip1 {
+    position: absolute;
+    width: 15px;
+    height: 58px;
+    background-color: #c81700;
+    transform: skewX(-20deg);
+    top: 0;
+    left: 135px;
+}
+
+.strip2 {
+    position: absolute;
+    width: 15px;
+    height: 58px;
+    background-color: #e7713b;
+    transform: skewX(-20deg);
+    top: 0;
+    left: 150px;
+}
+
+.strip3 {
+    position: absolute;
+    width: 15px;
+    height: 58px;
+    background-color: #ecb050;
+    transform: skewX(-20deg);
+    top: 0;
+    left: 165px;
+}
+
+.foot{
+    clear: both;
+    margin-top: 60px;
+    width: 100%;
+    padding: 70px 0px;
+    background: #d11221;
+    text-align: center;
+    color: #fff;
+}
+
+.carouseltitle {
+    color: #fff;
+    position: absolute;
+    bottom: -36px;
+    width: 635px;
+    left: -95px;
+    background: rgba(70,70,70,0.7);
+    text-align: justify;
+    padding: 2px 10px;
+}
+
+.videocol {
+    margin: 10px auto;
+}
+
+.videoscard {
+    height: 348px;
+}
+
+.publishtime {
+    position: absolute;
+    right: 20px;
+}
+
+.loading {
+    text-align: center;
+}
+
+.loading img {
+    display: block;
+    margin: 0 auto;
+    width: 50px;
+}
+
+.container {
+    width: 70%;
+    max-width: 100%;
+}
+
+.card {
+    box-shadow: 0px 5px 20px #ccc;
+    background-color: transparent;
+}
+
+.card-header {
+    font-size: 22px;
+    /* background-color: #ecca4b; */
+    background-color: #f7ecec;
+}
+
+.card-body {
+    background-color: #fff;
+}
+
+.card-text {
+    text-align: justify;
+}
+
+.w-100 {
+    height: 368px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #c81700;
+}

@@ -1,0 +1,74 @@
+/*
+    note: p1 style
+    write: zx
+*/
+
+.pageOne {
+    text-align: center;
+    width: 100%;
+}
+
+.pageOne div {
+    margin-bottom: 20px;
+}
+
+.titleContent {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.timelineContent {
+    position: relative;
+    margin: 0 auto;
+    width: 60%;
+    height: 30%;
+    background: url(../../img/p1/film-min.png) top center no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+}
+
+.founderContent {
+    position: relative;
+    bottom: 10px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+/* .flashContent {
+    position: absolute;
+    -webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-name: breathe;
+	-webkit-animation-duration: 2700ms;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction: alternate;
+} */
+
+.flash_left {
+    position: absolute;
+    left: 0;
+    top: 90px;
+    z-index: -1;
+}
+
+.flash_middle {
+    position: absolute;
+    left: 43%;
+    top: 0px;
+    z-index: -1;
+}
+
+.flash_right {
+    position: absolute;
+    right: 0;
+    top: 12px;
+    z-index: -1;
+}
+
+/* @-webkit-keyframes breathe {
+	0% {
+	    opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
+} */

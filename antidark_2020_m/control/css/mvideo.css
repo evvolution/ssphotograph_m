@@ -1,0 +1,25 @@
+.title {
+    text-align: center;
+    margin: 15px auto;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffcca4;;
+}
+
+.player {
+    margin: 2vw;
+}
+
+.info {
+    width: 70%;
+    margin: 0 auto;
+    text-align: justify;
+    color: #ffe;
+    line-height: 1.8;
+}
+
+video {
+    max-width: 85%;
+    display: block;
+    margin: 0 auto;
+}

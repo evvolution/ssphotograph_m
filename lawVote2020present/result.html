@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/> 
+	<title>“谁执法 谁普法”</title>
+    <style>
+        .voteresult{position: relative; top:100px;}
+    </style>
+</head>
+<body>
+    <br/><br/>
+	<div id="voteresult"></div>
+	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <script type="text/javascript">
+        $('#voteresult').css('height',window.screen.availHeight * 0.8)
+        var voteaxis = new Array(4);
+        var votecount = new Array(4);
+        $.ajax({
+            type:"get",
+            
+            url: "https://api.foshanplus.com/foshan/api/v2/getActivityItemList?activityCode=popularizeLaw_20202",
+            dataType:"json",
+            success:function(receiver){
+                // console.log(receiver)
+                for (var i = 0; i < receiver.data.length; i++) {
+                    voteaxis[i] = receiver.data[i].title;
+                    votecount[i] = receiver.data[i].voteCount;
+                }
+                // console.log(voteaxis)
+                var dom = document.getElementById("voteresult");
+                var myChart = echarts.init(dom);
+                var app = {};
+                option = null;
+                option = {
+                    color: ["#3398DB"],
+                    title: {
+                        text: "2020年佛山市第四届国家机关\r\n“谁执法 谁普法”",
+                        subtext: "履职报告评议（现场投票结果）",
+                        left: "center",
+                        top: 200,
+                        textStyle: {
+                            fontFamily:'等线',
+                            fontSize: 35,
+                            color:'#f44414'
+                        },
+                        subtextStyle: {
+                            fontFamily: '等线',
+                            fontSize: 25
+                        },
+                        show: true
+                    },
+                    grid: {},
+                    xAxis: [{
+                        type: "category",
+                        data: voteaxis,
+                        // name: "参选单位",
+                        nameTextStyle: {
+                            fontSize: 44
+                        },
+                        axisLabel: {
+                            fontSize: 25
+                        }
+                    }],
+                    yAxis: [{
+                        type: "value",
+                            nameTextStyle: {
+                            fontSize: 34
+                        },
+                        // name: "得票数",
+                        axisLabel: {
+                            fontSize: 24
+                        }
+                    }],
+                    series: [{
+                        name: "得票数",
+                        type: "bar",
+                        barWidth: "60%",
+                        data: votecount,
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    show: true, //开启显示
+                                    position: 'top', //在上方显示
+                                    textStyle: { //数值样式
+                                        color: 'black',
+                                        fontSize: 48
+                                    }
+                                }
+                            }
+                        }
+                    }],
+                };
+                if (option && typeof option === "object") {
+                    myChart.setOption(option, true);
+                }
+            },
+            error: function(){
+                console.log('getData*****xxx');
+                // alert("当前投票人数过多，请稍后重试");
+                return;
+            }
+        })
+    </script>
+</body>
+</html>

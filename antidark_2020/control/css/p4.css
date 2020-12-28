@@ -1,0 +1,74 @@
+/*
+    note: 第四页样式
+    write: zx
+*/
+
+.pageFour {
+    text-align: center;
+    width: 100%;
+}
+
+.p4titleContent {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.p4content {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    padding: 20px;
+    margin-top: 20px;
+    /* min-height: 600px; */
+}
+
+.p4content-left {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.p4content-right {
+    flex: 1;
+}
+
+.p4content-right img {
+    display: block;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    margin: 0 auto;
+}
+
+.p41 {
+    /* border: 1px dashed #ffc14d; */
+    text-align: justify;
+    padding: 10px;
+    color: #fff;
+    overflow: auto;
+    line-height: 2;
+}
+
+.p41 p {
+    color: #fff;
+    font-size: 0.8vw;
+}
+
+.p4content-news {
+    /* border: 1px dashed #ffc14d; */
+    margin: 0 auto;
+    margin-top: 15px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.p4content-news div {
+    margin: 0 auto;
+    text-align: justify;
+    opacity: .9;
+}
+
+.p4content-news div a {
+    font-size: 0.8vw;
+    color: #fff;
+    text-decoration: none;
+}

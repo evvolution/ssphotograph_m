@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>温爱佛山，乐善之城</title>
+  <link rel="stylesheet" href="./plugins/swiper/swiper.min.css">
+  <link rel="stylesheet" href="./plugins/animate/animate.min.css" />
+  <link rel="stylesheet" href="./css/loaders.min.css">
+  <link rel="stylesheet" href="./plugins/weui/weui.min.css">
+  <link href="./plugins/pswp/photoswipe.css" type="text/css" rel="stylesheet" />
+  <link href="./plugins/pswp/default-skin/default-skin.css" type="text/css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./css/main.css?v=1.0.11">
+  <link rel="stylesheet" href="./css/detail.css?v=1.1.3">
+
+</head>
+
+<body>
+  <div id="app" style="display: none;" class="container">
+    <!-- <div class="bg"><img src="./img/bg.png" alt=""></div> -->
+    <div class="sub_container home_container" id="page1" v-show="!detail_item">
+
+      <div class="video_container">
+        <div class="img_content">
+          <img class="head_bg" src="./img/head_bg.jpg" alt="">
+          <div class="logo-btn" @click="showLogo = 1"></div>
+        </div>
+        <img class="head_sidai" src="./img/sidai.png" alt="">
+        <div class="video" id="dplayer"></div>
+        <div class="video_list">
+          <div class="item" v-for="(item,index) in video_list[0]" @click="playerItem(item)">
+            <img :src="item.icon" alt="">
+            <!-- <img v-show="playing_video&&playing_video.video&&playing_video.video == item.video"
+              src="./img/playing_img.png" alt=""> -->
+          </div>
+
+        </div>
+      </div>
+      <div class="logo-view" v-if="showLogo">
+        <div class="logo-card animate__animated animate__zoomIn">
+          <img src="./img/logo-card.png" alt="">
+          <div class="close-btn" @click="showLogo = 0"></div>
+        </div>
+      </div>
+
+      <div class="main_content " id="main_content">
+        <div id="section_title">
+          <div class="section-items-list">
+            <div class="img-btn section-item" v-for="(item,index) in typeList" @click="changeList(index)">
+              <img :src="'./img/nav_title_' + index + '.png'" alt="">
+            </div>
+          </div>
+          <div class="section_content_list stick_section_list" v-show="topSelection">
+            <div :class="['item',list_index == index?'select_item':'']" v-for="(item,index) in typeList"
+              @click="changeList(index)">
+              <img v-show="list_index == index" src="./img/cup.png" alt="">
+              {{item}}
+            </div>
+
+
+          </div>
+          <!-- <div class="section_list" class="section_content_list">
+            <div :class="topSelection?'stick_section_list':''">
+              <div class="section_content_list">
+                <a :class="['item',list_index == index?'select_item':'']" v-for="(item,index) in typeList"
+                  @click="changeList(index)">
+                  <img v-show="list_index == index" src="./img/cup.png" alt="">
+                  {{item}}
+                </a>
+
+              </div>
+            </div>
+
+          </div> -->
+        </div>
+        <img class="guide-img" src="./img/guide.png" alt="">
+
+        <!-- 人物 -->
+        <div v-for="(list,par_index) in home_list">
+          <!-- 视频位置 -->
+          <img class="name_title" :src="'./img/type_'+par_index+'.png'" :id="'img-section-' + par_index" alt="">
+          <div class="section-video">
+            <img class="video-bg" src="./img/border-full.png" alt="">
+            <div class="video" :id="videoPlayerId(par_index)"></div>
+          </div>
+          <div v-for="(subList,sub_index) in list" class="sub_list">
+            <img class="border-top" src="./img/border-top.png" alt="">
+            <img class="border-bottom" src="./img/border-bottom.png" alt="">
+            <img class="section_title_img" v-if="sub_index == 0" :src="'./img/title_img_'+par_index+'.png'" alt="">
+            <img class="section_title_img" v-else :src="'./img/dis_title_img_'+par_index+'.png'" alt="">
+            <div :class="listItemClass(par_index)">
+              <div v-for="(item,index) in subList" :key="index" class="item"
+                @click="pushDetail(item,par_index,sub_index,index)">
+                <img class="bg_img" v-if="sub_index == 0" :src="'./img/item_bg_'+par_index+'.png'" alt="">
+                <img class="bg_img" v-else :src="'./img/dis_item_bg_'+par_index+'.png'" alt="">
+                <img class="head_img" :src="item.imgSrc" alt="">
+                <p class="name">{{item.name}}<span v-if="par_index == 0">{{item.label}}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <!-- 合作伙伴 -->
+        <div class="company_container" id="img-section-3">
+          <img class="name_title" src="./img/type_com.png" alt="">
+          <div class="swiper-container offerslidetab1 partner_container">
+            <div class="swiper-wrapper">
+              <div class="item swiper-slide" v-for="(item,index) in partnerList" :key="index">
+                <img class="content-img" :src="'./img/partner_'+index+'.png'" alt="">
+                <div class="img-btn share-btn" v-show="partnerIndex == index" @click="partnerShareAction(item)">
+                  <img src="./img/share_icon.png" alt="">
+                </div>
+
+                <!-- <div class="content">
+                  <img src="" alt="">
+                  <p class="title">{{item.name}}<span>{{item.desc}}</span></p>
+                </div> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-container label_container">
+            <div class="swiper-wrapper">
+              <div v-for="(item,index) in partnerList"
+                :class="['item','swiper-slide',partnerIndex==index?'current_item':'']" @click="choiceLabel(index)">
+                <!-- <img :src="item.icon" alt=""> -->
+                <img :src="'./img/partner_icon_'+index+'.png'" alt="">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 特别人物 -->
+        <div class="special_container" id="img-section-4">
+          <img class="name_title" src="./img/type_sp.png" alt="">
+          <div class="people-view">
+            <img class="people-img" src="./img/people_img.png" alt="">
+            <div class="special-share-btn" @click="sharePeopleAction()"></div>
+          </div>
+
+        </div>
+
+        <!-- 报告 -->
+        <div class="report_container" id="img-section-5">
+          <img class="name_title" src="./img/type_report.png" alt="">
+          <div class="video" id="report_player"></div>
+          <div class="swiper-container report-swiper" id="report-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide item" v-for="(item,index) in report_list" ::key="index">
+                <img class="report-img" :src="item" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 详情页 -->
+    <div class="sub_container" v-if="detail_item">
+      <img class="bg" src="./img/bg.png" alt="">
+      <!-- 内容页 -->
+      <div class="detail_container">
+
+        <!-- 导航栏 -->
+        <div class="navigation swiper-container">
+          <div class="img-btn home_btn" @click="goHome()">
+            <img src="./img/home.png" alt="">
+          </div>
+          <div class="swiper-wrapper">
+            <div v-for="(item,index) in detail_list" @click="choiceItem(index)"
+              :class="['item','swiper-slide',detail_item&&detail_item.name==item.name?'select_item':'']">
+              {{item.shortName}}
+            </div>
+          </div>
+        </div>
+        <!-- 内容页 -->
+        <img class="title_img" :src="detail_title_img" alt="">
+        <div class="swiper-container offerslidetab2">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="(item,index) in detail_list" :key="index">
+              <img class="detail_img" :src="detailImg(item)" alt="">
+              <p class="name">{{item.name}}</p>
+              <p class="word_content">
+                {{item.introduction}}
+              </p>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 底部栏 -->
+        <div class="bottom_container">
+          <div class="comment_btn img-btn" @click="showInputComment()">
+            <img src="./img/comment_btn.png" alt="">
+          </div>
+          <div class="list_btn img-btn" @click="openCommentList()">
+            <img src="./img/commentlist_btn.png" alt="">
+          </div>
+          <div class="support_btn img-btn" @click="shareAction(detail_item)">
+            <img src="./img/support.png" alt="">
+          </div>
+        </div>
+        <!-- 输入框 -->
+        <div class="input_comment_container" v-show="isInputComment">
+          <div class="shadow" @click="isInputComment = 0"></div>
+          <div class="bottom-comment-view">
+            <input type="text" id="comment-input" class="input-view" v-model="inputContent"
+              placeholder="上传相关公益活动照片或说两句">
+            <label for="inputId">
+              <div :class="['upload-btn', 'img-btn',imgFile?'uploaded-btn':'']">
+                <img src="./img/upload.png" v-show="!imgFile" alt="">
+                <img src="./img/uploaded.png" v-show="imgFile" alt="">
+                <input style="display: none;" id="inputId" ref="input" type="file" accept="image/*"
+                  @change="handleFileChange">
+              </div>
+            </label>
+            <div :class="['send',(inputContent.length> 0||imgFile)?'':'dis-send']" @click="addActivityItemComment()">发送
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- 评论列表 -->
+      <div class="comment_container" id="comment_list">
+        <img class="comment_title" src="./img/comment_title.png" alt="">
+        <div class="item" v-for="(item,index) in comment_list" :key="index">
+          <img class="head" :src="item.photo" alt="">
+          <p class="name">{{item.name}}</p>
+          <p class="time">{{item.createTime}}</p>
+          <p class="content">{{item.content}}</p>
+          <img class="content-img" :src="item.imgPath" v-show="item.imgPath&&item.imgPath.length > 0" alt="">
+        </div>
+        <div class="more-btn" v-show="comment_list.length > 0&&canMore" @click="openMore()"><img
+            src="./img/more_info.png" alt="">加载更多</div>
+        <p class="comment_tips" v-show="comment_list.length == 0">当前没有评论</p>
+        <p class="comment_tips" v-show="comment_list.length > 0&&!canMore">没有更多评论</p>
+      </div>
+    </div>
+
+    <!-- 分享页面 -->
+    <div class="share_container" v-if="shareModel&&shareState">
+      <div class="shadow" @click="shareState = 0"></div>
+      <div class="sub_container" style="padding-top: 0.72rem;">
+        <div class="share_content" id="share-content">
+          <img class="bg" src="./img/share_bg.png" alt="">
+          <div class="img_content">
+            <img id="content_img" class="content_img" :src="detailImg(shareModel)">
+          </div>
+          <!-- <div class="name">
+                <img :src="userInfo.photo" alt="">
+                <span>{{userInfo.nickname}}</span>
+              </div> -->
+          <p class="target-name">{{shareModel.shortName}}</p>
+          <img class="icon" :src="shareIcon" alt="">
+          <p class="num" v-if="shareCount > 0">我是第 {{shareCount}} 位为{{shareModel.shortName}}点赞的佛山人
+            <!-- 长按识别二维码查看TA -->
+          </p>
+
+          </p>
+          <img class="qrcode" src="./img/qrcode.png" alt="">
+          <img class="logo" src="./img/logo.png" alt="">
+        </div>
+        <p class="desc">长按保存照片</p>
+        <div class="img-btn close-btn" @click="shareState=0">
+          <img src="./img/close.png" alt="">
+        </div>
+      </div>
+
+    </div>
+    <!-- loading -->
+    <div id="loader" :class="['loader',loading_label.length>0?'':'disable_loader']">
+      <div class="loading_content loader-inner ball-pulse">
+        <div></div>
+        <div></div>
+        <div></div>
+        <p style="color: white;">{{loading_label}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- 打开放大的图片 -->
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+      <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+        <div class="pswp__top-bar">
+          <!--  Controls are self-explanatory. Order can be changed. -->
+          <div class="pswp__counter"></div>
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+          <!-- <button class="pswp__button pswp__button--share" title="Share"></button> -->
+          <!-- <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> -->
+          <!-- <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button> -->
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+        <!-- <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button> -->
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+<script type="text/javascript" src="./plugins/weui/weui.min.js"></script>
+<script type="text/javascript" src="./plugins/md5.js"></script>
+<script type="text/javascript" src="./plugins/swiper/swiper.min.js"></script>
+<script type="text/javascript" src="./plugins/DPlayer.min.js"></script>
+<script type="text/javascript" src="./assets/newData.js?v=1.0.7"></script>
+<script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="./js/player.js?v=1.0.2"></script>
+
+<script type="text/javascript" src="./plugins/vue/vue-resource.js"></script>
+<script type="text/javascript" src="./plugins/vue/vue.js"></script>
+<script type="text/javascript" src="./js/weixin.js"></script>
+<script type="text/javascript" src="./js/authInfo.js?v=1.0.0"></script>
+<script type="text/javascript" src="./js/app.js?v=1.1.0"></script>
+<script type="text/javascript" src="./js/swiper.js"></script>
+<script type="text/javascript" src="./plugins/html2canvas/html2canvas.min.js"></script>
+<script type="text/javascript" src="./js/savePhoto.js?v=1.0.1"></script>
+<script type="text/javascript" src="./plugins/pswp/photoswipe.min.js"></script>
+<script type="text/javascript" src="./plugins/pswp/photoswipe-ui-default.min.js"></script>
+
+<script type="text/javascript" src="./js/page.js?v=1.0.1"></script>
+<!-- <script src="./js/vconsole.min.js"></script> -->
+
+<script type="text/javascript">
+  // var vConsole = new VConsole();
+
+  vapp.$nextTick(function () {
+    $("#app").css('display', '')
+    initSwiperView(activeIndex => {
+      vapp.partnerIndex = activeIndex
+    })
+    reportSwiperView()
+    initSectionPlayer()
+    authInfo.getUserInfo(res => {
+      vapp.fs_token = authInfo.fs_token
+    })
+
+    initViewer()
+  })
+
+  function createPoster() {
+    setTimeout(() => {
+      saveSharePic("share-content")
+    }, 100);
+
+  }
+</script>
+<div style="display:none">
+  <script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1278597280&web_id=1278597280"></script>
+</div>
+
+</html>

@@ -1,0 +1,13 @@
+
+body{background-color:#6fccea; font-family: '等线';}
+
+.lawpresent img{width:100%;}
+
+.countdown{margin:0 auto; text-align:center;}
+
+.votelist{margin:5px auto 0;width:90%;}
+.voteline{display:flex; background:#ffffff63; padding:15px 10px 15px 5px; margin:15px auto; border-radius: 5px;}
+.voteline div{padding:5px;}
+.voteid{flex:1; text-align:center; margin-right: -10px;}
+.voteitem{flex:5; text-align:justify; color:#222;}
+.votebtn{flex:1; background-color:green; color:#fff; text-align:center; border-radius:5px; font-size:14px; font-weight:800; display: flex; align-items: center; justify-content: center;}

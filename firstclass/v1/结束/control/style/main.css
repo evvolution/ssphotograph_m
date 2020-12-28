@@ -1,0 +1,433 @@
+body{
+  background:linear-gradient(144deg,rgba(255,250,232,1) 0%,rgba(255,242,226,1) 100%);
+}
+
+.fspsection{
+  padding: 0 24px;
+  /* border: 1px solid #000; */
+}
+
+.container-fluid {
+padding: 0!important;
+}
+
+.noticeforinput{
+text-align: center;
+font-size: 18px;
+margin-bottom: 25px;
+}
+
+.selectgroup{
+margin-bottom: 0;
+}
+
+.labelforfssheet{
+font-size: 16px;
+margin-bottom: 8px;
+}
+
+.selectforfs{
+border-radius: 37.5px;
+height: 40px;
+}
+
+
+.startbtn{
+text-align: center;
+margin: 40px 0 60px;
+}
+
+
+
+.questiondetail{
+  font-size: 18px;
+  margin: 18px auto 20px auto;
+  color: #333;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.choices{
+  border-radius: 37.5px;
+  background-color: #fff;
+  font-size: 16px;
+  margin: 5px 0;
+  padding: 6px 0;
+  position: relative;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+.choices .icon {
+margin-left: 10px;
+}
+
+.choiceOrder{
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.choiceOrder img {
+width: 40px;
+height: 40px;
+}
+
+.choicedetailcontent{
+  padding: 13px 0;
+}
+.choicedetail {
+width: 100%;
+padding: 0px 12px 0px 50px;
+font-size: 14px;
+line-height: 22px;
+color: #333;
+}
+
+/* .questionSection .fp-tableCell,.clockSection .fp-tableCell,.pointSection .fp-tableCell,.passFinish .fp-tableCell,.jiyuSection .fp-tableCell {
+vertical-align: top!important;
+} */
+
+/* 开始答题 */
+/* #passBegin {
+} */
+#passBegin .titleImg {
+width: 74%;
+height: auto;
+display: block;
+margin: 0 auto;
+margin-top: -30%;
+}
+
+/* 开始答题 */
+#passBegin .descImg {
+width: 85%;
+height: auto;
+display: block;
+margin: 12px auto;
+}
+
+#passBegin .second {
+bottom: 176px;
+left: 0px;
+width: 100%;
+position: absolute;
+color: #999;
+line-height: 20px;
+font-size: 15px;
+text-align: center;
+}
+
+.loader {
+position: absolute;
+z-index: 5;
+width: 100vw;
+height: 100vh;
+left: 0px;
+top: 0px;
+background: rgba(0, 0, 0, 0.3);
+}
+.loader .icon {}
+
+/* 答题 */
+#videoContainer {
+width: 100vw;
+height: 56.27vw;
+margin-left: -24px;
+}
+button:focus {
+outline: none;
+}
+.choice-selected {
+background-image: linear-gradient(#AEFF68, #69E149);
+}
+
+.nodisplay {
+display: none;
+}
+
+#dis-nextBtn,#nextBtn,.nextPassBtn {
+margin-top: 5px;
+float: right;
+overflow: hidden;
+width: 40%;
+}
+
+#nextBtn img,#dis-nextBtn img,.nextPassBtn img{
+width: 100%;
+height: auto;
+src: url(../../img/next_select.png);
+}
+
+/* 勋章 */
+.top-medalContainer {
+width: 100%;
+overflow-x: hidden;
+position: relative;
+margin-top: -20%;
+}
+.top-medalContainer .bg {
+width: 100%;
+}
+
+.top-medalContainer .title {
+position: absolute;
+bottom: 55px;
+line-height: 25px;
+font-weight: 500;
+text-align: center;
+width: 100%;
+font-size: 18px;
+white-space:pre-line;
+}
+.top-medalContainer .icon {
+width: 26%;
+height: auto;
+position: absolute;
+left: 37%;
+top: calc(50% - 63px);
+}
+.bottom-medalContainer {
+position: relative;
+width: 100%;
+}
+.bottom-medalContainer .item {
+width: 33.3%;
+float: left;
+box-sizing: border-box;
+}
+.bottom-medalContainer .item img {
+display: block;
+width: 100px;
+height: 104px;
+margin: 0 auto;
+}
+.bottom-medalContainer .item p {
+font-size: 14px;
+line-height: 20px;
+width: 100%;
+color: #333;
+text-align: center;
+}
+
+/* 分数页 */
+.pointSection .scoreBg {
+left: 0;
+top: 0;
+width: 100%;
+z-index: -1;
+height: auto;
+position: absolute;
+}
+.pointSection .scoreTitle {
+font-size: 32px;
+line-height: 45px;
+color: #333;
+font-weight: 400;
+text-align: center;
+margin-top: 132px;
+}
+
+.pointSection .scoreDesc {
+font-size: 16px;
+line-height: 28px;
+color: #333;
+text-align: center;
+margin-top: 18px;
+padding: 0 6px;
+}
+
+.pointSection .wrongTitle {
+font-size: 16px;
+line-height: 28px;
+color: #333;
+font-weight: bolder;
+margin: 43px 0 10px 0;
+}
+.pointSection .wrongContainer {
+margin-bottom: 10px;
+}
+.wrongContainer .wrongItem {
+float: left;
+width: 50px;
+height: 50px;
+position: relative;
+margin: 0 5px 0px 0;
+box-sizing: border-box;
+padding-top: 9px;
+text-align: center;
+line-height: 25px;
+font-size: 16px;
+color: #FF2E2E;
+}
+.wrongContainer .wrongItem img {
+position: absolute;
+width: 100%;
+height: 100%;
+left: 0px;
+top: 0;
+z-index: -1;
+}
+.pointSection .downloadBtn {
+width: 100%;
+}
+.pointSection .downloadBtn img {
+width: 100%;
+height: auto;
+margin-top: 15px;
+}
+
+.checkScoreBtn,.createPosterBtn {
+width: 100%;
+display: block;
+}
+
+.checkScoreBtn img,.createPosterBtn img {
+width: 100%;
+height: auto;
+}
+
+
+.showWrongItem 
+{
+position: absolute;
+z-index: 5;
+width: 100vw;
+height: 100vh;
+left: 0px;
+top: 0px;
+background: rgba(0, 0, 0, 0.3);
+}
+
+.showWrongItem img{
+width: 80%;
+height: auto;
+position: absolute;
+top: 20%;
+left: 10%;
+border-radius: 3px;
+}
+.showWrongItem .close {
+width: 15%;
+height: 10%;
+right: 10%;
+top: 20%;
+position: absolute;
+z-index: 1;
+}
+
+.showWrongItem .content
+{
+position: absolute;
+width: 80%;
+position: absolute;
+top: 20%;
+left: 10%;
+z-index: 1;
+padding: 40px 10px 0 10px;
+}
+
+
+.scorePoster{
+text-align: center;
+margin: 0 auto;
+height: 50px;
+width: 120px;
+margin-top: 20px;
+}
+
+
+/* 打卡页 */
+.clockSection .clock-container {
+width: 100%;
+margin-top: 23px;
+position: relative;
+/* padding-top: 28px;
+padding: 28px 24px 0 24px; */
+}
+
+.clockSection .clock-container .text-container {
+position: absolute;
+left: 0px;
+top: 0px;
+padding-top: 28px;
+padding: 28px 24px 0 24px;
+}
+.clockSection .clockBg {
+width: 100%;
+height: auto;
+display: block;
+/* position: absolute;
+top: 0;
+left: 0;
+z-index: -1; */
+}
+.clockSection .clockTitle {
+width: auto;
+height: 44px;
+margin: 0 auto 28px auto;
+display: block;
+}
+.clockSection p {
+font-size: 16px;
+line-height: 26px;
+color: #85470E;
+margin-bottom: 12px;
+}
+.clockSection p:nth-child(4) {
+float: right;
+}
+
+.clockSection .clockBtn {
+width: calc(100% - 24px*2);
+position: relative;
+margin: 20px auto 0 auto;
+/* margin-top: 20px; */
+}
+.clockSection .clockBtn img {
+width: 100%;
+height: auto;
+margin-top: 15px;
+}
+
+#exampleModalCenter{
+position: absolute;
+}
+
+.bottompic{
+position: absolute;
+z-index: -1;
+bottom: 0;
+left: 0;
+width: 100%;
+}
+
+/* 寄语 */
+#jiyuvideoContainer
+{
+left: -24px;
+width: 100vw;
+height: 56.83vw;
+}
+
+.jiyuTitle,.jiyuDesc
+{
+text-align: center;
+color: #333;
+}
+
+.jiyuTitle
+{
+font-size: 18px;
+line-height: 28px;
+margin: 18px auto 12px auto;
+font-weight: 600;
+}
+
+.jiyuDesc
+{
+font-size: 14px;
+line-height: 28px;
+margin-bottom: 8px;
+}
